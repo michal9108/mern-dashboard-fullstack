@@ -26,3 +26,12 @@ export const api = createApi({
 export const { useGetKpisQuery } = api;
 // export const { useGetProductsQuery } = api;
 // export const { useGetTransactionsQuery } = api;
+
+
+//calling the endpoint BE, API calls, morgan
+
+/* "Redux toolkit" used to manage state - accessing the state globally, 
+ "Redux toolkit query" used to make API calls and that state can be used to be stored in global store
+ Boiler plate code // createApi makes us call the BE - fetchBaseQuery function from Redux toolkit Query,
+baseUrl  - url we call everytime we make API call it has format import.meta.env.VITE_BASE_URL/kpi/kpis/  and saving it into Kpis tag
+useGetKpisQuery hook */ 

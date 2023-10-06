@@ -1,6 +1,7 @@
-import BoxHeader from "@/components/BoxHeader";
+// import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import { useGetKpisQuery } from "@/state/api";
+import React from "react";
 import { useTheme } from "@mui/material";
 import { useMemo } from "react";
 import {
@@ -17,10 +18,12 @@ import {
   Tooltip,
   Area,
 } from "recharts";
+type Props = {};
 
-const Row1 = () => {
+const Row1 = (props: Props) => {
   const { palette } = useTheme();
   const { data } = useGetKpisQuery();
+  console.log("data:", data);
 
   const revenue = useMemo(() => {
     return (
@@ -63,11 +66,11 @@ const Row1 = () => {
   return (
     <>
       <DashboardBox gridArea="a">
-        <BoxHeader
+      {/* <BoxHeader
           title="Revenue and Expenses"
           subtitle="top line represents revenue, bottom line represents expenses"
           sideText="+4%"
-        />
+        /> */}
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             width={500}
@@ -138,11 +141,11 @@ const Row1 = () => {
         </ResponsiveContainer>
       </DashboardBox>
       <DashboardBox gridArea="b">
-        <BoxHeader
+        {/* <BoxHeader
           title="Profit and Revenue"
           subtitle="top line represents revenue, bottom line represents expenses"
           sideText="+4%"
-        />
+        /> */}
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             width={500}
@@ -197,11 +200,11 @@ const Row1 = () => {
         </ResponsiveContainer>
       </DashboardBox>
       <DashboardBox gridArea="c">
-        <BoxHeader
+        {/* <BoxHeader
           title="Revenue Month by Month"
           subtitle="graph representing the revenue month by month"
           sideText="+4%"
-        />
+        /> */}
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             width={500}

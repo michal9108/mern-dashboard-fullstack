@@ -8,6 +8,7 @@ import morgan from "morgan";
 import kpiRoutes from "./routes/kpi.js";
 import KPI from "./models/KPI.js";
 import { kpis } from "./data/data.js";
+// importing mockup data kpis array of objects from data.js 
 
 // import productRoutes from "./routes/product.js";
 // import transactionRoutes from "./routes/transaction.js";
@@ -31,9 +32,10 @@ app.use(cors());
 // console.log("Hello")
 
 
-// /* ROUTES */
-
+ /* ROUTES */
 app.use("/kpi", kpiRoutes);
+// entry point for the kpi route
+
 // app.use("/product", productRoutes);
 // app.use("/transaction", transactionRoutes);
 
@@ -50,8 +52,13 @@ mongoose
 
 //     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
     // await mongoose.connection.db.dropDatabase();
-    // befere seeding the db dropping the current db - avoiding duplication
+
+    // befere seeding the db dropping the current db - avoiding dev duplication
+
     // KPI.insertMany(kpis);
+//inserting the kpis array of objects into the database
+
+
     // Product.insertMany(products);
     // Transaction.insertMany(transactions);
   })
@@ -59,7 +66,9 @@ mongoose
 
 
 
-
+/*express - framework for node.js to handle APIs, body-parser  handle informations that are coming from a body of request, 
+cors - crossorigin research sharing request for calls from dif url, dotenv -handle environment variables, helmet - api endpoint security,
+ morgan for handling console.logs
 
 
 

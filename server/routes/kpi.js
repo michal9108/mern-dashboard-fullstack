@@ -7,10 +7,14 @@ router.get("/kpis", async (req, res) => {
   try {
     const kpis = await KPI.find();
     res.status(200).json(kpis);
-    //grabbing the data from db and sending them to FE
+    // grabbing the data from db and sending them to FE
+    // console.log(kpis)
+
   } catch (error) {
     res.status(404).json({ message: error.message });
+    console.log("error not found")
   }
 });
 
 export default router;
+
