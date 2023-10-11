@@ -53,7 +53,7 @@ mongoose
 //     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
     // await mongoose.connection.db.dropDatabase();
 
-    // befere seeding the db dropping the current db - avoiding dev duplication
+    // before seeding the db dropping the current db - avoiding dev duplication
 
     // KPI.insertMany(kpis);
 //inserting the kpis array of objects into the database
@@ -65,18 +65,6 @@ mongoose
   .catch((error) => console.log(`${error} did not connect`));
 
 
-
 /*express - framework for node.js to handle APIs, body-parser  handle informations that are coming from a body of request, 
 cors - crossorigin research sharing request for calls from dif url, dotenv -handle environment variables, helmet - api endpoint security,
- morgan for handling console.logs
-
-
-
-
-
-
-
-
-
-
-
+ morgan for handling console.logs*/

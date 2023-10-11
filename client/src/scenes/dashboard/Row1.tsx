@@ -1,8 +1,8 @@
-// import BoxHeader from "@/components/BoxHeader";
+import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import { useGetKpisQuery } from "@/state/api";
 import React from "react";
-import { useTheme } from "@mui/material";
+// import { useTheme } from "@mui/material";
 import { useMemo } from "react";
 import {
   ResponsiveContainer,
@@ -21,7 +21,7 @@ import {
 type Props = {};
 
 const Row1 = (props: Props) => {
-  const { palette } = useTheme();
+  // const { palette } = useTheme();
   const { data } = useGetKpisQuery();
   console.log("data:", data);
 
@@ -66,11 +66,11 @@ const Row1 = (props: Props) => {
   return (
     <>
       <DashboardBox gridArea="a">
-      {/* <BoxHeader
+      <BoxHeader
           title="Revenue and Expenses"
           subtitle="top line represents revenue, bottom line represents expenses"
           sideText="+4%"
-        /> */}
+        />
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             width={500}
@@ -87,24 +87,24 @@ const Row1 = (props: Props) => {
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={palette.primary[300]}
-                  stopOpacity={0.5}
+                  stopColor="#ffffff"
+                  stopOpacity={0.8}
                 />
                 <stop
-                  offset="95%"
-                  stopColor={palette.primary[300]}
+                  offset="80%"
+                  stopColor="#ffffff"
                   stopOpacity={0}
                 />
               </linearGradient>
               <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={palette.primary[300]}
-                  stopOpacity={0.5}
+                  stopColor="#ef2f2f"
+                  stopOpacity={0.8}
                 />
                 <stop
-                  offset="95%"
-                  stopColor={palette.primary[300]}
+                  offset="80%"
+                  stopColor="#ef2f2f"
                   stopOpacity={0}
                 />
               </linearGradient>
@@ -125,7 +125,7 @@ const Row1 = (props: Props) => {
               type="monotone"
               dataKey="revenue"
               dot={true}
-              stroke={palette.primary.main}
+              stroke="#ffffff"
               fillOpacity={1}
               fill="url(#colorRevenue)"
             />
@@ -133,7 +133,7 @@ const Row1 = (props: Props) => {
               type="monotone"
               dataKey="expenses"
               dot={true}
-              stroke={palette.primary.main}
+              stroke="#ef2f2f"
               fillOpacity={1}
               fill="url(#colorExpenses)"
             />
@@ -141,11 +141,11 @@ const Row1 = (props: Props) => {
         </ResponsiveContainer>
       </DashboardBox>
       <DashboardBox gridArea="b">
-        {/* <BoxHeader
+        <BoxHeader
           title="Profit and Revenue"
           subtitle="top line represents revenue, bottom line represents expenses"
           sideText="+4%"
-        /> */}
+        />
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             width={500}
@@ -158,7 +158,7 @@ const Row1 = (props: Props) => {
               bottom: 55,
             }}
           >
-            <CartesianGrid vertical={false} stroke={palette.grey[800]} />
+            <CartesianGrid vertical={false} stroke="#48494e" />
             <XAxis
               dataKey="name"
               tickLine={false}
@@ -188,23 +188,23 @@ const Row1 = (props: Props) => {
               yAxisId="left"
               type="monotone"
               dataKey="profit"
-              stroke={palette.tertiary[500]}
+              stroke="#8884d8"
             />
             <Line
               yAxisId="right"
               type="monotone"
               dataKey="revenue"
-              stroke={palette.primary.main}
+              stroke="#12efc8"
             />
           </LineChart>
         </ResponsiveContainer>
       </DashboardBox>
       <DashboardBox gridArea="c">
-        {/* <BoxHeader
+        <BoxHeader
           title="Revenue Month by Month"
           subtitle="graph representing the revenue month by month"
           sideText="+4%"
-        /> */}
+        />
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             width={500}
@@ -221,17 +221,17 @@ const Row1 = (props: Props) => {
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor={palette.primary[300]}
+                  stopColor= "#71f5de"
                   stopOpacity={0.8}
                 />
                 <stop
                   offset="95%"
-                  stopColor={palette.primary[300]}
+                  stopColor="#71f5de"
                   stopOpacity={0}
                 />
               </linearGradient>
             </defs>
-            <CartesianGrid vertical={false} stroke={palette.grey[800]} />
+            <CartesianGrid vertical={false} stroke="#48494e" />
             <XAxis
               dataKey="name"
               axisLine={false}

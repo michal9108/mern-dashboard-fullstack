@@ -7,7 +7,7 @@ body,
   height: 100%;
   width: 100%;
   font-family: "Inter", sans-serif;
-  background-color: #1f2026;
+  background-color: #1d1c24;
 }
 
 /* ::-webkit-scrollbar {
@@ -25,3 +25,37 @@ body,
 ::-webkit-scrollbar-track:hover {
   background: #2a2b2f;
 } */
+
+
+
+/* BoxHeader */
+
+.box-header {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: #999;
+}
+
+.side-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #f2b455;
+}
+
+
+/* BoxHeader */
+
+   .title {
+      font-Family: "Inter", "sans-serif";
+      font-Size: 16;
+      font-Weight: 600;
+      color: #f2b455;
+     }
+
