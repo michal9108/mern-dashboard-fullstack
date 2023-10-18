@@ -3,12 +3,10 @@ import "../index.css";
 import React from "react";
 import FlexBetween from "./FlexBetween";
 
-
 type Props = {
   funnelStep: string;
   funnelStepAmount: number;
 }
-
 
 const ConversionRow = ({funnelStep, funnelStepAmount}: Props) => {
   return (

@@ -18,7 +18,6 @@ const Navbar = (props: Props) => {
   
   const [selected, setSelected] = useState("dashboard");
 
-
   return (
     <FlexBetween mb="0.25rem" p="0.5rem 0rem" color="#d1d3da">
       {/* LEFT SIDE */}

@@ -11,14 +11,12 @@ type Props = {
 const CostField = ({costTitle, costAmount, costDescription }: Props) => {
   return (
     <Box
-    // flexWrap= 'wrap'
         width="50%"
         height="50%"
         margin="auto"
         display="flex"
         alignContent="center"
         justify-content= "center"
-        // flex-basis= "auto"
         flexDirection="column"
         >
           <div className={"box-header"}

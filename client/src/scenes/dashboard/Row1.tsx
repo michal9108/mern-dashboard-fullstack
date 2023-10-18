@@ -17,6 +17,7 @@ import {
   Tooltip,
   Area,
 } from "recharts";
+
 type Props = {};
 
 const Row1 = (props: Props) => {
@@ -88,7 +89,6 @@ const Row1 = (props: Props) => {
           totalExpenses={totalData.totalExpenses}
           totalRevenue={totalData.totalRevenue}
         />
-
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             width={500}

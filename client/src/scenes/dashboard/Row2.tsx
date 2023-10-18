@@ -29,34 +29,7 @@ type Props = {};
 const Row2 = (props: Props) => {
 
   const { data: operationalData } = useGetKpisQuery();
-  // const { data: productData } = useGetProductsQuery();
   const { data: transactionalData } = useGetTransactionsQuery();
-
-
-
-  // const operationalExpenses = useMemo(() => {
-  //   return (
-  //     operationalData &&
-  //     operationalData[0].monthlyData.map(
-  //       ({ month, operationalExpenses, nonOperationalExpenses }) => {
-  //         return {
-  //           name: month.substring(0, 3),
-  //           "Operational Expenses": operationalExpenses,
-  //           "Non Operational Expenses": nonOperationalExpenses,
-  //         };
-  //       }
-  //     )
-  //   );
-  // }, [operationalData]);
-
-
-
-
-  // const totalOrdersData = useMemo(() => {
-  //   return (
-  //  transactionalData?.length
-  //     )
-  // }, [transactionalData]);
 
 
 
@@ -127,9 +100,6 @@ const totalOrderData = useMemo(() => {
         <BoxHeader title="Total orders" 
         totalOrders={totalOrderData.totalOrders}
          />
-
-
-
         <FlexBetween margin="0rem 1rem 0rem 0rem">
 
         <Box width="100%">
@@ -195,7 +165,6 @@ const totalOrderData = useMemo(() => {
       <DashboardBox gridArea="e">
 
       <FlexBetween
-      //  margin="0rem 1rem 0rem 0rem"
        >
         <Box width="100%">
 
@@ -215,12 +184,8 @@ const totalOrderData = useMemo(() => {
 
       </DashboardBox>
 
-
-
       <DashboardBox gridArea="f">
         <BoxHeader title="Total Sessions" totalSessions={543} />
-
-
 
 
         <FlexBetween margin="0rem 1rem 0rem 0rem">

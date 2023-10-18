@@ -6,15 +6,13 @@ import FlexBetween from "./FlexBetween";
 type Props = {
   title: string;
   icon?: React.ReactNode;
-  totalProfit:number;
-  totalExpenses:number;
-  totalRevenue:number;
-  totalOrders:number;
-  totalSessions:number;
-  conversionRate:number;
+  totalProfit?:number;
+  totalExpenses?:number;
+  totalRevenue?:number;
+  totalOrders?:number;
+  totalSessions?:number;
+  conversionRate?:number;
 };
-
-
 const BoxHeader = ({ icon, title,  totalProfit, totalExpenses, totalOrders, totalRevenue, conversionRate, totalSessions  }: Props) => {
   return (
     <FlexBetween color="#c2c5ce" margin="1.5rem 1rem 0 1rem">
