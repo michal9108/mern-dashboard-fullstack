@@ -5,22 +5,18 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-import kpiRoutes from "./routes/kpi.js";
 import KPI from "./models/KPI.js";
-import { kpis } from "./data/data.js";
+import { kpis, products,transactions  } from "./data/data.js";
+
 // importing mockup data kpis array of objects from data.js 
-import { products } from "./data/data.js";
 import Product from "./models/Product.js";
+import kpiRoutes from "./routes/kpi.js";
 import productRoutes from "./routes/product.js";
 import transactionRoutes from "./routes/transaction.js";
 import Transaction from "./models/Transaction.js";
-import { transactions } from "./data/data.js";
 
 
 /* CONFIGURATIONS */
-
-
-
 
 dotenv.config();
 const app = express();
@@ -31,8 +27,6 @@ app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-
-
 
 
  /* ROUTES */
@@ -66,7 +60,6 @@ mongoose
     // Transaction.insertMany(transactions);
   })
   .catch((error) => console.log(`${error} did not connect`));
-
 
 /*express - framework for node.js to handle APIs, body-parser  handle informations that are coming from a body of request, 
 cors - crossorigin research sharing request for calls from dif url, dotenv -handle environment variables, helmet - api endpoint security,

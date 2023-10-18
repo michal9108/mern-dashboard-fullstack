@@ -32,7 +32,6 @@ const KPISchema = new Schema(
 );
 
 const KPI = mongoose.model("KPI", KPISchema);
-// console.log(KPISchema)
 export default KPI;
 
 /*mongoose - grabbing the data from the database - ODM - object document mapping 
