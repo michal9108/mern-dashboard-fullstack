@@ -1,37 +1,38 @@
-// import BoxHeader from "@/components/BoxHeader";
+import { BoxHeader } from "@/components/BoxHeader";
 import React from "react";
 import DashboardBox from "@/components/DashboardBox";
-// import FlexBetween from "@/components/FlexBetween";
-// import { useGetKpisQuery, useGetProductsQuery } from "@/state/api";
-// import { Box, Typography, useTheme } from "@mui/material";
-// import { useMemo } from "react";
+import FlexBetween from "@/components/FlexBetween";
+import { useGetKpisQuery, useGetProductsQuery,useGetTransactionsQuery,} from "@/state/api";
+import { Box, Typography } from "@mui/material";
+import { ConversionRow } from "@/components/ConversionRow";
+import { useMemo } from "react";
 
-// import {
-//   Tooltip,
-//   CartesianGrid,
-//   LineChart,
-//   ResponsiveContainer,
-//   XAxis,
-//   YAxis,
-//   Line,
-//   PieChart,
-//   Pie,
-//   Cell,
-//   ScatterChart,
-//   Scatter,
-//   ZAxis,
-// } from "recharts";
+import {
+  Tooltip,
+  CartesianGrid,
+  LineChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Line,
+  PieChart,
+  Pie,
+  Cell,
+  ScatterChart,
+  Scatter,
+  ZAxis,
+} from "recharts";
 
-// const pieData = [
-//   { name: "Group A", value: 600 },
-//   { name: "Group B", value: 400 },
-// ];
+
 type Props = {};
-const Row2 = () => {
-  // const { palette } = useTheme();
-  // const pieColors = [palette.primary[800], palette.primary[300]];
-  // const { data: operationalData } = useGetKpisQuery();
+
+const Row2 = (props: Props) => {
+
+  const { data: operationalData } = useGetKpisQuery();
   // const { data: productData } = useGetProductsQuery();
+  const { data: transactionalData } = useGetTransactionsQuery();
+
+
 
   // const operationalExpenses = useMemo(() => {
   //   return (
@@ -48,164 +49,237 @@ const Row2 = () => {
   //   );
   // }, [operationalData]);
 
-  // const productExpenseData = useMemo(() => {
+
+
+
+  // const totalOrdersData = useMemo(() => {
   //   return (
-  //     productData &&
-  //     productData.map(({ _id, price, expense }) => {
-  //       return {
-  //         id: _id,
-  //         price: price,
-  //         expense: expense,
-  //       };
-  //     })
-  //   );
-  // }, [productData]);
+  //  transactionalData?.length
+  //     )
+  // }, [transactionalData]);
+
+
+
+const totalOrderData = useMemo(() => {
+
+  let totalOrders = 0;
+
+    if (transactionalData) {
+
+      totalOrders = transactionalData?.length;
+
+    }
+         
+    return {
+      totalOrders
+    }
+}, [transactionalData]);
+
+
+  const mockdata = [
+    {
+      name: "Page A",
+      uv: 4000,
+      pv: 2400,
+      amt: 2400,
+    },
+    {
+      name: "Page B",
+      uv: 3000,
+      pv: 1398,
+      amt: 2210,
+    },
+    {
+      name: "Page C",
+      uv: 2000,
+      pv: 9800,
+      amt: 2290,
+    },
+    {
+      name: "Page D",
+      uv: 2780,
+      pv: 3908,
+      amt: 2000,
+    },
+    {
+      name: "Page E",
+      uv: 1890,
+      pv: 4800,
+      amt: 2181,
+    },
+    {
+      name: "Page F",
+      uv: 2390,
+      pv: 3800,
+      amt: 2500,
+    },
+    {
+      name: "Page G",
+      uv: 3490,
+      pv: 4300,
+      amt: 2100,
+    },
+  ];
 
   return (
     <>
-      {/* <DashboardBox gridArea="d">
-        <BoxHeader
-          title="Operational vs Non-Operational Expenses"
-          sideText="+4%"
-        />
-        <ResponsiveContainer width="100%" height="100%">
+      <DashboardBox gridArea="d">
+        <BoxHeader title="Total orders" 
+        totalOrders={totalOrderData.totalOrders}
+         />
+
+
+
+        <FlexBetween margin="0rem 1rem 0rem 0rem">
+
+        <Box width="100%">
+        <ResponsiveContainer width="99%" height={200}>
+            <LineChart
+              width={380}
+              height={210}
+              data={mockdata}
+              margin={{
+                top: 15,
+                right: 25,
+                left: -10,
+                bottom: 10,
+              }}
+            >
+              <CartesianGrid horizontal={false} stroke="#48494e" />
+
+              <XAxis
+                dataKey="name"
+                tickLine={false}
+                style={{ fontSize: "10px" }}
+              />
+              <YAxis
+                tickLine={false}
+                style={{ fontSize: "10px", opacity: 0.5 }}
+                domain={[8000, 24000]}
+              />
+              <Tooltip
+                labelStyle={{ color: "ffffff" }}
+                itemStyle={{ color: "ffffff" }}
+                formatter={(v) => `$${v}`}
+              />
+
+              <Line
+                type="monotone"
+                dataKey="pv"
+                dot={false}
+                stroke="#ffffff"
+                strokeWidth={2}
+                fillOpacity={1}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+          </Box>
+
+          <FlexBetween >
+          <Box mt="3rem" mr="0rem" mb="3rem"ml="0rem" >
+          <div className="conversion-row">Average </div>
+          <div className="conversion-row">$34,67</div>
+
+          </Box>
+          </FlexBetween>
+
+        </FlexBetween>
+
+
+      </DashboardBox>
+
+
+
+
+
+      <DashboardBox gridArea="e">
+
+      <FlexBetween
+      //  margin="0rem 1rem 0rem 0rem"
+       >
+        <Box width="100%">
+
+        <BoxHeader title="Store Conversion Rate" conversionRate={3.56} />
+
+        <FlexBetween margin="1.5rem 1rem 0 1rem">
+          <div className={"conversion-title"}>CONVERSION FUNNEL</div>
+        </FlexBetween>
+
+        <ConversionRow funnelStep="Add to Cart" funnelStepAmount={94} />
+
+        <ConversionRow funnelStep="Checkout" funnelStepAmount={34} />
+        <ConversionRow funnelStep="Purchases" funnelStepAmount={12} />
+        </Box>
+
+        </FlexBetween>
+
+      </DashboardBox>
+
+
+
+      <DashboardBox gridArea="f">
+        <BoxHeader title="Total Sessions" totalSessions={543} />
+
+
+
+
+        <FlexBetween margin="0rem 1rem 0rem 0rem">
+
+        <Box width="100%">
+
+        <ResponsiveContainer width="99%" height={200}>
+
           <LineChart
-            data={operationalExpenses}
+            width={380}
+            height={210}
+            data={mockdata}
             margin={{
-              top: 20,
-              right: 0,
+              top: 15,
+              right: 25,
               left: -10,
-              bottom: 55,
+              bottom: 10,
             }}
           >
-            <CartesianGrid vertical={false} stroke={palette.grey[800]} />
+            <CartesianGrid horizontal={false} stroke="#48494e" />
+
             <XAxis
               dataKey="name"
               tickLine={false}
               style={{ fontSize: "10px" }}
             />
             <YAxis
-              yAxisId="left"
-              orientation="left"
               tickLine={false}
-              axisLine={false}
-              style={{ fontSize: "10px" }}
+              style={{ fontSize: "10px", opacity: 0.5 }}
+              domain={[8000, 24000]}
             />
-            <YAxis
-              yAxisId="right"
-              orientation="right"
-              tickLine={false}
-              axisLine={false}
-              style={{ fontSize: "10px" }}
+            <Tooltip
+              labelStyle={{ color: "ffffff" }}
+              itemStyle={{ color: "ffffff" }}
+              formatter={(v) => `$${v}`}
             />
-            <Tooltip />
+
             <Line
-              yAxisId="left"
               type="monotone"
-              dataKey="Non Operational Expenses"
-              stroke={palette.tertiary[500]}
-            />
-            <Line
-              yAxisId="right"
-              type="monotone"
-              dataKey="Operational Expenses"
-              stroke={palette.primary.main}
+              dataKey="pv"
+              dot={false}
+              stroke="#ffffff"
+              strokeWidth={2}
+              fillOpacity={1}
             />
           </LineChart>
-        </ResponsiveContainer>
-      </DashboardBox>
-      <DashboardBox gridArea="e">
-        <BoxHeader title="Campaigns and Targets" sideText="+4%" />
-        <FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem">
-          <PieChart
-            width={110}
-            height={100}
-            margin={{
-              top: 0,
-              right: -10,
-              left: 10,
-              bottom: 0,
-            }}
-          >
-            <Pie
-              stroke="none"
-              data={pieData}
-              innerRadius={18}
-              outerRadius={38}
-              paddingAngle={2}
-              dataKey="value"
-            >
-              {pieData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={pieColors[index]} />
-              ))}
-            </Pie>
-          </PieChart>
-          <Box ml="-0.7rem" flexBasis="40%" textAlign="center">
-            <Typography variant="h5">Target Sales</Typography>
-            <Typography m="0.3rem 0" variant="h3" color={palette.primary[300]}>
-              83
-            </Typography>
-            <Typography variant="h6">
-              Finance goals of the campaign that is desired
-            </Typography>
+          </ResponsiveContainer>
           </Box>
-          <Box flexBasis="40%">
-            <Typography variant="h5">Losses in Revenue</Typography>
-            <Typography variant="h6">Losses are down 25%</Typography>
-            <Typography mt="0.4rem" variant="h5">
-              Profit Margins
-            </Typography>
-            <Typography variant="h6">
-              Margins are up by 30% from last month.
-            </Typography>
+          <FlexBetween >
+
+          <Box mt="3rem"mr="0rem" mb="3rem"  ml="0rem">
+            <div className="conversion-row">Visitors</div>
+            <div className="conversion-row">3454</div>
+
           </Box>
         </FlexBetween>
+        </FlexBetween>
+
       </DashboardBox>
-      <DashboardBox gridArea="f">
-        <BoxHeader title="Product Prices vs Expenses" sideText="+4%" />
-        <ResponsiveContainer width="100%" height="100%">
-          <ScatterChart
-            margin={{
-              top: 20,
-              right: 25,
-              bottom: 40,
-              left: -10,
-            }}
-          >
-            <CartesianGrid stroke={palette.grey[800]} />
-            <XAxis
-              type="number"
-              dataKey="price"
-              name="price"
-              axisLine={false}
-              tickLine={false}
-              style={{ fontSize: "10px" }}
-              tickFormatter={(v) => `$${v}`}
-            />
-            <YAxis
-              type="number"
-              dataKey="expense"
-              name="expense"
-              axisLine={false}
-              tickLine={false}
-              style={{ fontSize: "10px" }}
-              tickFormatter={(v) => `$${v}`}
-            />
-            <ZAxis type="number" range={[20]} />
-            <Tooltip formatter={(v) => `$${v}`} />
-            <Scatter
-              name="Product Expense Ratio"
-              data={productExpenseData}
-              fill={palette.tertiary[500]}
-            />
-          </ScatterChart>
-        </ResponsiveContainer>
-      </DashboardBox> */}
-<DashboardBox gridArea="d"></DashboardBox>
-<DashboardBox gridArea="e"></DashboardBox>
-<DashboardBox gridArea="f"></DashboardBox>
-
-
     </>
   );
 };

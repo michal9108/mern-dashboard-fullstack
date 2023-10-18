@@ -9,15 +9,18 @@ import kpiRoutes from "./routes/kpi.js";
 import KPI from "./models/KPI.js";
 import { kpis } from "./data/data.js";
 // importing mockup data kpis array of objects from data.js 
+import { products } from "./data/data.js";
+import Product from "./models/Product.js";
+import productRoutes from "./routes/product.js";
+import transactionRoutes from "./routes/transaction.js";
+import Transaction from "./models/Transaction.js";
+import { transactions } from "./data/data.js";
 
-// import productRoutes from "./routes/product.js";
-// import transactionRoutes from "./routes/transaction.js";
-// import Product from "./models/Product.js";
-// import Transaction from "./models/Transaction.js";
-// import { products } from "./data/data.js";
-// import { transactions } from "./data/data.js";
 
 /* CONFIGURATIONS */
+
+
+
 
 dotenv.config();
 const app = express();
@@ -29,15 +32,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-// console.log("Hello")
+
 
 
  /* ROUTES */
-app.use("/kpi", kpiRoutes);
-// entry point for the kpi route
 
-// app.use("/product", productRoutes);
-// app.use("/transaction", transactionRoutes);
+ app.use("/kpi", kpiRoutes);
+ app.use("/product", productRoutes);
+ app.use("/transaction", transactionRoutes);
+ // entry point for the kpi, product and transaction routes
+
 
 /* MONGOOSE SETUP */
 
@@ -57,7 +61,6 @@ mongoose
 
     // KPI.insertMany(kpis);
 //inserting the kpis array of objects into the database
-
 
     // Product.insertMany(products);
     // Transaction.insertMany(transactions);

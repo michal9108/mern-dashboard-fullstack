@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Mouse+Memoirs&family=Open+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Mouse+Memoirs&family=Open+Sans:wght@300&display=swap");
 
 html,
 body,
@@ -26,16 +26,32 @@ body,
   background: #2a2b2f;
 } */
 
-
-
 /* BoxHeader */
 
 .box-header {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ccc;
+}
+.conversion-title {
   font-family: "Inter", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #ccc;
 }
+
+.conversion-row {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ccc;
+}
+
+
+
+
+
 
 .subtitle {
   font-family: "Inter", sans-serif;
@@ -43,19 +59,29 @@ body,
   color: #999;
 }
 
-.side-text {
-  font-size: 12px;
+.a-revenue {
+  font-size: 15px;
   font-weight: 700;
-  color: #f2b455;
+  color: #999;
 }
 
+.a-expenses {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ef2f2f;
+}
+
+.a-profit {
+  font-size: 15px;
+  font-weight: 700;
+  color: #71f5de;
+}
 
 /* BoxHeader */
 
-   .title {
-      font-Family: "Inter", "sans-serif";
-      font-Size: 16;
-      font-Weight: 600;
-      color: #f2b455;
-     }
-
+.title {
+  font-family: "Inter", "sans-serif";
+  font-size: 16;
+  font-weight: 600;
+  color: #ccc;
+}

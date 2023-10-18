@@ -2,19 +2,19 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-// const daySchema = new Schema({
-//   date: Date,
-//   revenue: Number,
-//   expenses: Number,
-// });
+const daySchema = new Schema({
+  date: Date,
+  revenue: Number,
+  expenses: Number,
+});
 
-// const monthSchema = new Schema({
-//   month: String,
-//   revenue: Number,
-//   expenses: Number,
-//   operationalExpenses: Number,
-//   nonOperationalExpenses: Number,
-// });
+const monthSchema = new Schema({
+  month: String,
+  revenue: Number,
+  expenses: Number,
+  operationalExpenses: Number,
+  nonOperationalExpenses: Number,
+});
 
 const KPISchema = new Schema(
   {
@@ -25,10 +25,10 @@ const KPISchema = new Schema(
       type: Map,
       of: Number,
     },
-    //   monthlyData: [monthSchema],
-    //   dailyData: [daySchema],
+      monthlyData: [monthSchema],
+      dailyData: [daySchema],
   },
-  // { timestamps: true }
+  { timestamps: true }
 );
 
 const KPI = mongoose.model("KPI", KPISchema);

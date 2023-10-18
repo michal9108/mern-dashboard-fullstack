@@ -3,8 +3,8 @@ import { styled } from "@mui/system";
 
 const DashboardBox = styled(Box)({
   backgroundColor: "#312F3B",
-  borderRadius: "1rem",
-  boxShadow: "0.15rem 0.2rem 0.15rem 0.1rem rgba(0, 0, 0, .8)",
+  borderRadius: "0.4rem",
+  boxShadow: '0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)',
 });
 
 export default DashboardBox;

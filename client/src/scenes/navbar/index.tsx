@@ -1,31 +1,38 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import PixIcon from "@mui/icons-material/Pix";
+import BarChartIcon from '@mui/icons-material/BarChart';
+import {
+  Menu as MenuIcon,
+  LightModeOutlined,
+  SettingsOutlined,
+} from "@mui/icons-material";
 import "/src/index.css"; 
-
-// import { Box, Typography, useTheme } from "@mui/material";
-import { Box} from "@mui/material";
-
+import { Box,Menu,MenuItem, IconButton} from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
+import NotificationsIcon from '@mui/icons-material/Notifications';
+
 
 type Props = {};
 
 const Navbar = (props: Props) => {
-  // const { palette } = useTheme();
+  
   const [selected, setSelected] = useState("dashboard");
+
+
   return (
     <FlexBetween mb="0.25rem" p="0.5rem 0rem" color="#d1d3da">
       {/* LEFT SIDE */}
-      <FlexBetween gap="0.75rem">
-        <PixIcon sx={{ fontSize: "28px" }} />
-        {/* <Typography variant="h4" fontSize="16px"> */}
-         <div className={"title"}>MONEY TRACKER</div> 
-        {/* </Typography> */}
+      <FlexBetween gap="0.75rem"  sx={{  pt:1 }}>
+        
+        <BarChartIcon sx={{ fontSize: "25px" }} />
+         <div className={"title"}>TRACKIFY</div> 
+        
+        <MenuIcon />
       </FlexBetween>
 
       {/* RIGHT SIDE */}
       <FlexBetween gap="2rem">
-        <Box sx={{ "&:hover": { color:"#d0fcf4" } }}>
+        <Box sx={{ "&:hover": { color:"#d0fcf4" }, pt:1 }}>
           <Link
             to="/"
             onClick={() => setSelected("dashboard")}
@@ -34,21 +41,23 @@ const Navbar = (props: Props) => {
               textDecoration: "inherit",
             }}
           >
-            dashboard
+            Dashboard
           </Link>
         </Box>
-        <Box sx={{ "&:hover": { color: "#d0fcf4" } }}>
-          <Link
-            to="/predictions"
-            onClick={() => setSelected("predictions")}
-            style={{
-              color: selected === "predictions" ? "inherit" : "#6b6d74",
-              textDecoration: "inherit",
-            }}
-          >
-            predictions
-          </Link>
-        </Box>
+        <IconButton  sx={{ color: "#ffffff" }} >
+        <NotificationsIcon  sx={{ fontSize: "25px" }} />
+
+       </IconButton>
+
+        <IconButton  sx={{ color: "#ffffff" }} >
+       
+          <LightModeOutlined sx={{ fontSize: "25px" }} />
+        
+          </IconButton>
+          <IconButton  sx={{ color: "#ffffff" }}>
+            <SettingsOutlined sx={{ fontSize: "25px" }} />
+          </IconButton>
+
       </FlexBetween>
     </FlexBetween>
   );
