@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema(
   {
-    price:Number ,
-    expense:Number, 
-    transactions:[Schema.Types.ObjectId],
+    price: Number,
+    expense: Number,
+    transactions: [Schema.Types.ObjectId],
   },
-  { timestamps: true, }
+  { timestamps: true },
 );
 
 const Product = mongoose.model("Product", ProductSchema);

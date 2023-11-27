@@ -17,7 +17,6 @@ const Row3 = (props: Props) => {
   const { data: productData } = useGetProductsQuery();
   const { data: transactionData } = useGetTransactionsQuery();
 
-
   const productColumns = [
     {
       field: "_id",
@@ -69,7 +68,6 @@ const Row3 = (props: Props) => {
       renderCell: (params: GridCellParams) =>
         (params.value as Array<string>).length,
     },
-
   ];
 
   return (

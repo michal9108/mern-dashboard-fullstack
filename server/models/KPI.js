@@ -25,10 +25,10 @@ const KPISchema = new Schema(
       type: Map,
       of: Number,
     },
-      monthlyData: [monthSchema],
-      dailyData: [daySchema],
+    monthlyData: [monthSchema],
+    dailyData: [daySchema],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const KPI = mongoose.model("KPI", KPISchema);
@@ -37,4 +37,3 @@ export default KPI;
 /*mongoose - grabbing the data from the database - ODM - object document mapping 
 - Same thing as ORM(object relational mapping )for NoSQL,
  mongoose helps to setup model - makes it just easier to grab information from db */
-

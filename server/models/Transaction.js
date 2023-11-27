@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 
 const TransactionSchema = new Schema(
   {
-    buyer:String,
-    amount:Number,
-    productIds:[Schema.Types.ObjectId],
+    buyer: String,
+    amount: Number,
+    productIds: [Schema.Types.ObjectId],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Transaction = mongoose.model("Transaction", TransactionSchema);

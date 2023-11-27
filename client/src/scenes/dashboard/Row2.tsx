@@ -2,7 +2,11 @@ import { BoxHeader } from "@/components/BoxHeader";
 import React from "react";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
-import { useGetKpisQuery, useGetProductsQuery,useGetTransactionsQuery,} from "@/state/api";
+import {
+  useGetKpisQuery,
+  useGetProductsQuery,
+  useGetTransactionsQuery,
+} from "@/state/api";
 import { Box, Typography } from "@mui/material";
 import { ConversionRow } from "@/components/ConversionRow";
 import { useMemo } from "react";
@@ -23,31 +27,23 @@ import {
   ZAxis,
 } from "recharts";
 
-
 type Props = {};
 
 const Row2 = (props: Props) => {
-
   const { data: operationalData } = useGetKpisQuery();
   const { data: transactionalData } = useGetTransactionsQuery();
 
-
-
-const totalOrderData = useMemo(() => {
-
-  let totalOrders = 0;
+  const totalOrderData = useMemo(() => {
+    let totalOrders = 0;
 
     if (transactionalData) {
-
       totalOrders = transactionalData?.length;
-
     }
-         
+
     return {
-      totalOrders
-    }
-}, [transactionalData]);
-
+      totalOrders,
+    };
+  }, [transactionalData]);
 
   const mockdata = [
     {
@@ -97,153 +93,133 @@ const totalOrderData = useMemo(() => {
   return (
     <>
       <DashboardBox gridArea="d">
-        <BoxHeader title="Total orders" 
-        totalOrders={totalOrderData.totalOrders}
-         />
+        <BoxHeader
+          title="Total orders"
+          totalOrders={totalOrderData.totalOrders}
+        />
         <FlexBetween margin="0rem 1rem 0rem 0rem">
+          <Box width="100%">
+            <ResponsiveContainer width="99%" height={200}>
+              <LineChart
+                width={380}
+                height={210}
+                data={mockdata}
+                margin={{
+                  top: 15,
+                  right: 25,
+                  left: -10,
+                  bottom: 10,
+                }}
+              >
+                <CartesianGrid horizontal={false} stroke="#48494e" />
 
-        <Box width="100%">
-        <ResponsiveContainer width="99%" height={200}>
-            <LineChart
-              width={380}
-              height={210}
-              data={mockdata}
-              margin={{
-                top: 15,
-                right: 25,
-                left: -10,
-                bottom: 10,
-              }}
-            >
-              <CartesianGrid horizontal={false} stroke="#48494e" />
+                <XAxis
+                  dataKey="name"
+                  tickLine={false}
+                  style={{ fontSize: "10px" }}
+                />
+                <YAxis
+                  tickLine={false}
+                  style={{ fontSize: "10px", opacity: 0.5 }}
+                  domain={[8000, 24000]}
+                />
+                <Tooltip
+                  labelStyle={{ color: "ffffff" }}
+                  itemStyle={{ color: "ffffff" }}
+                  formatter={(v) => `$${v}`}
+                />
 
-              <XAxis
-                dataKey="name"
-                tickLine={false}
-                style={{ fontSize: "10px" }}
-              />
-              <YAxis
-                tickLine={false}
-                style={{ fontSize: "10px", opacity: 0.5 }}
-                domain={[8000, 24000]}
-              />
-              <Tooltip
-                labelStyle={{ color: "ffffff" }}
-                itemStyle={{ color: "ffffff" }}
-                formatter={(v) => `$${v}`}
-              />
-
-              <Line
-                type="monotone"
-                dataKey="pv"
-                dot={false}
-                stroke="#ffffff"
-                strokeWidth={2}
-                fillOpacity={1}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+                <Line
+                  type="monotone"
+                  dataKey="pv"
+                  dot={false}
+                  stroke="#ffffff"
+                  strokeWidth={2}
+                  fillOpacity={1}
+                />
+              </LineChart>
+            </ResponsiveContainer>
           </Box>
 
-          <FlexBetween >
-          <Box mt="3rem" mr="0rem" mb="3rem"ml="0rem" >
-          <div className="conversion-row">Average </div>
-          <div className="conversion-row">$34,67</div>
-
-          </Box>
+          <FlexBetween>
+            <Box mt="3rem" mr="0rem" mb="3rem" ml="0rem">
+              <div className="conversion-row">Average </div>
+              <div className="conversion-row">$34,67</div>
+            </Box>
           </FlexBetween>
-
         </FlexBetween>
-
-
       </DashboardBox>
 
-
-
-
-
       <DashboardBox gridArea="e">
+        <FlexBetween>
+          <Box width="100%">
+            <BoxHeader title="Store Conversion Rate" conversionRate={3.56} />
 
-      <FlexBetween
-       >
-        <Box width="100%">
+            <FlexBetween margin="1.5rem 1rem 0 1rem">
+              <div className={"conversion-title"}>CONVERSION FUNNEL</div>
+            </FlexBetween>
 
-        <BoxHeader title="Store Conversion Rate" conversionRate={3.56} />
+            <ConversionRow funnelStep="Add to Cart" funnelStepAmount={94} />
 
-        <FlexBetween margin="1.5rem 1rem 0 1rem">
-          <div className={"conversion-title"}>CONVERSION FUNNEL</div>
+            <ConversionRow funnelStep="Checkout" funnelStepAmount={34} />
+            <ConversionRow funnelStep="Purchases" funnelStepAmount={12} />
+          </Box>
         </FlexBetween>
-
-        <ConversionRow funnelStep="Add to Cart" funnelStepAmount={94} />
-
-        <ConversionRow funnelStep="Checkout" funnelStepAmount={34} />
-        <ConversionRow funnelStep="Purchases" funnelStepAmount={12} />
-        </Box>
-
-        </FlexBetween>
-
       </DashboardBox>
 
       <DashboardBox gridArea="f">
         <BoxHeader title="Total Sessions" totalSessions={543} />
 
-
         <FlexBetween margin="0rem 1rem 0rem 0rem">
+          <Box width="100%">
+            <ResponsiveContainer width="99%" height={200}>
+              <LineChart
+                width={380}
+                height={210}
+                data={mockdata}
+                margin={{
+                  top: 15,
+                  right: 25,
+                  left: -10,
+                  bottom: 10,
+                }}
+              >
+                <CartesianGrid horizontal={false} stroke="#48494e" />
 
-        <Box width="100%">
+                <XAxis
+                  dataKey="name"
+                  tickLine={false}
+                  style={{ fontSize: "10px" }}
+                />
+                <YAxis
+                  tickLine={false}
+                  style={{ fontSize: "10px", opacity: 0.5 }}
+                  domain={[8000, 24000]}
+                />
+                <Tooltip
+                  labelStyle={{ color: "ffffff" }}
+                  itemStyle={{ color: "ffffff" }}
+                  formatter={(v) => `$${v}`}
+                />
 
-        <ResponsiveContainer width="99%" height={200}>
-
-          <LineChart
-            width={380}
-            height={210}
-            data={mockdata}
-            margin={{
-              top: 15,
-              right: 25,
-              left: -10,
-              bottom: 10,
-            }}
-          >
-            <CartesianGrid horizontal={false} stroke="#48494e" />
-
-            <XAxis
-              dataKey="name"
-              tickLine={false}
-              style={{ fontSize: "10px" }}
-            />
-            <YAxis
-              tickLine={false}
-              style={{ fontSize: "10px", opacity: 0.5 }}
-              domain={[8000, 24000]}
-            />
-            <Tooltip
-              labelStyle={{ color: "ffffff" }}
-              itemStyle={{ color: "ffffff" }}
-              formatter={(v) => `$${v}`}
-            />
-
-            <Line
-              type="monotone"
-              dataKey="pv"
-              dot={false}
-              stroke="#ffffff"
-              strokeWidth={2}
-              fillOpacity={1}
-            />
-          </LineChart>
-          </ResponsiveContainer>
+                <Line
+                  type="monotone"
+                  dataKey="pv"
+                  dot={false}
+                  stroke="#ffffff"
+                  strokeWidth={2}
+                  fillOpacity={1}
+                />
+              </LineChart>
+            </ResponsiveContainer>
           </Box>
-          <FlexBetween >
-
-          <Box mt="3rem"mr="0rem" mb="3rem"  ml="0rem">
-            <div className="conversion-row">Visitors</div>
-            <div className="conversion-row">3454</div>
-
-          </Box>
+          <FlexBetween>
+            <Box mt="3rem" mr="0rem" mb="3rem" ml="0rem">
+              <div className="conversion-row">Visitors</div>
+              <div className="conversion-row">3454</div>
+            </Box>
+          </FlexBetween>
         </FlexBetween>
-        </FlexBetween>
-
       </DashboardBox>
     </>
   );

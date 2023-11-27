@@ -6,15 +6,14 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import KPI from "./models/KPI.js";
-import { kpis, products,transactions  } from "./data/data.js";
+import { kpis, products, transactions } from "./data/data.js";
 
-// importing mockup data kpis array of objects from data.js 
+// importing mockup data kpis array of objects from data.js
 import Product from "./models/Product.js";
 import kpiRoutes from "./routes/kpi.js";
 import productRoutes from "./routes/product.js";
 import transactionRoutes from "./routes/transaction.js";
 import Transaction from "./models/Transaction.js";
-
 
 /* CONFIGURATIONS */
 
@@ -28,14 +27,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+/* ROUTES */
 
- /* ROUTES */
-
- app.use("/kpi", kpiRoutes);
- app.use("/product", productRoutes);
- app.use("/transaction", transactionRoutes);
- // entry point for the kpi, product and transaction routes
-
+app.use("/kpi", kpiRoutes);
+app.use("/product", productRoutes);
+app.use("/transaction", transactionRoutes);
+// entry point for the kpi, product and transaction routes
 
 /* MONGOOSE SETUP */
 
@@ -48,13 +45,13 @@ mongoose
   .then(async () => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
-//     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
+    //     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
     // await mongoose.connection.db.dropDatabase();
 
     // before seeding the db dropping the current db - avoiding dev duplication
 
     // KPI.insertMany(kpis);
-//inserting the kpis array of objects into the database
+    //inserting the kpis array of objects into the database
 
     // Product.insertMany(products);
     // Transaction.insertMany(transactions);
