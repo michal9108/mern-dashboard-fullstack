@@ -58,7 +58,7 @@ export default function Login() {
       setUsername("");
       setPassword("");
       fetchUsers();
-      navigate("/dashboard");
+      navigate("/");
       window.location.reload();
       localStorage.setItem("token", token);
     } catch (error) {
