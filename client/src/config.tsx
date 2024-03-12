@@ -1,4 +1,3 @@
-const FE_API_URL = "https://mern-dashboard-fullstack.vercel.app/";
-
+const FE_API_URL = "http://localhost:3000";
 
 export default FE_API_URL;
