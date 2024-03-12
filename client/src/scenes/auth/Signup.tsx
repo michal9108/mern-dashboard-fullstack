@@ -1,10 +1,40 @@
-import React, { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import BarChartIcon from "@mui/icons-material/BarChart";
+import { useNavigate, Link } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+
 import FE_API_URL from "@/config";
-const Signup = () => {
+
+
+function Copyright(props: any) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="secondary" to="/">
+        Dashboard
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+
+export default function Signup() {
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -17,7 +47,7 @@ const Signup = () => {
 
   const fetchUsers = () => {
     axios.get(`${FE_API_URL}/register`).then((res) => {
-      // console.log(res.data)
+      console.log(res.data);
     });
   };
 
@@ -39,78 +69,110 @@ const Signup = () => {
         console.log("Unable to register user");
       });
   };
+
   return (
-    <Box
-      width="100%"
-      height="100%"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
+    <Container
+      component="main"
+      maxWidth="xs"
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
     >
-      <div className="auth-logo-circle">
-        <BarChartIcon sx={{ fontSize: "40px", color: "white" }} />
-      </div>
-      <div
-        className="auth-border"
-        style={{
+      <CssBaseline />
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          flexDirection: "column",
         }}
       >
-        <div>
-          <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="auth-title">Create a new account</div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <section>
-                {/* Email input */}
-                <div style={{ padding: "15px 0px" }}>
-                  <label className="auth-label">Email</label>
-
-                  <input
-                    className="auth-input"
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                {/* Username input */}
-                <div style={{ padding: "15px 0px" }}>
-                  <label className="auth-label">Username</label>
-                  <input
-                    className="auth-input"
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                </div>
-                {/* Paswword input */}
-                <div style={{ padding: "15px 0px" }}>
-                  <label className="auth-label">Password</label>
-                  <input
-                    className="auth-input"
-                    type="text"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                {/* Button*/}
-                <button className="auth-button" type="submit">
-                  Sign Up
-                </button>
-              </section>
-            </div>
-          </form>
-        </div>
-      </div>
-    </Box>
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5" style={{ color: "white" }}>
+          Create a new account
+        </Typography>
+        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                sx={{ input: { color: "white" }, label: { color: "white" } }}
+                color="secondary"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                autoComplete="given-username"
+                name="Username"
+                required
+                fullWidth
+                id="username"
+                label="Username"
+                autoFocus
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                sx={{ input: { color: "white" }, label: { color: "white" } }}
+                color="secondary"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                sx={{ input: { color: "white" }, label: { color: "white" } }}
+                color="secondary"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                label="I want to receive inspiration, marketing promotions and updates via email."
+                sx={{ color: "white" }}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            color="secondary"
+          >
+            Sign Up
+          </Button>
+          <Grid container justifyContent="flex-end">
+            <Grid item xs={12}>
+              <p style={{ color: "white", textAlign: "center" }}>
+                Already have an account? <Link to="/login">Sign in</Link>
+              </p>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+      <Copyright sx={{ mt: 8, mb: 4, color: "white" }} />
+    </Container>
   );
-};
-
-export default Signup;
+}

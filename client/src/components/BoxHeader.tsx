@@ -40,11 +40,11 @@ const BoxHeader = ({
         )}
         {totalProfit && <div className={"a-profit"}>${totalProfit} </div>}
         {totalExpenses && <div className={"a-expenses"}>${totalExpenses} </div>}
-        {totalOrders && <div className={"a-expenses"}>{totalOrders} </div>}
+        {totalOrders && <div className={"row2-num "}>{totalOrders} </div>}
         {conversionRate && (
-          <div className={"a-expenses"}>{conversionRate}% </div>
+          <div className={"row2-num "}>{conversionRate}% </div>
         )}
-        {totalSessions && <div className={"a-expenses"}>{totalSessions}</div>}
+        {totalSessions && <div className={"row2-num"}>{totalSessions}</div>}
       </FlexBetween>
     </FlexBetween>
   );

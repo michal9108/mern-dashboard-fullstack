@@ -14,7 +14,7 @@ const NavBar = (props: Props) => {
   const [selected, setSelected] = useState("dashboard");
 
   return (
-    <FlexBetween mb="0.25rem" p="0.5rem 0rem" color="#d1d3da">
+    <FlexBetween mb="0.25rem" p="0.5rem 1rem" color="#d1d3da">
       {/* LEFT SIDE */}
       <FlexBetween gap="0.75rem" sx={{ pt: 1 }}>
         <BarChartIcon sx={{ fontSize: "25px" }} />

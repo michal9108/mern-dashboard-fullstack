@@ -8,14 +8,18 @@ const gridTemplateLargeScreens = `
   "a b c"
   "a b c"
   "a b c"
+ 
 
   "d e f"
   "d e f"
   "d e f"
+ 
   
+
   "g h i"
   "g h i"
   "g h i"
+  
 `;
 const gridTemplateSmallScreens = `
   "a"
@@ -56,6 +60,7 @@ const gridTemplateSmallScreens = `
 
 const Dashboard = () => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
+  const isAboveMobileScreens = useMediaQuery("(min-width: 425px)");
   return (
     <>
       <NavBar />
@@ -72,12 +77,23 @@ const Dashboard = () => {
                 gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
                 gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
                 gridTemplateAreas: gridTemplateLargeScreens,
+                padding: "1rem 1.5rem 4rem 1.5rem",
               }
-            : {
-                gridAutoColumns: "1fr",
-                gridAutoRows: "80px",
-                gridTemplateAreas: gridTemplateSmallScreens,
-              }
+            : isAboveMobileScreens
+              ? {
+                  textAlign: "center",
+                  gridAutoColumns: "1fr",
+                  gridAutoRows: "80px",
+                  gridTemplateAreas: gridTemplateSmallScreens,
+                  padding: "1rem 1.5rem 4rem 1.5rem",
+                }
+              : {
+                  textAlign: "center",
+                  gridAutoColumns: "1fr",
+                  gridAutoRows: "80px",
+                  gridTemplateAreas: gridTemplateSmallScreens,
+                  padding: "1rem 1.5rem 4rem 1.5rem",
+                }
         }
       >
         <Row1 />

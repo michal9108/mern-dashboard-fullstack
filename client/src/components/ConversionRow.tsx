@@ -10,7 +10,7 @@ type Props = {
 
 const ConversionRow = ({ funnelStep, funnelStepAmount }: Props) => {
   return (
-    <FlexBetween color="#c2c5ce" margin="1.5rem 1rem 0 1rem">
+    <FlexBetween color="#c2c5ce" margin="1rem 1rem 1rem 1rem">
       <FlexBetween>
         <Box width="100%">
           <div className={"conversion-row"}>{funnelStep}</div>

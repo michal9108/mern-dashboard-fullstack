@@ -119,7 +119,7 @@
     "whatwg-url": "^11.0.0"
   },
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

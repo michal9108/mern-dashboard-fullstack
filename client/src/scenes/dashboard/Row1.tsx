@@ -1,8 +1,12 @@
+// @ts-nocheck
 import { BoxHeader } from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import { useGetKpisQuery } from "@/state/api";
+// MyComponent.js
+import { useKpis } from "../../state/KpisContext";
+import { GetKpisResponse } from "../../state/types";
 import React from "react";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import {
   ResponsiveContainer,
   CartesianGrid,
@@ -21,7 +25,15 @@ import {
 type Props = {};
 
 const Row1 = (props: Props) => {
-  const { data } = useGetKpisQuery();
+  const { kpis, error } = useKpis();
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  //
+  console.log("data from Row 1", kpis);
+  let data = kpis;
 
   const revenue = useMemo(() => {
     return (

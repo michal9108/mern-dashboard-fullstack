@@ -6,14 +6,16 @@ body,
 .app {
   height: 100%;
   width: 100%;
-  font-family: "Inter", sans-serif;
-  background-color: #121115;
+  font-family: "Roboto", "Poppins";
+  background-color: #1a181e;
+
+
 }
 
-/* ::-webkit-scrollbar {
-  width: 10px;
+ ::-webkit-scrollbar {
+  width: 0px;
 }
-
+/*
 ::-webkit-scrollbar-track {
   background: #242427;
 }
@@ -29,27 +31,27 @@ body,
 /* BoxHeader */
 
 .box-header {
-  font-family: "Inter", sans-serif;
+  font-family: "Roboto", "Poppins";
   font-size: 15px;
   font-weight: 700;
   color: #ccc;
 }
 .conversion-title {
-  font-family: "Inter", sans-serif;
+  font-family: "Roboto", "Poppins";
   font-size: 14px;
   font-weight: 600;
   color: #ccc;
 }
 
 .conversion-row {
-  font-family: "Inter", sans-serif;
-  font-size: 13px;
+  font-family: "Roboto", "Poppins";
+  font-size: 14px;
   font-weight: 500;
   color: #ccc;
 }
 
 .subtitle {
-  font-family: "Inter", sans-serif;
+  font-family: "Roboto", "Poppins";
   font-size: 12px;
   color: #999;
 }
@@ -65,18 +67,18 @@ body,
   font-weight: 700;
   color: #ef2f2f;
 }
-
-.a-profit {
+.row2-num {
   font-size: 15px;
   font-weight: 700;
   color: #71f5de;
 }
 
+
 /* BoxHeader */
 /* BoxHeader */
 
 .title {
-  font-family: "Inter", "sans-serif";
+  font-family: "Roboto", "Poppins";
   font-size: 16;
   font-weight: 600;
   color: #ccc;
@@ -134,29 +136,17 @@ body,
   box-sizing: border-box;
   color: #222222;
   cursor: pointer;
-  /* display: inline-block; */
-  font-family:
-    Circular,
-    -apple-system,
-    BlinkMacSystemFont,
-    Roboto,
-    "Helvetica Neue",
-    sans-serif;
+
+  font-family: "Roboto", "Poppins";
   font-size: 20px;
   font-weight: 600;
   line-height: 20px;
   margin: 40px 0px;
   outline: none;
-  /* padding: 13px 40px;
-  position: relative; */
+
   text-align: center;
   text-decoration: none;
   touch-action: manipulation;
-  transition:
-    box-shadow 0.2s,
-    -ms-transform 0.1s,
-    -webkit-transform 0.1s,
-    transform 0.1s;
   user-select: none;
   -webkit-user-select: none;
   width: 100%;

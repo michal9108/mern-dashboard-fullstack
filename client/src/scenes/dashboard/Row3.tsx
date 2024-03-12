@@ -1,6 +1,7 @@
 import { BoxHeader } from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
-import FlexBetween from "@/components/FlexBetween";
+import { Grid } from "@mui/material";
+
 import { CostField } from "@/components/CostField";
 import {
   useGetKpisQuery,
@@ -10,6 +11,8 @@ import {
 import { Box, Typography } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 import React, { useMemo } from "react";
+import SmallDashboardBox from "@/components/SmallDashboardBox";
+import { ResponsiveContainer } from "recharts";
 
 type Props = {};
 
@@ -92,6 +95,12 @@ const Row3 = (props: Props) => {
             "& .MuiDataGrid-columnSeparator": {
               visibility: "hidden",
             },
+            "& .MuiDataGrid-sortIcon": {
+              color: "#d1d3da",
+            },
+            "& .MuiDataGrid-menuIconButton": {
+              color: "#d1d3da",
+            },
           }}
         >
           <DataGrid
@@ -125,6 +134,9 @@ const Row3 = (props: Props) => {
             "& .MuiDataGrid-columnSeparator": {
               visibility: "hidden",
             },
+            "& .MuiDataGrid-menuIconButton": {
+              color: "#d1d3da",
+            },
           }}
         >
           <DataGrid
@@ -139,26 +151,46 @@ const Row3 = (props: Props) => {
       </DashboardBox>
 
       <DashboardBox gridArea="i" display="flex" flexWrap="wrap">
-        <CostField
-          costTitle="Shipping costs"
-          costAmount={4500}
-          costDescription="Cost for delivery"
-        />
-        <CostField
-          costTitle="Coupons"
-          costAmount={342}
-          costDescription="Discounts, offers and promotions"
-        />
-        <CostField
-          costTitle="Refunds"
-          costAmount={3002}
-          costDescription="Return request policy "
-        />
-        <CostField
-          costTitle="Taxes"
-          costAmount={14150}
-          costDescription="Taxation"
-        />
+        <ResponsiveContainer width="100%" height="100%">
+          <Box
+            display="grid"
+            gap="1.5rem"
+            width="100%"
+            height="100%"
+            sx={{
+              textAlign: "center",
+              gridTemplateColumns: "repeat(2, minmax(100px, 1fr))",
+              gridTemplateRows: "repeat(2, minmax(60px, 1fr))",
+
+              backgroundColor: "#121115",
+              borderRadius: "0.4rem",
+              boxShadow:
+                "0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",
+            }}
+          >
+            {" "}
+            <CostField
+              costTitle="Shipping costs"
+              costAmount={4500}
+              costDescription="Cost for delivery"
+            />{" "}
+            <CostField
+              costTitle="Coupons"
+              costAmount={342}
+              costDescription="Discounts, offers and promotions"
+            />{" "}
+            <CostField
+              costTitle="Refunds"
+              costAmount={3002}
+              costDescription="Return request policy "
+            />
+            <CostField
+              costTitle="Taxes"
+              costAmount={14150}
+              costDescription="Taxation"
+            />
+          </Box>
+        </ResponsiveContainer>
       </DashboardBox>
     </>
   );

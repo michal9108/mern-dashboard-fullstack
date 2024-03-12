@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import {
-  AppBar,
-  useTheme,
-  Toolbar,
-  IconButton,
-  InputBase,
   Button,
   Box,
   Typography,
@@ -13,14 +8,7 @@ import {
   MenuItem,
   useMediaQuery,
 } from "@mui/material";
-import {
-  LightModeOutlined,
-  DarkModeOutlined,
-  Menu as MenuIcon,
-  Search,
-  SettingsOutlined,
-  ArrowDropDownOutlined,
-} from "@mui/icons-material";
+import { Menu as MenuIcon, ArrowDropDownOutlined } from "@mui/icons-material";
 import FE_API_URL from "@/config";
 type Props = {};
 
@@ -28,7 +16,7 @@ const Logout = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
   const handleClose = () => setAnchorEl(null);
-  const handleClick = (event: { currentTarget: React.SetStateAction<null>; }) => setAnchorEl(event.currentTarget);
+  const handleClick = (event: any) => setAnchorEl(event.currentTarget);
 
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
