@@ -165,7 +165,7 @@ export default function Signup() {
           <Grid container justifyContent="flex-end">
             <Grid item xs={12}>
               <p style={{ color: "white", textAlign: "center" }}>
-                Already have an account? <Link to="/login">Sign in</Link>
+                Already have an account? <Link to="/login">Log In</Link>
               </p>
             </Grid>
           </Grid>

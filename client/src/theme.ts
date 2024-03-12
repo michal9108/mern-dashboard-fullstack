@@ -47,7 +47,7 @@
 //   };
 
 //   // mui theme settings
-//   export const themeSettings = {
+  export const themeSettings = {
     // palette: {
     //   primary: {
     //     ...tokens.primary,
@@ -70,39 +70,40 @@
     //     light: tokens.background.light,
     //   },
     // },
-// typography: {
-//   fontFamily: ["Roboto", "Poppins"].join(","),
-//   fontSize: 12,
-//   h1: {
-//     fontFamily: ["Roboto", "Poppins"].join(","),
-//     fontSize: 32,
-//   },
-//   h2: {
-//     fontFamily: ["Roboto", "Poppins"].join(","),
-//     fontSize: 24,
-//   },
-//   h3: {
-//     fontFamily: ["Roboto", "Poppins"].join(","),
-//     fontSize: 20,
-//     fontWeight: 800,
-//     color: "#e1e2e7",
-//   },
-//   h4: {
-//     fontFamily: ["Roboto", "Poppins"].join(","),
-//     fontSize: 15,
-//     fontWeight: 700,
-//     color: "#ccc",
-//   },
-//   h5: {
-//     fontFamily: ["Roboto", "Poppins"].join(","),
-//     fontSize: 12,
-//     fontWeight: 400,
-//     color: "#b3b6c2",
-//   },
-//   h6: {
-//     fontFamily: ["Roboto", "Poppins"].join(","),
-//     fontSize: 10,
-//     color: "#6b6d74",
-//   },
-// },
-//   };
+typography: {
+  fontFamily: ["Roboto", "Poppins"].join(","),
+  fontSize: 12,
+  h1: {
+    fontFamily: ["Roboto", "Poppins"].join(","),
+    fontSize: 32,
+  },
+  h2: {
+    fontFamily: ["Roboto", "Poppins"].join(","),
+    fontSize: 24,
+    fontWeight: 800,
+  },
+  h3: {
+    fontFamily: ["Roboto", "Poppins"].join(","),
+    fontSize: 20,
+    fontWeight: 800,
+    color: "#e1e2e7",
+  },
+  h4: {
+    fontFamily: ["Roboto", "Poppins"].join(","),
+    fontSize: 15,
+    fontWeight: 700,
+    color: "#ccc",
+  },
+  h5: {
+    fontFamily: ["Roboto", "Poppins"].join(","),
+    fontSize: 12,
+    fontWeight: 400,
+    color: "#b3b6c2",
+  },
+  h6: {
+    fontFamily: ["Roboto", "Poppins"].join(","),
+    fontSize: 10,
+    color: "#6b6d74",
+  },
+},
+  };
