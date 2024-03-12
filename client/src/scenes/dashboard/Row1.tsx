@@ -21,6 +21,9 @@ import {
   Tooltip,
   Area,
 } from "recharts";
+import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
+import PointOfSaleOutlinedIcon from "@mui/icons-material/PointOfSaleOutlined";
+import CurrencyExchangeOutlinedIcon from "@mui/icons-material/CurrencyExchangeOutlined";
 
 type Props = {};
 
@@ -100,6 +103,7 @@ const Row1 = (props: Props) => {
           title="Revenue & Expenses"
           totalExpenses={totalData.totalExpenses}
           totalRevenue={totalData.totalRevenue}
+          icon={<PaidOutlinedIcon />}
         />
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
@@ -123,7 +127,11 @@ const Row1 = (props: Props) => {
                 <stop offset="80%" stopColor="#ef2f2f" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid horizontal={false} stroke="#48494e" />
+            <CartesianGrid
+              horizontal={false}
+              stroke="#48494e"
+              strokeDasharray="2 3"
+            />
 
             <XAxis
               dataKey="name"
@@ -167,6 +175,7 @@ const Row1 = (props: Props) => {
           title="Revenue & Profit"
           totalRevenue={totalData.totalRevenue}
           totalProfit={totalData.totalProfit}
+          icon={<PointOfSaleOutlinedIcon />}
         />
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
@@ -190,7 +199,11 @@ const Row1 = (props: Props) => {
                 <stop offset="80%" stopColor="#71f5de" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid horizontal={false} stroke="#48494e" />
+            <CartesianGrid
+              horizontal={false}
+              stroke="#48494e"
+              strokeDasharray="2 3"
+            />
             <XAxis
               dataKey="name"
               tickLine={false}
@@ -229,7 +242,10 @@ const Row1 = (props: Props) => {
       </DashboardBox>
 
       <DashboardBox gridArea="c">
-        <BoxHeader title="Revenue Month by Month" />
+        <BoxHeader
+          title="Revenue Month by Month"
+          icon={<CurrencyExchangeOutlinedIcon />}
+        />
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             width={500}
@@ -248,7 +264,11 @@ const Row1 = (props: Props) => {
                 <stop offset="95%" stopColor="#71f5de" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid vertical={false} stroke="#48494e" />
+            <CartesianGrid
+              vertical={false}
+              stroke="#48494e"
+              strokeDasharray="2 3"
+            />
             <XAxis
               dataKey="name"
               axisLine={false}

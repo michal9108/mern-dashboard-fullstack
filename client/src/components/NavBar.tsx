@@ -6,7 +6,7 @@ import "/src/index.css";
 import { Box, IconButton } from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-// import Logout from "../scenes/auth/Logout";
+import Logout from "../scenes/auth/Logout";
 
 type Props = {};
 
@@ -33,7 +33,7 @@ const NavBar = (props: Props) => {
         </IconButton>
 
         <Box sx={{ "&:hover": { color: "#d0fcf4" }, pt: 1 }}>
-          {/* <Logout /> */}
+          <Logout />
         </Box>
       </FlexBetween>
     </FlexBetween>

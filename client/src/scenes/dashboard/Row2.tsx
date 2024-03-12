@@ -8,7 +8,7 @@ import {
   useGetTransactionsQuery,
 } from "@/state/api";
 import { Box, Typography } from "@mui/material";
-import { ConversionRow } from "@/components/ConversionRow";
+import ConversionStep from "@/components/ConversionStep";
 import { useMemo } from "react";
 
 import {
@@ -25,8 +25,16 @@ import {
   ScatterChart,
   Scatter,
   ZAxis,
+  AreaChart,
+  Area,
 } from "recharts";
-
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import DataThresholdingOutlinedIcon from '@mui/icons-material/DataThresholdingOutlined';
+import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
+import BoxContainer from "@/components/BoxContainer";
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCheckoutOutlined';
+import WalletOutlinedIcon from '@mui/icons-material/WalletOutlined';
 type Props = {};
 
 const pieData = [
@@ -54,8 +62,8 @@ const Row2 = (props: Props) => {
   const mockdata = [
     {
       name: "Page A",
-      uv: 4000,
       pv: 2400,
+      uv: 4000,
       amt: 2400,
     },
     {
@@ -102,14 +110,15 @@ const Row2 = (props: Props) => {
         <BoxHeader
           title="Total orders"
           totalOrders={totalOrderData.totalOrders}
+          icon={<LocalShippingOutlinedIcon/>}
         />
-        <FlexBetween margin="0rem 1rem 0 1rem">
+        <FlexBetween margin="0rem 1rem 0 3.5rem">
           <div className="box-header">Average Order Value </div>
           <div className="a-revenue"> $34,67 </div>
         </FlexBetween>
 
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
+          <AreaChart
             width={500}
             height={300}
             data={mockdata}
@@ -120,7 +129,14 @@ const Row2 = (props: Props) => {
               bottom: 100,
             }}
           >
-            <CartesianGrid horizontal={false} stroke="#48494e" />
+              <defs>
+              <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#ffffff" stopOpacity={0.8} />
+                <stop offset="80%" stopColor="#ffffff" stopOpacity={0.2} />
+              </linearGradient>
+          
+            </defs>
+            <CartesianGrid horizontal={false} strokeDasharray="2 3" stroke="#48494e"/>
 
             <XAxis
               dataKey="name"
@@ -130,7 +146,7 @@ const Row2 = (props: Props) => {
             <YAxis
               tickLine={false}
               style={{ fontSize: "10px", opacity: 0.5 }}
-              domain={[8000, 24000]}
+              domain={[1000, 24000]}
             />
             <Tooltip
               labelStyle={{ color: "ffffff" }}
@@ -138,15 +154,16 @@ const Row2 = (props: Props) => {
               formatter={(v) => `$${v}`}
             />
 
-            <Line
+            <Area
               type="monotone"
               dataKey="pv"
               dot={false}
               stroke="#ffffff"
               strokeWidth={2}
               fillOpacity={1}
+              fill="url(#colorRevenue)"
             />
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       </DashboardBox>
 
@@ -163,7 +180,7 @@ const Row2 = (props: Props) => {
                 gridTemplateColumns: "repeat(1, minmax(100px, 1fr))",
                 gridTemplateRows: "repeat(2, minmax(60px, 1fr))",
 
-                backgroundColor: "#121115",
+                backgroundColor: "#1a181e",
                 borderRadius: "0.4rem",
               }}
             >
@@ -176,12 +193,15 @@ const Row2 = (props: Props) => {
                 }}
               >
                 <BoxHeader
-                  title="Total orders"
-                  totalOrders={totalOrderData.totalOrders}
+                  title="Conversion Rate"
+                  conversionRate={14}
+                  icon={<DataThresholdingOutlinedIcon/>}
                 ></BoxHeader>
-                <ConversionRow funnelStep="Add to Cart" funnelStepAmount={94} />
-                <ConversionRow funnelStep="Checkout" funnelStepAmount={34} />
-                <ConversionRow funnelStep="Purchases" funnelStepAmount={12} />
+                <span style={{ display:'flex', flexDirection:'row', justifyContent:'space-around'}}>
+                <ConversionStep icon={<AddShoppingCartOutlinedIcon fontSize="small"/>} funnelStep="Add to Cart" funnelStepAmount={94}  />
+                <ConversionStep  icon={<ShoppingCartCheckoutOutlinedIcon fontSize="small"/>}funnelStep="Checkout" funnelStepAmount={34} />
+                <ConversionStep  icon={<WalletOutlinedIcon fontSize="small"/>}funnelStep="Purchases" funnelStepAmount={12} />
+                </span>
               </Box>
 
               <Box
@@ -192,6 +212,7 @@ const Row2 = (props: Props) => {
                 flexBasis="40%"
                 width="100%"
                 sx={{
+                  padding:"1rem",
                   justifyContent: "center",
                   alignContent: "center",
                   flexDirection: "row",
@@ -234,39 +255,47 @@ const Row2 = (props: Props) => {
                     </Pie>
                   </PieChart>
                 </span>
+                
                 <span
                   style={{
                     display: "flex",
                     justifyContent: "center",
                     alignContent: "center",
                     flexDirection: "column",
+                    backgroundColor: "#1A181E",
+                    borderRadius: "0.4rem",
+                    padding: ".5rem" ,
                   }}
                 >
                   {" "}
-                  <div style={{ color: "white" }}>Target Sales</div>
+                  <div style={{ color: "white"  , fontSize: "13px"}}>Target Sales</div>
                   <div style={{ color: "yellow" }}>83</div>
                   <div style={{ color: "white", fontSize: "10px" }}>
                     Finance goals of the campaign that is desired
                   </div>
                 </span>
+                
                 <span
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignContent: "center",
-                    flexDirection: "column",
-                  }}
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignContent: "center",
+                      flexDirection: "column",
+                      backgroundColor: "#1A181E",
+                      borderRadius: "0.4rem",
+                      padding: ".5rem" ,
+                    }}
                 >
                   {" "}
-                  <div style={{ color: "white" }}> Losses in Revenue</div>
-                  <div style={{ color: "white", fontSize: "10px" }}>
+                  <div style={{ color: "white" , fontSize: "10px"}}> Losses in Revenue</div>
+                  <div style={{ color: "#EF2F2F", fontSize: "14px" }}>
                     {" "}
-                    Losses are down 25%
+                    ↓25%
                   </div>
-                  <div style={{ color: "white" }}> Profit Margins</div>
-                  <div style={{ color: "white", fontSize: "10px" }}>
+                  <div style={{ color: "white" , fontSize: "10px" }}> Profit Margins</div>
+                  <div style={{ color: "#70F5DD", fontSize: "14px" }}>
                     {" "}
-                    Margins are up by 30% from last month.
+                    ↑30% 
                   </div>
                 </span>
               </Box>
@@ -276,9 +305,10 @@ const Row2 = (props: Props) => {
       </DashboardBox>
 
       <DashboardBox gridArea="f">
-        <BoxHeader title="Total Sessions" totalSessions={543} />
+        <BoxHeader title="Total Sessions" totalSessions={543} icon={<PeopleOutlineOutlinedIcon/>}/>
 
-        <FlexBetween margin="0rem 1rem 0 1rem">
+        <FlexBetween margin="0rem 1rem 0 3.5rem">
+
           <div className="box-header">Total Visitors</div>
           <div className="a-revenue">3454</div>
         </FlexBetween>
@@ -294,7 +324,7 @@ const Row2 = (props: Props) => {
               bottom: 100,
             }}
           >
-            <CartesianGrid horizontal={false} stroke="#48494e" />
+            <CartesianGrid horizontal={false} stroke="#48494e" strokeDasharray="2 3" />
 
             <XAxis
               dataKey="name"

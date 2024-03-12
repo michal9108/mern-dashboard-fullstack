@@ -13,7 +13,8 @@ import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 import React, { useMemo } from "react";
 import SmallDashboardBox from "@/components/SmallDashboardBox";
 import { ResponsiveContainer } from "recharts";
-
+import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 type Props = {};
 
 const Row3 = (props: Props) => {
@@ -76,7 +77,7 @@ const Row3 = (props: Props) => {
   return (
     <>
       <DashboardBox gridArea="g">
-        <BoxHeader title="List of Products" />
+        <BoxHeader title="List of Products" icon={<Inventory2OutlinedIcon />} />
         <Box
           mt="0.5rem"
           p="0 0.5rem"
@@ -115,7 +116,7 @@ const Row3 = (props: Props) => {
       </DashboardBox>
 
       <DashboardBox gridArea="h">
-        <BoxHeader title="Recent Orders" />
+        <BoxHeader title="Recent Orders" icon={<LocalMallOutlinedIcon />} />
         <Box
           mt="0.5rem"
           p="0 0.5rem"
@@ -168,6 +169,7 @@ const Row3 = (props: Props) => {
                 "0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",
             }}
           >
+            {" "}
             {" "}
             <CostField
               costTitle="Shipping costs"

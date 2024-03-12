@@ -3,6 +3,7 @@ import "../index.css";
 import React from "react";
 import FlexBetween from "./FlexBetween";
 
+
 type Props = {
   title: string;
   icon?: React.ReactNode;
@@ -26,7 +27,8 @@ const BoxHeader = ({
   return (
     <FlexBetween color="#c2c5ce" margin="1.5rem 1rem 0 1rem">
       <FlexBetween>
-        {icon}
+  <div style={{marginRight:'1rem'}}>{icon}</div>
+
         <Box width="100%">
           <div className={"box-header"}>{title}</div>
         </Box>

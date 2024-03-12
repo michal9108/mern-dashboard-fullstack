@@ -8,11 +8,9 @@ body,
   width: 100%;
   font-family: "Roboto", "Poppins";
   background-color: #1a181e;
-
-
 }
 
- ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0px;
 }
 /*
@@ -45,9 +43,11 @@ body,
 
 .conversion-row {
   font-family: "Roboto", "Poppins";
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 400;
   color: #ccc;
+  vertical-align: top;
+  
 }
 
 .subtitle {
@@ -72,7 +72,6 @@ body,
   font-weight: 700;
   color: #71f5de;
 }
-
 
 /* BoxHeader */
 /* BoxHeader */
