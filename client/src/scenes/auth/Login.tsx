@@ -41,7 +41,7 @@ export default function Login() {
   }, []);
 
   const fetchUsers = () => {
-    axios.get("https://mern-dashboard-fullstack.vercel.app/register").then((res) => {
+    axios.get("https://server-dashboard-mern.fly.dev/register").then((res) => {
       console.log(res.data);
     });
   };
@@ -49,7 +49,7 @@ export default function Login() {
   const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://mern-dashboard-fullstack.vercel.app/login", {
+      const response = await axios.post("https://server-dashboard-mern.fly.dev/login", {
         username,
         password,
       });
