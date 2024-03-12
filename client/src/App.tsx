@@ -17,7 +17,7 @@ function App() {
           <Routes>
             {/* <Route  path="/" element={<RedirectIfAuthenticated Component={Login} />}
             /> */}
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/" element={<Dashboard />} />
             {/* <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/signup" element={<Signup />} /> */}
