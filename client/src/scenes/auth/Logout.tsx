@@ -29,7 +29,7 @@ const Logout = () => {
 
     // Redirect or perform other logout-related actions
     // For example, you can redirect to the login page
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   return (
