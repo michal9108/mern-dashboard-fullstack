@@ -5,8 +5,8 @@ import Dashboard from "@/scenes/dashboard";
 // import Login from "./scenes/auth/Login";
 // import Signup from "./scenes/auth/Signup";
 // import Logout from "./scenes/auth/Logout";
-import RedirectIfAuthenticated from "@/middleware/RedirectIfAuthenticated";
-import RequireAuth from "@/middleware/RequireAuth";
+// import RedirectIfAuthenticated from "@/middleware/RedirectIfAuthenticated";
+// import RequireAuth from "@/middleware/RequireAuth";
 
 function App() {
   return (

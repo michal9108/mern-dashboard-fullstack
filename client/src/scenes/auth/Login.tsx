@@ -41,7 +41,7 @@ export default function Login() {
   }, []);
 
   const fetchUsers = () => {
-    axios.get("https://server-dashboard-mern.fly.dev/register").then((res) => {
+    axios.get("http://localhost:3000/register").then((res) => {
       console.log(res.data);
     });
   };
@@ -49,7 +49,7 @@ export default function Login() {
   const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://server-dashboard-mern.fly.dev/login", {
+      const response = await axios.post("http://localhost:3000/login", {
         username,
         password,
       });

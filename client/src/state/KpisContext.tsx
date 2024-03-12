@@ -11,7 +11,7 @@ export const KpisProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://server-dashboard-mern.fly.dev/kpi/kpis");
+        const response = await fetch("http://localhost:3000/kpi/kpis");
         const data = await response.json();
         console.log(data);
         setKpis(data);
