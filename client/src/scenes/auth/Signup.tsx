@@ -9,10 +9,10 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-
+import { tokens } from "@/theme";
 
 
 function Copyright(props: any) {
@@ -94,9 +94,9 @@ export default function Signup() {
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
+          <BarChartIcon />
         </Avatar>
-        <Typography component="h1" variant="h5" style={{ color: "white" }}>
+        <Typography component="h2" variant="h2" style={{ color: "white" }}>
           Create a new account
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -165,7 +165,7 @@ export default function Signup() {
           <Grid container justifyContent="flex-end">
             <Grid item xs={12}>
               <p style={{ color: "white", textAlign: "center" }}>
-                Already have an account? <Link to="/login">Log In</Link>
+                Already have an account? <Link to="/login" style={{color:tokens.primary[500]}}>Log In</Link>
               </p>
             </Grid>
           </Grid>

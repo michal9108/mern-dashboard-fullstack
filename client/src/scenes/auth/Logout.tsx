@@ -9,7 +9,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { Menu as MenuIcon, ArrowDropDownOutlined } from "@mui/icons-material";
-import FE_API_URL from "@/config";
+
 type Props = {};
 
 const Logout = () => {

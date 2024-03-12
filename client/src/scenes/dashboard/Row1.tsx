@@ -24,7 +24,7 @@ import {
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import PointOfSaleOutlinedIcon from "@mui/icons-material/PointOfSaleOutlined";
 import CurrencyExchangeOutlinedIcon from "@mui/icons-material/CurrencyExchangeOutlined";
-
+import { tokens } from "@/theme";   
 type Props = {};
 
 const Row1 = (props: Props) => {
@@ -195,8 +195,8 @@ const Row1 = (props: Props) => {
                 <stop offset="80%" stopColor="#ffffff" stopOpacity={0.2} />
               </linearGradient>
               <linearGradient id="colorProfit" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#71f5de" stopOpacity={0.8} />
-                <stop offset="80%" stopColor="#71f5de" stopOpacity={0} />
+                <stop offset="5%" stopColor={tokens.primary[500]}  stopOpacity={0.8} />
+                <stop offset="80%" stopColor={tokens.primary[500]} stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -223,7 +223,7 @@ const Row1 = (props: Props) => {
               type="monotone"
               dataKey="profit"
               dot={false}
-              stroke="#71f5de"
+              stroke="#51f5ac"
               fillOpacity={1}
               fill="url(#colorProfit)"
               strokeWidth="2px"

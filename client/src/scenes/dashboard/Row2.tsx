@@ -35,13 +35,14 @@ import BoxContainer from "@/components/BoxContainer";
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCheckoutOutlined';
 import WalletOutlinedIcon from '@mui/icons-material/WalletOutlined';
+import { tokens } from "@/theme";
 type Props = {};
 
 const pieData = [
   { name: "Group A", value: 600 },
   { name: "Group B", value: 400 },
 ];
-const pieColors = ["#ef2f2f", "#71f5de"];
+const pieColors = ["#ef2f2f", tokens.primary[500]];
 
 const Row2 = (props: Props) => {
   const { data: operationalData } = useGetKpisQuery();
@@ -293,7 +294,7 @@ const Row2 = (props: Props) => {
                     ↓25%
                   </div>
                   <div style={{ color: "white" , fontSize: "10px" }}> Profit Margins</div>
-                  <div style={{ color: "#70F5DD", fontSize: "14px" }}>
+                  <div style={{ color: "#51f5ac", fontSize: "14px" }}>
                     {" "}
                     ↑30% 
                   </div>

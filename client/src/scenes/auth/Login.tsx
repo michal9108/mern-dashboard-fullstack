@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
@@ -8,10 +8,10 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { Box } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Bolt } from "@mui/icons-material";
+import { tokens } from "@/theme";
 
 function Copyright(props: any) {
   return (
@@ -22,7 +22,7 @@ function Copyright(props: any) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="secondary" to="/">
+      <Link style={{ color: tokens.primary[500] }} to="/">
         Dashboard
       </Link>{" "}
       {new Date().getFullYear()}
@@ -50,10 +50,13 @@ export default function Login() {
   const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://server-dashboard-mern.fly.dev/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "https://server-dashboard-mern.fly.dev/login",
+        {
+          username,
+          password,
+        },
+      );
       const token = response.data.token;
       alert("Login successful");
       setUsername("");
@@ -89,8 +92,8 @@ export default function Login() {
         alignItems="center"
         flexDirection="column"
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
+        <Avatar sx={{ m: 1, bgcolor: tokens.primary[500] }}>
+          <BarChartIcon />
         </Avatar>
         <Typography component="h2" variant="h2" style={{ color: "white" }}>
           Log In
@@ -106,7 +109,15 @@ export default function Login() {
             autoComplete="username"
             autoFocus
             color="secondary"
-            sx={{ input: { color: "white" }, label: { color: "white" } }}
+            sx={{
+              input: { color: "white" },
+              label: { color: "white" },
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: tokens.primary[500],
+                },
+              },
+            }}
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           />
@@ -120,26 +131,29 @@ export default function Login() {
             id="password"
             autoComplete="current-password"
             color="secondary"
-            sx={{ input: { color: "white" }, label: { color: "white" } }}
+            sx={{ input: { color: "white" }, label: { color: "white" }, "& .MuiOutlinedInput-root": {
+              "&.Mui-focused fieldset": {
+                borderColor: tokens.primary[500],
+              },
+            }, }}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="secondary" />}
-            sx={{ color: "white" }}
+            sx={{ color: tokens.primary[500] }}
             label="Remember me"
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            color="secondary"
+            sx={{ mt: 3, mb: 2, bgcolor: tokens.primary[500] }}
           >
             Log in
           </Button>
 
-          <div style={{textAlign:'center'}}>
+          <div style={{ textAlign: "center" }}>
             <h4
               style={{
                 fontSize: "15px",
@@ -149,15 +163,19 @@ export default function Login() {
               Don't have an account?
               <Link
                 to={"../signup"}
-                style={{ textDecoration: "none", color: "#9C27B0" }}
+                style={{ textDecoration: "none" }}
+                color="secondary"
               >
                 {" Sign Up"}
               </Link>
             </h4>
           </div>
-          <div style={{ fontSize: "14px", color: "white", textAlign:"center" }}>
-            <Typography color="secondary">Test login: <i>Username: user password: user</i> </Typography>
-         
+          <div
+            style={{ fontSize: "14px", color: "white", textAlign: "center" }}
+          >
+            <Typography color={tokens.primary[500]}>
+              Test login: <i>Username: user password: user</i>{" "}
+            </Typography>
           </div>
         </Box>
       </Box>
