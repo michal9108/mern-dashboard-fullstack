@@ -13,7 +13,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-import FE_API_URL from "@/config";
 
 
 function Copyright(props: any) {
@@ -46,7 +45,7 @@ export default function Signup() {
   }, []);
 
   const fetchUsers = () => {
-    axios.get(`${FE_API_URL}/register`).then((res) => {
+    axios.get('https://server-dashboard-mern.fly.dev/register').then((res) => {
       console.log(res.data);
     });
   };
@@ -54,7 +53,7 @@ export default function Signup() {
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     axios
-      .post(`${FE_API_URL}/register`, { email, username, password })
+      .post('https://server-dashboard-mern.fly.dev/register', { email, username, password })
       .then(() => {
         alert("Registration Successful");
         setEmail("");
