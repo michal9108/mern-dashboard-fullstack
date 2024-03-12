@@ -16,7 +16,7 @@ const Logout = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
   const handleClose = () => setAnchorEl(null);
-  const handleClick = (event: any) => setAnchorEl(event.currentTarget);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget);
 
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
