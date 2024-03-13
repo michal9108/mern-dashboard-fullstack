@@ -19,7 +19,7 @@ const CostField = ({ costTitle, costAmount, costDescription }: Props) => {
         flexDirection: "column",
         justifyContent: "center",
         textAlign: "center",
-        backgroundColor: theme.palette.container.main,
+        backgroundColor: theme.palette.secondary.dark,
         borderRadius: "0.4rem",
         boxShadow:
           "0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",

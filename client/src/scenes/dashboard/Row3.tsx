@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { BoxHeader } from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import { Grid, useTheme } from "@mui/material";
@@ -11,13 +12,12 @@ import {
 import { Box, Typography } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
 import React, { useMemo } from "react";
-import SmallDashboardBox from "@/components/SmallDashboardBox";
 import { ResponsiveContainer } from "recharts";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-type Props = {};
 
-const Row3 = (props: Props) => {
+
+const Row3 = () => {
 
   const theme=  useTheme();
   const { data: productData } = useGetProductsQuery();

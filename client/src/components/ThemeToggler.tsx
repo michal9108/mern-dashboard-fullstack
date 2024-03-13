@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { IconButton, Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { ColorModeContext }from  './ColorModeContext';
+import { ColorModeContext }from  "@/state/ColorModeContext"
 import { DarkModeOutlined, LightModeOutlined } from '@mui/icons-material';
 
 export default function ThemeToggler() {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { BoxHeader } from "@/components/BoxHeader";
 import React from "react";
 import DashboardBox from "@/components/DashboardBox";
@@ -22,22 +23,17 @@ import {
   PieChart,
   Pie,
   Cell,
-  ScatterChart,
-  Scatter,
-  ZAxis,
   AreaChart,
   Area,
 } from "recharts";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import DataThresholdingOutlinedIcon from "@mui/icons-material/DataThresholdingOutlined";
 import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined";
-import BoxContainer from "@/components/BoxContainer";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import ShoppingCartCheckoutOutlinedIcon from "@mui/icons-material/ShoppingCartCheckoutOutlined";
 import WalletOutlinedIcon from "@mui/icons-material/WalletOutlined";
 
 import { tokensDark } from "@/theme";
-type Props = {};
 
 const pieData = [
   { name: "Group A", value: 600 },
@@ -45,7 +41,7 @@ const pieData = [
 ];
 const pieColors = [tokensDark.negative[800], tokensDark.primary[500]];
 
-const Row2 = (props: Props) => {
+const Row2 = () => {
   const theme = useTheme();
 
   const { data: operationalData } = useGetKpisQuery();
@@ -111,6 +107,7 @@ const Row2 = (props: Props) => {
   return (
     <>
       <DashboardBox gridArea="d">
+     
         <BoxHeader
           title="Total orders"
           totalOrders={totalOrderData.totalOrders}
@@ -135,8 +132,16 @@ const Row2 = (props: Props) => {
           >
             <defs>
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#ffffff" stopOpacity={0.8} />
-                <stop offset="80%" stopColor="#ffffff" stopOpacity={0.2} />
+                <stop
+                  offset="5%"
+                  stopColor={theme.palette.secondary.light}
+                  stopOpacity={0.8}
+                />
+                <stop
+                  offset="80%"
+                  stopColor={theme.palette.secondary.light}
+                  stopOpacity={0.2}
+                />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -152,12 +157,12 @@ const Row2 = (props: Props) => {
             />
             <YAxis
               tickLine={false}
-              style={{ fontSize: "10px", opacity: 0.5 }}
+              style={{ fontSize: "10px" }}
               domain={[1000, 24000]}
             />
             <Tooltip
-              labelStyle={{ color: "ffffff" }}
-              itemStyle={{ color: "ffffff" }}
+             labelStyle={{ color: tokensDark.grey[900] }}
+             itemStyle={{color: tokensDark.grey[900] }}
               formatter={(v) => `$${v}`}
             />
 
@@ -165,7 +170,7 @@ const Row2 = (props: Props) => {
               type="monotone"
               dataKey="pv"
               dot={false}
-              stroke="#ffffff"
+              stroke={theme.palette.secondary.light}
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorRevenue)"
@@ -196,7 +201,7 @@ const Row2 = (props: Props) => {
                   borderRadius: "0.4rem",
                   boxShadow:
                     "0px 7px 8px -4px rgb(0 0 0 / %), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",
-                  backgroundColor: theme.palette.container.main,
+                  backgroundColor: theme.palette.secondary.dark,
                 }}
               >
                 <BoxHeader
@@ -242,7 +247,7 @@ const Row2 = (props: Props) => {
                   alignContent: "center",
                   flexDirection: "row",
                   width: "100%",
-                  backgroundColor: theme.palette.container.main,
+                  backgroundColor: theme.palette.secondary.dark,
                   borderRadius: "0.4rem",
                   boxShadow:
                     "0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",
@@ -287,17 +292,27 @@ const Row2 = (props: Props) => {
                     justifyContent: "center",
                     alignContent: "center",
                     flexDirection: "column",
-                    backgroundColor: theme.palette.container.secondary,
+                    backgroundColor: theme.palette.secondary.dark,
                     borderRadius: "0.4rem",
                     padding: ".5rem",
                   }}
                 >
                   {" "}
-                  <div style={{ color: theme.palette.text.primary, fontSize: "13px" }}>
+                  <div
+                    style={{
+                      color: theme.palette.text.primary,
+                      fontSize: "13px",
+                    }}
+                  >
                     Target Sales
                   </div>
                   <div style={{ color: theme.palette.text.primary }}>83</div>
-                  <div style={{ color: theme.palette.text.primary, fontSize: "10px" }}>
+                  <div
+                    style={{
+                      color: theme.palette.text.primary,
+                      fontSize: "10px",
+                    }}
+                  >
                     Finance goals of the campaign that is desired
                   </div>
                 </span>
@@ -308,13 +323,18 @@ const Row2 = (props: Props) => {
                     justifyContent: "center",
                     alignContent: "center",
                     flexDirection: "column",
-                    backgroundColor: theme.palette.container.secondary,
+                    backgroundColor: theme.palette.secondary.dark,
                     borderRadius: "0.4rem",
                     padding: ".5rem",
                   }}
                 >
                   {" "}
-                  <div style={{ color: theme.palette.text.primary, fontSize: "10px" }}>
+                  <div
+                    style={{
+                      color: theme.palette.text.primary,
+                      fontSize: "10px",
+                    }}
+                  >
                     {" "}
                     Losses in Revenue
                   </div>
@@ -322,7 +342,12 @@ const Row2 = (props: Props) => {
                     {" "}
                     ↓25%
                   </div>
-                  <div style={{ color: theme.palette.text.primary, fontSize: "10px" }}>
+                  <div
+                    style={{
+                      color: theme.palette.text.primary,
+                      fontSize: "10px",
+                    }}
+                  >
                     {" "}
                     Profit Margins
                   </div>
@@ -373,12 +398,12 @@ const Row2 = (props: Props) => {
             />
             <YAxis
               tickLine={false}
-              style={{ fontSize: "10px", opacity: 0.5 }}
+              style={{ fontSize: "10px" }}
               domain={[8000, 24000]}
             />
             <Tooltip
-              labelStyle={{ color: "ffffff" }}
-              itemStyle={{ color: "ffffff" }}
+             labelStyle={{ color: tokensDark.grey[900] }}
+             itemStyle={{color: tokensDark.grey[900] }}
               formatter={(v) => `$${v}`}
             />
 
@@ -386,7 +411,7 @@ const Row2 = (props: Props) => {
               type="monotone"
               dataKey="pv"
               dot={false}
-              stroke="#ffffff"
+              stroke={theme.palette.secondary.light}
               strokeWidth={2}
               fillOpacity={1}
             />

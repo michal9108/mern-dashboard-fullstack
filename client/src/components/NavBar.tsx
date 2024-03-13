@@ -7,9 +7,9 @@ import { Box, IconButton, Switch, createTheme, useTheme } from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Logout from "../scenes/auth/Logout";
-import ThemeToggler from "@/state/ThemeToggler";
+import ThemeToggler from "./ThemeToggler";
 
-const NavBar = () => {
+const NavBar = ({isSidebarOpen, setIsSidebarOpen}) => {
   const theme = useTheme();
 
   const [selected, setSelected] = useState("dashboard");
@@ -18,7 +18,7 @@ const NavBar = () => {
     <FlexBetween mb="0.25rem" p="0.5rem 1.5rem" color="#d1d3da">
       {/* LEFT SIDE */}
       <FlexBetween gap="1.5rem" sx={{ pt: 1 }}>
-        <BarChartIcon sx={{ fontSize: "25px", color: theme.palette.text.primary }} />
+        <BarChartIcon sx={{ fontSize: "25px", color: theme.palette.text.primary }} onClick={() => setIsSidebarOpen(!isSidebarOpen)}/>
 
         <MenuIcon  sx={{color: theme.palette.text.primary}}/>
       </FlexBetween>

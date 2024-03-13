@@ -5,7 +5,7 @@ export default function BoxContainer( {children}) {
   return (
     <span
         style={{
-          backgroundColor: theme.palette.container.secondary,
+          backgroundColor: theme.palette.primary.main,
           margin: "1.5rem 1.5rem 1.5rem 1.5rem",
           padding: "0.5rem" ,
           borderRadius: "0.4rem",

@@ -1,6 +1,6 @@
 import ModeTypes from "../shared/types";
 import { PaletteMode } from "@mui/material";
-import { amber, deepOrange, grey, deepPurple } from "@mui/material/colors";
+
 /*Color Shades*/
 
 interface TokensLight {
@@ -41,17 +41,13 @@ export const tokensDark = {
     100: "#fcf0dd",
     200: "#fae1bb",
     300: "#f7d299",
-    400: "#f5c377",
-    500: "#f2b455",
-    600: "#c29044",
-    700: "#916c33",
-    800: "#614822",
-    900: "#302411",
   },
   negative: {
     800: "#ef2f2f",
   },
 };
+
+//reversing dark and  light mode
 
 function reverseTokens(tokensDark) {
   const reversedTokens = {};
@@ -79,11 +75,14 @@ export const themeSettings = (mode: PaletteMode) => ({
             ...tokensDark.primary,
             main: tokensDark.grey[900],
             light: tokensDark.primary[400],
+           
+
           },
           secondary: {
             ...tokensDark.secondary,
             main: tokensDark.secondary[50],
-            alt: tokensDark.grey[0],
+          light: tokensDark.grey[0],
+          dark: tokensDark.grey[700],
           },
 
           text: {
@@ -92,23 +91,21 @@ export const themeSettings = (mode: PaletteMode) => ({
           },
           background: {
             default: tokensDark.grey[900],
-            alt: tokensDark.grey[800],
+            alt: tokensDark.grey[900],
           },
-          container: {
-            main: tokensDark.grey[700],
-            secondary: tokensDark.grey[900],
-          },
+        
         }
       : {
           // palette values for light mode
           primary: {
             main: tokensDark.grey[500],
             light: tokensDark.grey[100],
+          
           },
           secondary: {
             main: tokensDark.grey[600],
-            alt: tokensDark.grey[900],
-            light: tokensDark.secondary[400],
+            light: tokensDark.grey[900],
+            dark:tokensDark.grey[500],
           },
           text: {
             primary: tokensDark.grey[900],
@@ -118,57 +115,8 @@ export const themeSettings = (mode: PaletteMode) => ({
             default: tokensDark.grey[0],
             alt: tokensDark.grey[50],
           },
-          container: {
-            main: tokensDark.grey[500],
-            secondary: tokensDark.grey[50],
-          },
+         
         }),
-
-    //   }
-    // : {
-    //     // palette values for light mode
-    //     primary: {
-    //       ...tokensLight.primary,
-    //       main: tokensDark.grey[50],
-    //       light: tokensDark.grey[100],
-    //     },
-    //     secondary: {
-    //       ...tokensLight.secondary,
-    //       main: tokensDark.secondary[600],
-    //       light: tokensDark.secondary[700],
-    //     },
-    //     neutral: {
-    //       ...tokensLight.grey,
-    //       main: tokensDark.grey[500],
-    //     },
-    //     background: {
-    //       default: tokensDark.grey[0],
-    //       alt: tokensDark.grey[50],
-    //     },
-    //   }),
-
-    // dark color
-
-    // primary: {
-    //   ...tokensDark.primary,
-    //   main: tokensDark.primary[400],
-    //   light: tokensDark.primary[300],
-    // },
-    // secondary: {
-    //   ...tokensDark.secondary,
-    //   main: tokensDark.secondary[500],
-    // },
-    // tertiary: {
-    //   ...tokensDark.tertiary,
-    // },
-    // grey: {
-    //   ...tokensDark.grey,
-    //   main: tokensDark.grey[500],
-    // },
-    // background: {
-    //   default: tokensDark.background.main,
-    //   light: tokensDark.background.light,
-    // },
   },
 
   typography: {

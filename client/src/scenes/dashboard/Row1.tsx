@@ -5,19 +5,16 @@ import { useGetKpisQuery } from "@/state/api";
 // MyComponent.js
 import { useKpis } from "../../state/KpisContext";
 import { GetKpisResponse } from "../../state/types";
-import React from "react";
-import { useMemo, useEffect, useState } from "react";
+
+import { useMemo,  } from "react";
 import {
   ResponsiveContainer,
   CartesianGrid,
   AreaChart,
   BarChart,
   Bar,
-  LineChart,
   XAxis,
   YAxis,
-  Legend,
-  Line,
   Tooltip,
   Area,
 } from "recharts";
@@ -27,9 +24,9 @@ import CurrencyExchangeOutlinedIcon from "@mui/icons-material/CurrencyExchangeOu
 import { themeSettings, tokensDark } from "@/theme"; 
 import {  useTheme } from "@mui/material";
 
-type Props = {};
 
-const Row1 = (props: Props) => {
+
+const Row1 = () => {
 
   const theme = useTheme();
   const { kpis, error } = useKpis();
@@ -123,8 +120,8 @@ const Row1 = (props: Props) => {
           >
             <defs>
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={theme.palette.secondary.alt} stopOpacity={0.8} />
-                <stop offset="80%" stopColor={theme.palette.secondary.alt} stopOpacity={0} />
+                <stop offset="5%" stopColor={theme.palette.secondary.light} stopOpacity={0.8} />
+                <stop offset="80%" stopColor={theme.palette.secondary.light} stopOpacity={0} />
               </linearGradient>
               <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#ef2f2f" stopOpacity={0.8} />
@@ -144,19 +141,19 @@ const Row1 = (props: Props) => {
             />
             <YAxis
               tickLine={false}
-              style={{ fontSize: "10px", opacity: 0.5 }}
+              style={{ fontSize: "10px"}}
               domain={[8000, 24000]}
             />
             <Tooltip
-              labelStyle={{ color: "ffffff" }}
-              itemStyle={{ color: "ffffff" }}
+              labelStyle={{ color: tokensDark.grey[900] }}
+              itemStyle={{color: tokensDark.grey[900] }}
               formatter={(v) => `$${v}`}
             />
             <Area
               type="monotone"
               dataKey="revenue"
               dot={false}
-              stroke='ffffff'
+              stroke={theme.palette.secondary.light}
               fillOpacity={1}
               fill="url(#colorRevenue)"
               strokeWidth="2px"
@@ -215,12 +212,12 @@ const Row1 = (props: Props) => {
             />
             <YAxis
               tickLine={false}
-              style={{ fontSize: "10px", opacity: 0.5 }}
+              style={{ fontSize: "10px" }}
               domain={[1000, 24000]}
             />
             <Tooltip
-              labelStyle={{ color: "ffffff" }}
-              itemStyle={{ color: "ffffff" }}
+           labelStyle={{ color: tokensDark.grey[900] }}
+           itemStyle={{color: tokensDark.grey[900] }}
               formatter={(v) => `$${v}`}
             />
             <Area
@@ -236,7 +233,7 @@ const Row1 = (props: Props) => {
               type="monotone"
               dataKey="revenue"
               dot={false}
-              stroke="#ffffff"
+              stroke={theme.palette.secondary.light}
               fillOpacity={1}
               fill="url(#colorRevenue)"
               strokeWidth="2px"
@@ -285,8 +282,8 @@ const Row1 = (props: Props) => {
               style={{ fontSize: "10px" }}
             />
             <Tooltip
-              labelStyle={{ color: "ffffff" }}
-              itemStyle={{ color: "ffffff" }}
+              labelStyle={{ color: tokensDark.grey[900] }}
+              itemStyle={{color: tokensDark.grey[900] }}
               formatter={(v) => `$${v}`}
             />
             <Bar dataKey="revenue" fill="url(#colorRevenue)" />

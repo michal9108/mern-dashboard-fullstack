@@ -3,22 +3,20 @@ import Row1 from "./Row1";
 import Row2 from "./Row2";
 import Row3 from "./Row3";
 import NavBar from "../../components/NavBar";
-import DashboardTypes from "../../../shared/types";
-
+import Sidebar from "../../components/SideBar"
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const gridTemplateLargeScreens = `
   "a b c"
   "a b c"
   "a b c"
   "a b c"
- 
 
   "d e f"
   "d e f"
   "d e f"
  
-  
-
   "g h i"
   "g h i"
   "g h i"
@@ -65,13 +63,23 @@ export default function Dashboard() {
   const theme = useTheme();
   const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
   const isAboveMobileScreens = useMediaQuery("(min-width: 425px)");
-
-
-
   
+  const isNonMobile = useMediaQuery("(min-width: 600px)");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  // const userId = useSelector((state) => state.global.userId);
+  // const { data } = useGetUserQuery(userId);
   return (
-    <>
-      <NavBar  />
+    <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
+    <Sidebar
+        // user={data || {}}
+        isNonMobile={isNonMobile}
+        drawerWidth="250px"
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
+       <Box flexGrow={1}>
+      <NavBar  isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen} />
       <Box
         width="100%"
         height="100%"
@@ -107,12 +115,9 @@ export default function Dashboard() {
         <Row2 />
         <Row3 />
       </Box>
-    </>
+      </Box>
+    </Box>
   );
-};
-
-;
-function useState(arg0: boolean): [any, any] {
-  throw new Error("Function not implemented.");
 }
+
 

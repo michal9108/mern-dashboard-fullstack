@@ -7,7 +7,6 @@ body,
   height: 100%;
   width: 100%;
   font-family: "Roboto", "Poppins";
-  /* background-color: #1a181e; */
 }
 
 ::-webkit-scrollbar {
@@ -15,47 +14,6 @@ body,
 }
 
 
-/* BoxHeader */
-
-.box-header {
-  font-family: "Roboto", "Poppins";
-  font-size: 15px;
-  font-weight: 700;
-  /* color: #c2c5ce; */
-}
-.conversion-title {
-  font-family: "Roboto", "Poppins";
-  font-size: 14px;
-  font-weight: 600;
-  /* color: #c2c5ce; */
-}
-
-.conversion-row {
-  font-family: "Roboto", "Poppins";
-  font-size: 12px;
-  font-weight: 400;
-  /* color: #c2c5ce; */
-  vertical-align: top;
-  
-}
-
-.subtitle {
-  font-family: "Roboto", "Poppins";
-  font-size: 12px;
-  /* color: #8f929b; */
-}
-
-.
-
-/* BoxHeader */
-/* BoxHeader */
-
-.title {
-  font-family: "Roboto", "Poppins";
-  font-size: 16;
-  font-weight: 600;
-  /* color: #c2c5ce; */
-}
 
 
 /* 

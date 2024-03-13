@@ -20,9 +20,9 @@ export default function ConversionStep({
    
 
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <div className={"conversion-row"}>{icon} </div>
-      <div className={"conversion-row"}> {funnelStep}</div>
-      <div className={"conversion-row"}>{funnelStepAmount} </div>
+      <div style={{fontWeight:"400", fontSize:"12px"}}>{icon} </div>
+      <div style={{fontWeight:"400", fontSize:"12px"}}> {funnelStep}</div>
+      <div style={{fontWeight:"400", fontSize:"12px"}}>{funnelStepAmount} </div>
     </Box>
 
    

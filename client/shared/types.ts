@@ -66,3 +66,14 @@ export default interface ModeTypes {
     grey: Record<string, string>;
     background: Record<string, string>;
   }
+  
+  export default interface HeaderTypes  {
+    title: string;
+    icon?: React.ReactNode;
+    totalProfit?: number;
+    totalExpenses?: number;
+    totalRevenue?: number;
+    totalOrders?: number;
+    totalSessions?: number;
+    conversionRate?: number;
+  };
