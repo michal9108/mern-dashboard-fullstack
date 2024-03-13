@@ -55,3 +55,14 @@ export interface GetTransactionsResponse {
   createdAt: string;
   updatedAt: string;
 }
+
+
+
+export default interface ModeTypes {
+    mode: "dark" | "light"; 
+    primary: Record<string, string>;
+    secondary: Record<string, string>;
+    tertiary: Record<string, string>;
+    grey: Record<string, string>;
+    background: Record<string, string>;
+  }

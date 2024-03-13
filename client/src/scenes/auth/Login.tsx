@@ -11,7 +11,7 @@ import { Box } from "@mui/material";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { tokens } from "@/theme";
+import { tokensDark } from "@/theme";
 
 function Copyright(props: any) {
   return (
@@ -22,7 +22,7 @@ function Copyright(props: any) {
       {...props}
     >
       {"Copyright © "}
-      <Link style={{ color: tokens.primary[500] }} to="/">
+      <Link style={{ color: tokensDark.primary[500] }} to="/">
         Dashboard
       </Link>{" "}
       {new Date().getFullYear()}
@@ -92,7 +92,7 @@ export default function Login() {
         alignItems="center"
         flexDirection="column"
       >
-        <Avatar sx={{ m: 1, bgcolor: tokens.primary[500] }}>
+        <Avatar sx={{ m: 1, bgcolor: tokensDark.primary[500] }}>
           <BarChartIcon />
         </Avatar>
         <Typography component="h2" variant="h2" style={{ color: "white" }}>
@@ -114,7 +114,7 @@ export default function Login() {
               label: { color: "white" },
               "& .MuiOutlinedInput-root": {
                 "&.Mui-focused fieldset": {
-                  borderColor: tokens.primary[500],
+                  borderColor: tokensDark.primary[500],
                 },
               },
             }}
@@ -133,7 +133,7 @@ export default function Login() {
             color="secondary"
             sx={{ input: { color: "white" }, label: { color: "white" }, "& .MuiOutlinedInput-root": {
               "&.Mui-focused fieldset": {
-                borderColor: tokens.primary[500],
+                borderColor: tokensDark.primary[500],
               },
             }, }}
             value={password}
@@ -141,14 +141,14 @@ export default function Login() {
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="secondary" />}
-            sx={{ color: tokens.primary[500] }}
+            sx={{ color: tokensDark.primary[500] }}
             label="Remember me"
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, bgcolor: tokens.primary[500] }}
+            sx={{ mt: 3, mb: 2, bgcolor: tokensDark.primary[500] }}
           >
             Log in
           </Button>
@@ -173,7 +173,7 @@ export default function Login() {
           <div
             style={{ fontSize: "14px", color: "white", textAlign: "center" }}
           >
-            <Typography color={tokens.primary[500]}>
+            <Typography color={tokensDark.primary[500]}>
               Test login: <i>Username: user password: user</i>{" "}
             </Typography>
           </div>

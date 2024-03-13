@@ -35,14 +35,14 @@ import BoxContainer from "@/components/BoxContainer";
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCheckoutOutlined';
 import WalletOutlinedIcon from '@mui/icons-material/WalletOutlined';
-import { tokens } from "@/theme";
+import { tokensDark } from "@/theme";
 type Props = {};
 
 const pieData = [
   { name: "Group A", value: 600 },
   { name: "Group B", value: 400 },
 ];
-const pieColors = ["#ef2f2f", tokens.primary[500]];
+const pieColors = ["#ef2f2f", tokensDark.primary[500]];
 
 const Row2 = (props: Props) => {
   const { data: operationalData } = useGetKpisQuery();

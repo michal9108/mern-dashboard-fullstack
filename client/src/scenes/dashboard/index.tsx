@@ -1,8 +1,11 @@
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, Switch, useMediaQuery, useTheme } from "@mui/material";
 import Row1 from "./Row1";
 import Row2 from "./Row2";
 import Row3 from "./Row3";
 import NavBar from "../../components/NavBar";
+import DashboardTypes from "../../../shared/types";
+
+
 const gridTemplateLargeScreens = `
   "a b c"
   "a b c"
@@ -58,13 +61,17 @@ const gridTemplateSmallScreens = `
   "i"
 `;
 
-const Dashboard = () => {
+export default function Dashboard() {
+  const theme = useTheme();
   const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
   const isAboveMobileScreens = useMediaQuery("(min-width: 425px)");
+
+
+
+  
   return (
     <>
-      <NavBar />
-
+      <NavBar  />
       <Box
         width="100%"
         height="100%"
@@ -104,4 +111,8 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+;
+function useState(arg0: boolean): [any, any] {
+  throw new Error("Function not implemented.");
+}
+

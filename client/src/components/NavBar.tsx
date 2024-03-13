@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import { Menu as MenuIcon, LightModeOutlined } from "@mui/icons-material";
 import "/src/index.css";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Switch, createTheme } from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Logout from "../scenes/auth/Logout";
+import ThemeToggler from "@/state/ThemeToggler";
 
-type Props = {};
 
-const NavBar = (props: Props) => {
+const NavBar = ( ) => {
+
   const [selected, setSelected] = useState("dashboard");
+
+ 
 
   return (
     <FlexBetween mb="0.25rem" p="0.5rem 1.5rem" color="#d1d3da">
@@ -31,10 +34,11 @@ const NavBar = (props: Props) => {
         <IconButton sx={{ color: "#ffffff" }}>
           <LightModeOutlined sx={{ fontSize: "25px" }} />
         </IconButton>
-
+        <ThemeToggler/>
         <Box sx={{ "&:hover": { color: "#d0fcf4" }, pt: 1 }}>
           <Logout />
         </Box>
+
       </FlexBetween>
     </FlexBetween>
   );

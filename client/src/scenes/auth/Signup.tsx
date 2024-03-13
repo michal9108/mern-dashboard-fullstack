@@ -12,7 +12,7 @@ import Box from "@mui/material/Box";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { tokens } from "@/theme";
+import { tokensDark } from "@/theme";
 
 
 function Copyright(props: any) {
@@ -165,7 +165,7 @@ export default function Signup() {
           <Grid container justifyContent="flex-end">
             <Grid item xs={12}>
               <p style={{ color: "white", textAlign: "center" }}>
-                Already have an account? <Link to="/login" style={{color:tokens.primary[500]}}>Log In</Link>
+                Already have an account? <Link to="/login" style={{color:tokensDark.primary[500]}}>Log In</Link>
               </p>
             </Grid>
           </Grid>
