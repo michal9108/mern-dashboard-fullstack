@@ -7,12 +7,15 @@ import {
   Menu,
   MenuItem,
   useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { Menu as MenuIcon, ArrowDropDownOutlined } from "@mui/icons-material";
 
 type Props = {};
 
 const Logout = () => {
+  const theme = useTheme();
+
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
   const handleClose = () => setAnchorEl(null);
@@ -22,7 +25,7 @@ const Logout = () => {
     const token = localStorage.getItem("token");
 
     // Call the server-side logout route
-    await axios.post('https://server-dashboard-mern.fly.dev/logout', { token });
+    await axios.post("https://server-dashboard-mern.fly.dev/logout", { token });
 
     // Clear the token from local storage
     localStorage.removeItem("token");
@@ -36,11 +39,17 @@ const Logout = () => {
     <>
       <Button onClick={handleClick}>
         <Box textAlign="left">
-          <Typography fontWeight="bold" fontSize="1rem" sx={{ color: "white" }}>
+          <Typography
+            fontWeight="bold"
+            fontSize="1rem"
+            sx={{ color: theme.palette.text.primary }}
+          >
             User
           </Typography>
         </Box>
-        <ArrowDropDownOutlined sx={{ color: "white", fontSize: "25px" }} />
+        <ArrowDropDownOutlined
+          sx={{ color: theme.palette.text.primary, fontSize: "25px" }}
+        />
       </Button>
       <Menu
         anchorEl={anchorEl}

@@ -24,10 +24,14 @@ import {
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import PointOfSaleOutlinedIcon from "@mui/icons-material/PointOfSaleOutlined";
 import CurrencyExchangeOutlinedIcon from "@mui/icons-material/CurrencyExchangeOutlined";
-import { tokensDark } from "@/theme";   
+import { themeSettings, tokensDark } from "@/theme"; 
+import {  useTheme } from "@mui/material";
+
 type Props = {};
 
 const Row1 = (props: Props) => {
+
+  const theme = useTheme();
   const { kpis, error } = useKpis();
 
   if (error) {
@@ -119,8 +123,8 @@ const Row1 = (props: Props) => {
           >
             <defs>
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#ffffff" stopOpacity={0.8} />
-                <stop offset="80%" stopColor="#ffffff" stopOpacity={0} />
+                <stop offset="5%" stopColor={theme.palette.secondary.alt} stopOpacity={0.8} />
+                <stop offset="80%" stopColor={theme.palette.secondary.alt} stopOpacity={0} />
               </linearGradient>
               <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#ef2f2f" stopOpacity={0.8} />
@@ -152,7 +156,7 @@ const Row1 = (props: Props) => {
               type="monotone"
               dataKey="revenue"
               dot={false}
-              stroke="#ffffff"
+              stroke='ffffff'
               fillOpacity={1}
               fill="url(#colorRevenue)"
               strokeWidth="2px"

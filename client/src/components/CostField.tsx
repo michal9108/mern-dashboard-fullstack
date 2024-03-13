@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 import "../index.css";
 import BoxContainer from "./BoxContainer";
@@ -10,6 +10,8 @@ type Props = {
   costDescription: string;
 };
 const CostField = ({ costTitle, costAmount, costDescription }: Props) => {
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
@@ -17,7 +19,7 @@ const CostField = ({ costTitle, costAmount, costDescription }: Props) => {
         flexDirection: "column",
         justifyContent: "center",
         textAlign: "center",
-        backgroundColor: "#312F3B",
+        backgroundColor: theme.palette.container.main,
         borderRadius: "0.4rem",
         boxShadow:
           "0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",

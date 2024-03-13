@@ -1,16 +1,14 @@
 import ModeTypes from "../shared/types";
 import { PaletteMode } from "@mui/material";
-import { amber, deepOrange, grey, deepPurple } from '@mui/material/colors';
+import { amber, deepOrange, grey, deepPurple } from "@mui/material/colors";
 /*Color Shades*/
 
 interface TokensLight {
   grey?: Record<string, string>;
   primary?: Record<string, string>;
   secondary?: Record<string, string>;
- 
-
 }
-export const tokensDark= {
+export const tokensDark = {
   grey: {
     0: "#ffffff", // manually adjusted
     10: "#f6f6f6", // manually adjusted
@@ -21,9 +19,9 @@ export const tokensDark= {
     400: "#c2c5ce",
     500: "#b3b6c2",
     600: "#8f929b",
-    700: "#6b6d74",
+    700: "#312F3B",
     800: "#48494e",
-    900: "#242427",
+    900: "#1a181e",
   },
   primary: {
     // light green
@@ -50,114 +48,163 @@ export const tokensDark= {
     800: "#614822",
     900: "#302411",
   },
-  tertiary: {
-    // purple
-    500: "#8884d8",
-  },
-  background: {
-    light: "#c41b83",
-    main: "#1a181e",
+  negative: {
+    800: "#ef2f2f",
   },
 };
 
+function reverseTokens(tokensDark) {
+  const reversedTokens = {};
+  Object.entries(tokensDark).forEach(([key, val]) => {
+    const keys = Object.keys(val);
+    const values = Object.values(val);
+    const length = keys.length;
+    const reversedObj = {};
+    for (let i = 0; i < length; i++) {
+      reversedObj[keys[i]] = values[length - i - 1];
+    }
+    reversedTokens[key] = reversedObj;
+  });
+  return reversedTokens;
+}
+export const tokensLight = reverseTokens(tokensDark);
 
 export const themeSettings = (mode: PaletteMode) => ({
-  
-    palette: {
-      mode,
-      ...(mode === "dark"
-          ? {
-            // palette values for dark mode
-            primary: {
-              ...tokensDark.primary,
-              main: tokensDark.primary[400],
-              light: tokensDark.primary[300],
-            },
-            secondary: {
-              ...tokensDark.secondary,
-              main: tokensDark.secondary[500],
-            },
-            tertiary: {
-              ...tokensDark.tertiary,
-            },
-            grey: {
-              ...tokensDark.grey,
-              main: tokensDark.grey[500],
-            },
-            background: {
-              default: tokensDark.background.main,
-              light: tokensDark.background.light,
-            },
-          }
-          : {
-            // palette values for light mode
-            primary: amber,
-            divider: amber[200],
-            text: {
-              primary: grey[900],
-              secondary: grey[800],
-            },
-          }),
-        
-              
-          //   }
-          // : {
-          //     // palette values for light mode
-          //     primary: {
-          //       ...tokensLight.primary,
-          //       main: tokensDark.grey[50],
-          //       light: tokensDark.grey[100],
-          //     },
-          //     secondary: {
-          //       ...tokensLight.secondary,
-          //       main: tokensDark.secondary[600],
-          //       light: tokensDark.secondary[700],
-          //     },
-          //     neutral: {
-          //       ...tokensLight.grey,
-          //       main: tokensDark.grey[500],
-          //     },
-          //     background: {
-          //       default: tokensDark.grey[0],
-          //       alt: tokensDark.grey[50],
-          //     },
-          //   }),
-    },
+  palette: {
+    mode,
+    ...(mode === "dark"
+      ? {
+          // palette values for dark mode
+          primary: {
+            ...tokensDark.primary,
+            main: tokensDark.grey[900],
+            light: tokensDark.primary[400],
+          },
+          secondary: {
+            ...tokensDark.secondary,
+            main: tokensDark.secondary[50],
+            alt: tokensDark.grey[0],
+          },
 
-    typography: {
+          text: {
+            primary: tokensDark.grey[0],
+            secondary: tokensDark.grey[300],
+          },
+          background: {
+            default: tokensDark.grey[900],
+            alt: tokensDark.grey[800],
+          },
+          container: {
+            main: tokensDark.grey[700],
+            secondary: tokensDark.grey[900],
+          },
+        }
+      : {
+          // palette values for light mode
+          primary: {
+            main: tokensDark.grey[500],
+            light: tokensDark.grey[100],
+          },
+          secondary: {
+            main: tokensDark.grey[600],
+            alt: tokensDark.grey[900],
+            light: tokensDark.secondary[400],
+          },
+          text: {
+            primary: tokensDark.grey[900],
+            secondary: tokensDark.grey[800],
+          },
+          background: {
+            default: tokensDark.grey[0],
+            alt: tokensDark.grey[50],
+          },
+          container: {
+            main: tokensDark.grey[500],
+            secondary: tokensDark.grey[50],
+          },
+        }),
+
+    //   }
+    // : {
+    //     // palette values for light mode
+    //     primary: {
+    //       ...tokensLight.primary,
+    //       main: tokensDark.grey[50],
+    //       light: tokensDark.grey[100],
+    //     },
+    //     secondary: {
+    //       ...tokensLight.secondary,
+    //       main: tokensDark.secondary[600],
+    //       light: tokensDark.secondary[700],
+    //     },
+    //     neutral: {
+    //       ...tokensLight.grey,
+    //       main: tokensDark.grey[500],
+    //     },
+    //     background: {
+    //       default: tokensDark.grey[0],
+    //       alt: tokensDark.grey[50],
+    //     },
+    //   }),
+
+    // dark color
+
+    // primary: {
+    //   ...tokensDark.primary,
+    //   main: tokensDark.primary[400],
+    //   light: tokensDark.primary[300],
+    // },
+    // secondary: {
+    //   ...tokensDark.secondary,
+    //   main: tokensDark.secondary[500],
+    // },
+    // tertiary: {
+    //   ...tokensDark.tertiary,
+    // },
+    // grey: {
+    //   ...tokensDark.grey,
+    //   main: tokensDark.grey[500],
+    // },
+    // background: {
+    //   default: tokensDark.background.main,
+    //   light: tokensDark.background.light,
+    // },
+  },
+
+  typography: {
+    fontFamily: ["Roboto", "Poppins"].join(","),
+    fontSize: 12,
+    h1: {
+      fontFamily: ["Roboto", "Poppins"].join(","),
+      fontSize: 32,
+    },
+    h2: {
+      fontFamily: ["Roboto", "Poppins"].join(","),
+      fontSize: 24,
+      fontWeight: 800,
+    },
+    h3: {
+      fontFamily: ["Roboto", "Poppins"].join(","),
+      fontSize: 20,
+      fontWeight: 800,
+      color: "#e1e2e7",
+    },
+    h4: {
+      fontFamily: ["Roboto", "Poppins"].join(","),
+      fontSize: 15,
+      fontWeight: 700,
+      color: "#ccc",
+    },
+    h5: {
       fontFamily: ["Roboto", "Poppins"].join(","),
       fontSize: 12,
-      h1: {
-        fontFamily: ["Roboto", "Poppins"].join(","),
-        fontSize: 32,
-      },
-      h2: {
-        fontFamily: ["Roboto", "Poppins"].join(","),
-        fontSize: 24,
-        fontWeight: 800,
-      },
-      h3: {
-        fontFamily: ["Roboto", "Poppins"].join(","),
-        fontSize: 20,
-        fontWeight: 800,
-        color: "#e1e2e7",
-      },
-      h4: {
-        fontFamily: ["Roboto", "Poppins"].join(","),
-        fontSize: 15,
-        fontWeight: 700,
-        color: "#ccc",
-      },
-      h5: {
-        fontFamily: ["Roboto", "Poppins"].join(","),
-        fontSize: 12,
-        fontWeight: 400,
-        color: "#b3b6c2",
-      },
-      h6: {
-        fontFamily: ["Roboto", "Poppins"].join(","),
-        fontSize: 10,
-        color: "#6b6d74",
-      },
+      fontWeight: 400,
+      color: "#b3b6c2",
     },
-  });
+    h6: {
+      fontFamily: ["Roboto", "Poppins"].join(","),
+      fontSize: 10,
+      color: "#6b6d74",
+    },
+  },
+});

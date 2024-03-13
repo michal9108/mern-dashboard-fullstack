@@ -1,6 +1,6 @@
 import { BoxHeader } from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
-import { Grid } from "@mui/material";
+import { Grid, useTheme } from "@mui/material";
 
 import { CostField } from "@/components/CostField";
 import {
@@ -18,6 +18,8 @@ import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 type Props = {};
 
 const Row3 = (props: Props) => {
+
+  const theme=  useTheme();
   const { data: productData } = useGetProductsQuery();
   const { data: transactionData } = useGetTransactionsQuery();
 
@@ -84,23 +86,20 @@ const Row3 = (props: Props) => {
           height="75%"
           sx={{
             "& .MuiDataGrid-root": {
-              color: "#d1d3da",
+              color: theme.palette.text.primary,
               border: "none",
             },
             "& .MuiDataGrid-cell": {
-              borderBottom: `1px solid ${"#48494e"} !important`,
+              borderBottom: `1px solid ${theme.palette.text.primary} !important`,
             },
             "& .MuiDataGrid-columnHeaders": {
-              borderBottom: `1px solid ${"#48494e"} !important`,
+              borderBottom: `1px solid ${theme.palette.text.primary} !important`,
             },
             "& .MuiDataGrid-columnSeparator": {
               visibility: "hidden",
             },
-            "& .MuiDataGrid-sortIcon": {
-              color: "#d1d3da",
-            },
             "& .MuiDataGrid-menuIconButton": {
-              color: "#d1d3da",
+              color: theme.palette.text.primary,
             },
           }}
         >
@@ -123,20 +122,20 @@ const Row3 = (props: Props) => {
           height="75%"
           sx={{
             "& .MuiDataGrid-root": {
-              color: "#d1d3da",
+              color: theme.palette.text.primary,
               border: "none",
             },
             "& .MuiDataGrid-cell": {
-              borderBottom: `1px solid ${"#48494e"} !important`,
+              borderBottom: `1px solid ${theme.palette.text.primary} !important`,
             },
             "& .MuiDataGrid-columnHeaders": {
-              borderBottom: `1px solid ${"#48494e"} !important`,
+              borderBottom: `1px solid ${theme.palette.text.primary} !important`,
             },
             "& .MuiDataGrid-columnSeparator": {
               visibility: "hidden",
             },
             "& .MuiDataGrid-menuIconButton": {
-              color: "#d1d3da",
+              color: theme.palette.text.primary,
             },
           }}
         >
@@ -163,7 +162,8 @@ const Row3 = (props: Props) => {
               gridTemplateColumns: "repeat(2, minmax(100px, 1fr))",
               gridTemplateRows: "repeat(2, minmax(60px, 1fr))",
 
-              backgroundColor: "#121115",
+              backgroundColor: theme.palette.background.default,
+
               borderRadius: "0.4rem",
               boxShadow:
                 "0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",

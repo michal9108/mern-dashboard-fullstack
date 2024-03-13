@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import "../index.css";
 import React from "react";
 
@@ -9,10 +9,13 @@ type Props = {
 };
 
 export default function ConversionStep({
+
   funnelStep,
   funnelStepAmount,
   icon,
 }: Props) {
+  const theme = useTheme();
+
   return (
    
 

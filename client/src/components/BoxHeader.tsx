@@ -1,7 +1,7 @@
-import { Box, Typography } from "@mui/material";
-import "../index.css";
+import { Box, useTheme } from "@mui/material";
 import React from "react";
 import FlexBetween from "./FlexBetween";
+import { tokensDark } from "@/theme";
 
 
 type Props = {
@@ -24,29 +24,31 @@ const BoxHeader = ({
   conversionRate,
   totalSessions,
 }: Props) => {
+  const theme = useTheme();
+
   return (
-    <FlexBetween color="#c2c5ce" margin="1.5rem 1rem 0 1rem">
+    <FlexBetween sx={{color:theme.palette.text.primary}} margin="1.5rem 1rem 0 1rem">
       <FlexBetween>
   <div style={{marginRight:'1rem'}}>{icon}</div>
 
         <Box width="100%">
-          <div className={"box-header"}>{title}</div>
+          <div style={{ fontWeight:"700", fontSize:"15px"}}>{title}</div>
         </Box>
       </FlexBetween>
 
       <FlexBetween>
         {totalRevenue && (
-          <div className={"a-revenue"} style={{ marginRight: "0.5rem" }}>
+          <div  style={{ marginRight: "0.5rem", fontWeight:"700", fontSize:"15px" }}>
             ${totalRevenue}{" "}
           </div>
         )}
-        {totalProfit && <div className={"a-profit"}>${totalProfit} </div>}
-        {totalExpenses && <div className={"a-expenses"}>${totalExpenses} </div>}
-        {totalOrders && <div className={"row2-num "}>{totalOrders} </div>}
+        {totalProfit && <div style={{color:tokensDark.primary[500], fontWeight:"700", fontSize:"15px"}}>${totalProfit} </div>}
+        {totalExpenses && <div style={{color:tokensDark.negative[800], fontWeight:"700", fontSize:"15px"}} >${totalExpenses} </div>}
+        {totalOrders && <div style={{color:tokensDark.primary[500], fontWeight:"700", fontSize:"15px"}}>{totalOrders} </div>}
         {conversionRate && (
-          <div className={"row2-num "}>{conversionRate}% </div>
+          <div style={{color:tokensDark.primary[500], fontWeight:"700", fontSize:"15px"}}>{conversionRate}% </div>
         )}
-        {totalSessions && <div className={"row2-num"}>{totalSessions}</div>}
+        {totalSessions && <div style={{color:tokensDark.primary[500], fontWeight:"700", fontSize:"15px"}}>{totalSessions}</div>}
       </FlexBetween>
     </FlexBetween>
   );

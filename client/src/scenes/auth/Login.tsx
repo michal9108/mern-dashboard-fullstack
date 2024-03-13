@@ -7,7 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
@@ -32,6 +32,8 @@ function Copyright(props: any) {
 }
 
 export default function Login() {
+  const theme = useTheme();
+
   const [users, setUsers] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -95,7 +97,11 @@ export default function Login() {
         <Avatar sx={{ m: 1, bgcolor: tokensDark.primary[500] }}>
           <BarChartIcon />
         </Avatar>
-        <Typography component="h2" variant="h2" style={{ color: "white" }}>
+        <Typography
+          component="h2"
+          variant="h2"
+          style={{ color: tokensDark.grey[0] }}
+        >
           Log In
         </Typography>
         <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
@@ -110,8 +116,8 @@ export default function Login() {
             autoFocus
             color="secondary"
             sx={{
-              input: { color: "white" },
-              label: { color: "white" },
+              input: { color: tokensDark.grey[0] },
+              label: { color: tokensDark.grey[0] },
               "& .MuiOutlinedInput-root": {
                 "&.Mui-focused fieldset": {
                   borderColor: tokensDark.primary[500],
@@ -131,17 +137,21 @@ export default function Login() {
             id="password"
             autoComplete="current-password"
             color="secondary"
-            sx={{ input: { color: "white" }, label: { color: "white" }, "& .MuiOutlinedInput-root": {
-              "&.Mui-focused fieldset": {
-                borderColor: tokensDark.primary[500],
+            sx={{
+              input: { color: tokensDark.grey[0] },
+              label: { color: tokensDark.grey[0] },
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldset": {
+                  borderColor: tokensDark.primary[500],
+                },
               },
-            }, }}
+            }}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="secondary" />}
-            sx={{ color: tokensDark.primary[500] }}
+            sx={{ color:"secondary" }}
             label="Remember me"
           />
           <Button
@@ -157,7 +167,7 @@ export default function Login() {
             <h4
               style={{
                 fontSize: "15px",
-                color: "white",
+                color: "secondary",
               }}
             >
               Don't have an account?
@@ -171,7 +181,7 @@ export default function Login() {
             </h4>
           </div>
           <div
-            style={{ fontSize: "14px", color: "white", textAlign: "center" }}
+            style={{ fontSize: "14px", color: "secondary", textAlign: "center" }}
           >
             <Typography color={tokensDark.primary[500]}>
               Test login: <i>Username: user password: user</i>{" "}

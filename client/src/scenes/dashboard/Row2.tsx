@@ -7,7 +7,7 @@ import {
   useGetProductsQuery,
   useGetTransactionsQuery,
 } from "@/state/api";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import ConversionStep from "@/components/ConversionStep";
 import { useMemo } from "react";
 
@@ -28,13 +28,14 @@ import {
   AreaChart,
   Area,
 } from "recharts";
-import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
-import DataThresholdingOutlinedIcon from '@mui/icons-material/DataThresholdingOutlined';
-import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
+import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
+import DataThresholdingOutlinedIcon from "@mui/icons-material/DataThresholdingOutlined";
+import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined";
 import BoxContainer from "@/components/BoxContainer";
-import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
-import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCheckoutOutlined';
-import WalletOutlinedIcon from '@mui/icons-material/WalletOutlined';
+import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import ShoppingCartCheckoutOutlinedIcon from "@mui/icons-material/ShoppingCartCheckoutOutlined";
+import WalletOutlinedIcon from "@mui/icons-material/WalletOutlined";
+
 import { tokensDark } from "@/theme";
 type Props = {};
 
@@ -42,9 +43,11 @@ const pieData = [
   { name: "Group A", value: 600 },
   { name: "Group B", value: 400 },
 ];
-const pieColors = ["#ef2f2f", tokensDark.primary[500]];
+const pieColors = [tokensDark.negative[800], tokensDark.primary[500]];
 
 const Row2 = (props: Props) => {
+  const theme = useTheme();
+
   const { data: operationalData } = useGetKpisQuery();
   const { data: transactionalData } = useGetTransactionsQuery();
 
@@ -111,7 +114,7 @@ const Row2 = (props: Props) => {
         <BoxHeader
           title="Total orders"
           totalOrders={totalOrderData.totalOrders}
-          icon={<LocalShippingOutlinedIcon/>}
+          icon={<LocalShippingOutlinedIcon />}
         />
         <FlexBetween margin="0rem 1rem 0 3.5rem">
           <div className="box-header">Average Order Value </div>
@@ -130,14 +133,17 @@ const Row2 = (props: Props) => {
               bottom: 100,
             }}
           >
-              <defs>
+            <defs>
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#ffffff" stopOpacity={0.8} />
                 <stop offset="80%" stopColor="#ffffff" stopOpacity={0.2} />
               </linearGradient>
-          
             </defs>
-            <CartesianGrid horizontal={false} strokeDasharray="2 3" stroke="#48494e"/>
+            <CartesianGrid
+              horizontal={false}
+              strokeDasharray="2 3"
+              stroke="#48494e"
+            />
 
             <XAxis
               dataKey="name"
@@ -181,7 +187,7 @@ const Row2 = (props: Props) => {
                 gridTemplateColumns: "repeat(1, minmax(100px, 1fr))",
                 gridTemplateRows: "repeat(2, minmax(60px, 1fr))",
 
-                backgroundColor: "#1a181e",
+                backgroundColor: theme.palette.background.default,
                 borderRadius: "0.4rem",
               }}
             >
@@ -190,18 +196,36 @@ const Row2 = (props: Props) => {
                   borderRadius: "0.4rem",
                   boxShadow:
                     "0px 7px 8px -4px rgb(0 0 0 / %), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",
-                  backgroundColor: "#31303B",
+                  backgroundColor: theme.palette.container.main,
                 }}
               >
                 <BoxHeader
                   title="Conversion Rate"
                   conversionRate={14}
-                  icon={<DataThresholdingOutlinedIcon/>}
+                  icon={<DataThresholdingOutlinedIcon />}
                 ></BoxHeader>
-                <span style={{ display:'flex', flexDirection:'row', justifyContent:'space-around'}}>
-                <ConversionStep icon={<AddShoppingCartOutlinedIcon fontSize="small"/>} funnelStep="Add to Cart" funnelStepAmount={94}  />
-                <ConversionStep  icon={<ShoppingCartCheckoutOutlinedIcon fontSize="small"/>}funnelStep="Checkout" funnelStepAmount={34} />
-                <ConversionStep  icon={<WalletOutlinedIcon fontSize="small"/>}funnelStep="Purchases" funnelStepAmount={12} />
+                <span
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <ConversionStep
+                    icon={<AddShoppingCartOutlinedIcon fontSize="small" />}
+                    funnelStep="Add to Cart"
+                    funnelStepAmount={94}
+                  />
+                  <ConversionStep
+                    icon={<ShoppingCartCheckoutOutlinedIcon fontSize="small" />}
+                    funnelStep="Checkout"
+                    funnelStepAmount={34}
+                  />
+                  <ConversionStep
+                    icon={<WalletOutlinedIcon fontSize="small" />}
+                    funnelStep="Purchases"
+                    funnelStepAmount={12}
+                  />
                 </span>
               </Box>
 
@@ -213,12 +237,12 @@ const Row2 = (props: Props) => {
                 flexBasis="40%"
                 width="100%"
                 sx={{
-                  padding:"1rem",
+                  padding: "1rem",
                   justifyContent: "center",
                   alignContent: "center",
                   flexDirection: "row",
                   width: "100%",
-                  backgroundColor: "#31303B",
+                  backgroundColor: theme.palette.container.main,
                   borderRadius: "0.4rem",
                   boxShadow:
                     "0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",
@@ -256,47 +280,55 @@ const Row2 = (props: Props) => {
                     </Pie>
                   </PieChart>
                 </span>
-                
+
                 <span
                   style={{
                     display: "flex",
                     justifyContent: "center",
                     alignContent: "center",
                     flexDirection: "column",
-                    backgroundColor: "#1A181E",
+                    backgroundColor: theme.palette.container.secondary,
                     borderRadius: "0.4rem",
-                    padding: ".5rem" ,
+                    padding: ".5rem",
                   }}
                 >
                   {" "}
-                  <div style={{ color: "white"  , fontSize: "13px"}}>Target Sales</div>
-                  <div style={{ color: "yellow" }}>83</div>
-                  <div style={{ color: "white", fontSize: "10px" }}>
+                  <div style={{ color: theme.palette.text.primary, fontSize: "13px" }}>
+                    Target Sales
+                  </div>
+                  <div style={{ color: theme.palette.text.primary }}>83</div>
+                  <div style={{ color: theme.palette.text.primary, fontSize: "10px" }}>
                     Finance goals of the campaign that is desired
                   </div>
                 </span>
-                
+
                 <span
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignContent: "center",
-                      flexDirection: "column",
-                      backgroundColor: "#1A181E",
-                      borderRadius: "0.4rem",
-                      padding: ".5rem" ,
-                    }}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    flexDirection: "column",
+                    backgroundColor: theme.palette.container.secondary,
+                    borderRadius: "0.4rem",
+                    padding: ".5rem",
+                  }}
                 >
                   {" "}
-                  <div style={{ color: "white" , fontSize: "10px"}}> Losses in Revenue</div>
+                  <div style={{ color: theme.palette.text.primary, fontSize: "10px" }}>
+                    {" "}
+                    Losses in Revenue
+                  </div>
                   <div style={{ color: "#EF2F2F", fontSize: "14px" }}>
                     {" "}
                     ↓25%
                   </div>
-                  <div style={{ color: "white" , fontSize: "10px" }}> Profit Margins</div>
+                  <div style={{ color: theme.palette.text.primary, fontSize: "10px" }}>
+                    {" "}
+                    Profit Margins
+                  </div>
                   <div style={{ color: "#51f5ac", fontSize: "14px" }}>
                     {" "}
-                    ↑30% 
+                    ↑30%
                   </div>
                 </span>
               </Box>
@@ -306,10 +338,13 @@ const Row2 = (props: Props) => {
       </DashboardBox>
 
       <DashboardBox gridArea="f">
-        <BoxHeader title="Total Sessions" totalSessions={543} icon={<PeopleOutlineOutlinedIcon/>}/>
+        <BoxHeader
+          title="Total Sessions"
+          totalSessions={543}
+          icon={<PeopleOutlineOutlinedIcon />}
+        />
 
         <FlexBetween margin="0rem 1rem 0 3.5rem">
-
           <div className="box-header">Total Visitors</div>
           <div className="a-revenue">3454</div>
         </FlexBetween>
@@ -325,7 +360,11 @@ const Row2 = (props: Props) => {
               bottom: 100,
             }}
           >
-            <CartesianGrid horizontal={false} stroke="#48494e" strokeDasharray="2 3" />
+            <CartesianGrid
+              horizontal={false}
+              stroke="#48494e"
+              strokeDasharray="2 3"
+            />
 
             <XAxis
               dataKey="name"
