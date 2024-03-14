@@ -36,7 +36,6 @@ const Row1 = () => {
   }
 
   //
-  console.log("data from Row 1", kpis);
   let data = kpis;
 
   const revenue = useMemo(() => {

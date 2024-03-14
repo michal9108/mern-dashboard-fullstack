@@ -61,53 +61,82 @@ const Row2 = () => {
 
   const mockdata = [
     {
-      name: "Page A",
-      pv: 2400,
+      name: "jan",
+      pv: 6400,
       uv: 4000,
       amt: 2400,
     },
     {
-      name: "Page B",
+      name: "feb",
       uv: 3000,
-      pv: 1398,
+      pv: 2390,
       amt: 2210,
     },
     {
-      name: "Page C",
+      name: "mar",
       uv: 2000,
       pv: 9800,
       amt: 2290,
     },
     {
-      name: "Page D",
+      name: "apr",
       uv: 2780,
-      pv: 3908,
+      pv: 3900,
       amt: 2000,
     },
     {
-      name: "Page E",
+      name: "may",
       uv: 1890,
-      pv: 4800,
+      pv: 15000,
       amt: 2181,
     },
     {
-      name: "Page F",
+      name: "jun",
       uv: 2390,
-      pv: 3800,
+      pv: 16000,
       amt: 2500,
     },
     {
-      name: "Page G",
+      name: "jul",
       uv: 3490,
-      pv: 4300,
+      pv: 17000,
       amt: 2100,
+    },
+    {
+      name: "aug",
+      uv: 2400,
+      pv: 8000,
+      amt: 2400,
+    },
+    {
+      name: "sep",
+      uv: 3000,
+      pv: 10000,
+      amt: 2210,
+    },
+    {
+      name: "oct",
+      uv: 2000,
+      pv: 9800,
+      amt: 2290,
+    },
+    {
+      name: "nov",
+      uv: 2780,
+      pv: 18000,
+      amt: 2000,
+    },
+    {
+      name: "dec",
+      uv: 1890,
+      pv: 20000,
+      amt: 2181,
     },
   ];
 
   return (
     <>
       <DashboardBox gridArea="d">
-     
         <BoxHeader
           title="Total orders"
           totalOrders={totalOrderData.totalOrders}
@@ -158,11 +187,11 @@ const Row2 = () => {
             <YAxis
               tickLine={false}
               style={{ fontSize: "10px" }}
-              domain={[1000, 24000]}
+              domain={[1000, 20000]}
             />
             <Tooltip
-             labelStyle={{ color: tokensDark.grey[900] }}
-             itemStyle={{color: tokensDark.grey[900] }}
+              labelStyle={{ color: tokensDark.grey[900] }}
+              itemStyle={{ color: tokensDark.grey[900] }}
               formatter={(v) => `$${v}`}
             />
 
@@ -402,8 +431,8 @@ const Row2 = () => {
               domain={[8000, 24000]}
             />
             <Tooltip
-             labelStyle={{ color: tokensDark.grey[900] }}
-             itemStyle={{color: tokensDark.grey[900] }}
+              labelStyle={{ color: tokensDark.grey[900] }}
+              itemStyle={{ color: tokensDark.grey[900] }}
               formatter={(v) => `$${v}`}
             />
 

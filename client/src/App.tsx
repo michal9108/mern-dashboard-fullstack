@@ -3,7 +3,7 @@ import {
   ThemeProvider,
   createTheme,
   responsiveFontSizes,
-  useTheme,
+  
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -19,6 +19,7 @@ import { ColorModeContext } from "./state/ColorModeContext";
 
 
 export default function App() {
+
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   const [mode, setMode] = useState<PaletteMode>("dark");

@@ -3,11 +3,6 @@ import { PaletteMode } from "@mui/material";
 
 /*Color Shades*/
 
-interface TokensLight {
-  grey?: Record<string, string>;
-  primary?: Record<string, string>;
-  secondary?: Record<string, string>;
-}
 export const tokensDark = {
   grey: {
     0: "#ffffff", // manually adjusted
