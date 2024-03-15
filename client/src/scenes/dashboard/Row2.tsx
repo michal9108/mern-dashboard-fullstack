@@ -1,6 +1,5 @@
 // @ts-nocheck
 import { BoxHeader } from "@/components/BoxHeader";
-import React from "react";
 import DashboardBox from "@/components/DashboardBox";
 import FlexBetween from "@/components/FlexBetween";
 import {
@@ -32,19 +31,15 @@ import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import ShoppingCartCheckoutOutlinedIcon from "@mui/icons-material/ShoppingCartCheckoutOutlined";
 import WalletOutlinedIcon from "@mui/icons-material/WalletOutlined";
-
 import { tokensDark } from "@/theme";
-
-const pieData = [
-  { name: "Group A", value: 600 },
-  { name: "Group B", value: 400 },
-];
-const pieColors = [tokensDark.negative[800], tokensDark.primary[500]];
+import { funnelStore } from "../../../../server/data/data";
+import Divider from "@mui/material/Divider";
 
 const Row2 = () => {
   const theme = useTheme();
 
-  const { data: operationalData } = useGetKpisQuery();
+  const pieColors = [tokensDark.negative[800], tokensDark.primary[500]];
+
   const { data: transactionalData } = useGetTransactionsQuery();
 
   const totalOrderData = useMemo(() => {
@@ -59,80 +54,28 @@ const Row2 = () => {
     };
   }, [transactionalData]);
 
-  const mockdata = [
-    {
-      name: "jan",
-      pv: 6400,
-      uv: 4000,
-      amt: 2400,
-    },
-    {
-      name: "feb",
-      uv: 3000,
-      pv: 2390,
-      amt: 2210,
-    },
-    {
-      name: "mar",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "apr",
-      uv: 2780,
-      pv: 3900,
-      amt: 2000,
-    },
-    {
-      name: "may",
-      uv: 1890,
-      pv: 15000,
-      amt: 2181,
-    },
-    {
-      name: "jun",
-      uv: 2390,
-      pv: 16000,
-      amt: 2500,
-    },
-    {
-      name: "jul",
-      uv: 3490,
-      pv: 17000,
-      amt: 2100,
-    },
-    {
-      name: "aug",
-      uv: 2400,
-      pv: 8000,
-      amt: 2400,
-    },
-    {
-      name: "sep",
-      uv: 3000,
-      pv: 10000,
-      amt: 2210,
-    },
-    {
-      name: "oct",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "nov",
-      uv: 2780,
-      pv: 18000,
-      amt: 2000,
-    },
-    {
-      name: "dec",
-      uv: 1890,
-      pv: 20000,
-      amt: 2181,
-    },
-  ];
+  const averageOrderValue = useMemo(() => {
+    if (transactionalData) {
+      let sumOfOrders = transactionalData.reduce(
+        (acc, currentValue) => acc + currentValue.amount,
+        0,
+      );
+      return (sumOfOrders / totalOrderData.totalOrders).toFixed(2);
+    }
+  }, [transactionalData]);
+
+  const getTotal = (key) =>
+    funnelStore[0]?.ordersData.reduce(
+      (acc, currentValue) => acc + currentValue[key],
+      0,
+    );
+
+  const totalVisitors = getTotal("visitors");
+  const totalSessions = getTotal("sessions");
+  const totalCarts = getTotal("addtocart");
+  const totalCheckouts = getTotal("checkouts");
+  const totalPurchases = getTotal("purchase");
+  const conversionRate = ((totalPurchases / totalVisitors) * 100).toFixed(2);
 
   return (
     <>
@@ -143,15 +86,29 @@ const Row2 = () => {
           icon={<LocalShippingOutlinedIcon />}
         />
         <FlexBetween margin="0rem 1rem 0 3.5rem">
-          <div className="box-header">Average Order Value </div>
-          <div className="a-revenue"> $34,67 </div>
+          <div
+            style={{
+              fontSize: "13px",
+              fontWeight: "500",
+            }}
+          >
+            Average Order Value{" "}
+          </div>
+          <div
+            style={{
+              fontSize: "13px",
+              fontWeight: "500",
+            }}
+          >
+            ${averageOrderValue}{" "}
+          </div>
         </FlexBetween>
 
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             width={500}
             height={300}
-            data={mockdata}
+            data={funnelStore[0]?.ordersData}
             margin={{
               top: 15,
               right: 25,
@@ -180,7 +137,7 @@ const Row2 = () => {
             />
 
             <XAxis
-              dataKey="name"
+              dataKey="month"
               tickLine={false}
               style={{ fontSize: "10px" }}
             />
@@ -197,7 +154,7 @@ const Row2 = () => {
 
             <Area
               type="monotone"
-              dataKey="pv"
+              dataKey="totalOrdervalue"
               dot={false}
               stroke={theme.palette.secondary.light}
               strokeWidth={2}
@@ -235,7 +192,7 @@ const Row2 = () => {
               >
                 <BoxHeader
                   title="Conversion Rate"
-                  conversionRate={14}
+                  conversionRate={conversionRate}
                   icon={<DataThresholdingOutlinedIcon />}
                 ></BoxHeader>
                 <span
@@ -243,22 +200,29 @@ const Row2 = () => {
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-around",
+                    marginTop: "0.5rem",
                   }}
                 >
                   <ConversionStep
-                    icon={<AddShoppingCartOutlinedIcon fontSize="small" />}
+                    icon={<AddShoppingCartOutlinedIcon fontSize="medium" />}
                     funnelStep="Add to Cart"
-                    funnelStepAmount={94}
+                    funnelStepAmount={totalCarts}
                   />
+                  <Divider orientation="vertical" flexItem />
+
                   <ConversionStep
-                    icon={<ShoppingCartCheckoutOutlinedIcon fontSize="small" />}
+                    icon={
+                      <ShoppingCartCheckoutOutlinedIcon fontSize="medium" />
+                    }
                     funnelStep="Checkout"
-                    funnelStepAmount={34}
+                    funnelStepAmount={totalCheckouts}
                   />
+                  <Divider orientation="vertical" flexItem />
+
                   <ConversionStep
-                    icon={<WalletOutlinedIcon fontSize="small" />}
+                    icon={<WalletOutlinedIcon fontSize="medium" />}
                     funnelStep="Purchases"
-                    funnelStepAmount={12}
+                    funnelStepAmount={totalPurchases}
                   />
                 </span>
               </Box>
@@ -282,7 +246,48 @@ const Row2 = () => {
                     "0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",
                 }}
               >
-                <span
+                <section
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    flexDirection: "column",
+                    backgroundColor: theme.palette.secondary.dark,
+                    borderRadius: "0.4rem",
+                    padding: ".5rem",
+                  }}
+                >
+                  {" "}
+                  <div
+                    style={{
+                      color: theme.palette.text.primary,
+                      fontSize: "12px",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Target Sales
+                  </div>
+                  <div
+                    style={{
+                      color: tokensDark.primary[500],
+                      fontWeight: "700",
+                      fontSize: "15px",
+                    }}
+                  >
+                    {funnelStore[0]?.targetSales}
+                  </div>
+                  {/* <div
+                    style={{
+                      color: theme.palette.text.primary,
+                      fontSize: "10px",
+                    }}
+                  >
+                    Finance goals of the campaign that is desired
+                  </div> */}
+                </section>
+                <Divider orientation="vertical" flexItem />
+
+                <section
                   style={{
                     display: "flex",
                     justifyContent: "center",
@@ -302,89 +307,75 @@ const Row2 = () => {
                   >
                     <Pie
                       stroke="none"
-                      data={pieData}
+                      data={funnelStore[0]?.pieData}
                       innerRadius={18}
                       outerRadius={38}
                       paddingAngle={2}
                       dataKey="value"
                     >
-                      {pieData.map((entry, index) => (
+                      {funnelStore[0]?.pieData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={pieColors[index]} />
                       ))}
                     </Pie>
                   </PieChart>
-                </span>
+                </section>
 
-                <span
+                <section
                   style={{
                     display: "flex",
                     justifyContent: "center",
                     alignContent: "center",
-                    flexDirection: "column",
+                    alignItems: "center",
+                    flexDirection: "row",
                     backgroundColor: theme.palette.secondary.dark,
                     borderRadius: "0.4rem",
                     padding: ".5rem",
+                    gap: "0.5rem",
                   }}
                 >
                   {" "}
                   <div
                     style={{
                       color: theme.palette.text.primary,
-                      fontSize: "13px",
-                    }}
-                  >
-                    Target Sales
-                  </div>
-                  <div style={{ color: theme.palette.text.primary }}>83</div>
-                  <div
-                    style={{
-                      color: theme.palette.text.primary,
-                      fontSize: "10px",
-                    }}
-                  >
-                    Finance goals of the campaign that is desired
-                  </div>
-                </span>
-
-                <span
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignContent: "center",
-                    flexDirection: "column",
-                    backgroundColor: theme.palette.secondary.dark,
-                    borderRadius: "0.4rem",
-                    padding: ".5rem",
-                  }}
-                >
-                  {" "}
-                  <div
-                    style={{
-                      color: theme.palette.text.primary,
-                      fontSize: "10px",
+                      fontSize: "12px",
+                      fontWeight: "500",
                     }}
                   >
                     {" "}
-                    Losses in Revenue
+                   Revenue Losses  
+                    <div
+                      style={{
+                        color: "#EF2F2F",
+                        fontSize: "15px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {" "}
+                      ↓{funnelStore[0]?.pieData[0]?.value}%
+                    </div>
                   </div>
-                  <div style={{ color: "#EF2F2F", fontSize: "14px" }}>
-                    {" "}
-                    ↓25%
-                  </div>
+                  <Divider orientation="vertical" flexItem />
                   <div
                     style={{
                       color: theme.palette.text.primary,
-                      fontSize: "10px",
+                      fontSize: "12px",
+                      fontWeight: "500",
                     }}
                   >
                     {" "}
                     Profit Margins
+                    <div
+                      style={{
+                        color: "#51f5ac",
+                        fontSize: "15px",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {" "}
+                      ↑{funnelStore[0]?.pieData[1]?.value}%
+                    </div>
                   </div>
-                  <div style={{ color: "#51f5ac", fontSize: "14px" }}>
-                    {" "}
-                    ↑30%
-                  </div>
-                </span>
+                </section>
               </Box>
             </Box>
           </>
@@ -394,19 +385,35 @@ const Row2 = () => {
       <DashboardBox gridArea="f">
         <BoxHeader
           title="Total Sessions"
-          totalSessions={543}
+          totalSessions={totalSessions}
           icon={<PeopleOutlineOutlinedIcon />}
         />
 
         <FlexBetween margin="0rem 1rem 0 3.5rem">
-          <div className="box-header">Total Visitors</div>
-          <div className="a-revenue">3454</div>
+          <div
+            style={{
+              color: tokensDark.primary[500],
+              fontSize: "13px",
+              fontWeight: "500",
+            }}
+          >
+            Total Visitors
+          </div>
+          <div
+            style={{
+              color: tokensDark.primary[500],
+              fontSize: "13px",
+              fontWeight: "500",
+            }}
+          >
+            {totalVisitors}
+          </div>
         </FlexBetween>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             width={380}
             height={210}
-            data={mockdata}
+            data={funnelStore[0]?.ordersData}
             margin={{
               top: 15,
               right: 25,
@@ -421,14 +428,14 @@ const Row2 = () => {
             />
 
             <XAxis
-              dataKey="name"
+              dataKey="month"
               tickLine={false}
               style={{ fontSize: "10px" }}
             />
             <YAxis
               tickLine={false}
               style={{ fontSize: "10px" }}
-              domain={[8000, 24000]}
+              domain={[0, 300]}
             />
             <Tooltip
               labelStyle={{ color: tokensDark.grey[900] }}
@@ -438,7 +445,15 @@ const Row2 = () => {
 
             <Line
               type="monotone"
-              dataKey="pv"
+              dataKey="visitors"
+              dot={false}
+              stroke={tokensDark.primary[500]}
+              strokeWidth={2}
+              fillOpacity={1}
+            />
+            <Line
+              type="monotone"
+              dataKey="sessions"
               dot={false}
               stroke={theme.palette.secondary.light}
               strokeWidth={2}

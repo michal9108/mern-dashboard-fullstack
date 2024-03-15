@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/transactions", async (req, res) => {
   try {
     const transactions = await Transaction.find()
-      .limit(50)
+      .limit(300)
       .sort({ createdOn: -1 });
 
     res.status(200).json(transactions);

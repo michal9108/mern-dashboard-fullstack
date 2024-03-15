@@ -89,7 +89,7 @@ const BoxHeader = ({
         {totalSessions && (
           <div
             style={{
-              color: tokensDark.primary[500],
+              color:tokensDark.grey[0],
               fontWeight: "700",
               fontSize: "15px",
             }}

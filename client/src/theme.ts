@@ -1,8 +1,7 @@
 import ModeTypes from "../shared/types";
 import { PaletteMode } from "@mui/material";
 
-/*Color Shades*/
-
+/*Custom Color Shades MUI */
 export const tokensDark = {
   grey: {
     0: "#ffffff", // manually adjusted
@@ -42,7 +41,7 @@ export const tokensDark = {
   },
 };
 
-//reversing dark and  light mode
+//reversing dark and  light mode MUI
 
 function reverseTokens(tokensDark) {
   const reversedTokens = {};
@@ -65,19 +64,17 @@ export const themeSettings = (mode: PaletteMode) => ({
     mode,
     ...(mode === "dark"
       ? {
-          // palette values for dark mode
+          // palette values for Dark mode
           primary: {
             ...tokensDark.primary,
             main: tokensDark.grey[900],
             light: tokensDark.primary[400],
-           
-
           },
           secondary: {
             ...tokensDark.secondary,
             main: tokensDark.secondary[50],
-          light: tokensDark.grey[0],
-          dark: tokensDark.grey[700],
+            light: tokensDark.grey[0],
+            dark: tokensDark.grey[700],
           },
 
           text: {
@@ -88,19 +85,17 @@ export const themeSettings = (mode: PaletteMode) => ({
             default: tokensDark.grey[900],
             alt: tokensDark.grey[900],
           },
-        
         }
       : {
-          // palette values for light mode
+          // palette values for Light mode
           primary: {
             main: tokensDark.grey[500],
             light: tokensDark.grey[100],
-          
           },
           secondary: {
             main: tokensDark.grey[600],
             light: tokensDark.grey[900],
-            dark:tokensDark.grey[500],
+            dark: tokensDark.grey[500],
           },
           text: {
             primary: tokensDark.grey[900],
@@ -110,7 +105,6 @@ export const themeSettings = (mode: PaletteMode) => ({
             default: tokensDark.grey[0],
             alt: tokensDark.grey[50],
           },
-         
         }),
   },
 

@@ -77,3 +77,9 @@ export default interface ModeTypes {
     totalSessions?: number;
     conversionRate?: number;
   };
+
+  export default interface CostsFieldType {
+    costTitle: string;
+    costAmount: number;
+    iconCosts: React.ReactNode;
+  };

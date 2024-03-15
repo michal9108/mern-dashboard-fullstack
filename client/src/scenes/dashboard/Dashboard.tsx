@@ -1,9 +1,9 @@
-import { Box, Switch, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Divider, Switch, useMediaQuery, useTheme } from "@mui/material";
 import Row1 from "./Row1";
 import Row2 from "./Row2";
 import Row3 from "./Row3";
 import NavBar from "../../components/NavBar";
-import Sidebar from "../../components/SideBar"
+// import Sidebar from "../../components/SideBar"
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -70,16 +70,17 @@ export default function Dashboard() {
   // const { data } = useGetUserQuery(userId);
   return (
     <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
-    <Sidebar
-        // user={data || {}}
+    {/* <Sidebar
+  
         isNonMobile={isNonMobile}
         drawerWidth="250px"
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
-      />
+      /> */}
        <Box flexGrow={1}>
       <NavBar  isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen} />
+          <Divider/>
       <Box
         width="100%"
         height="100%"

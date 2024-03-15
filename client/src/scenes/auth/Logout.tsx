@@ -8,11 +8,18 @@ import {
   MenuItem,
   useMediaQuery,
   useTheme,
+  Divider,
 } from "@mui/material";
-import { Menu as MenuIcon, ArrowDropDownOutlined } from "@mui/icons-material";
-
-type Props = {};
-
+import {
+  Menu as MenuIcon,
+  ArrowDropDownOutlined,
+  SettingsOutlined,
+} from "@mui/icons-material";
+import FlexBetween from "@/components/FlexBetween";
+import Avatar from "@mui/material/Avatar";
+import { tokensDark } from "@/theme";
+import LogoutIcon from "@mui/icons-material/Logout";
+import IconButtonMui from "@/components/IconButtonMui";
 const Logout = () => {
   const theme = useTheme();
 
@@ -38,26 +45,42 @@ const Logout = () => {
   return (
     <>
       <Button onClick={handleClick}>
-        <Box textAlign="left">
+        <Box textAlign="left" display="flex" flexDirection="row">
+          <Avatar sx={{ bgcolor: tokensDark.primary }}>N</Avatar>
           <Typography
             fontWeight="bold"
             fontSize="1rem"
+            textAlign="center"
+            width="100%"
+            margin="auto"
+            padding="0.5rem"
             sx={{ color: theme.palette.text.primary }}
           >
             User
           </Typography>
         </Box>
+
         <ArrowDropDownOutlined
           sx={{ color: theme.palette.text.primary, fontSize: "25px" }}
         />
       </Button>
+
       <Menu
         anchorEl={anchorEl}
         open={isOpen}
         onClose={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
-        <MenuItem onClick={handleLogout}>Log Out</MenuItem>
+        <MenuItem> Email</MenuItem>
+        <MenuItem>
+          <IconButtonMui icon={<SettingsOutlined />} />
+          {"Profile Settings"}
+        </MenuItem>
+
+        <MenuItem onClick={handleLogout}>
+          <IconButtonMui icon={<LogoutIcon />} />
+          {"Log Out"}
+        </MenuItem>
       </Menu>
     </>
   );

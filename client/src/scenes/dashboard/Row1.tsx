@@ -2,9 +2,7 @@
 import { BoxHeader } from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import { useGetKpisQuery } from "@/state/api";
-// import { useKpis } from "../../state/KpisContext";
 import { GetKpisResponse } from "../../../shared/types";
-
 import { useMemo,  } from "react";
 import {
   ResponsiveContainer,
@@ -28,15 +26,7 @@ import {  useTheme } from "@mui/material";
 const Row1 = () => {
 
   const theme = useTheme();
-  // const { kpis, error } = useKpis();
-
-  // if (error) {
-  //   return <div>Error: {error}</div>;
-  // }
-
-  //
-  // let data = kpis;
-
+ 
  const { data } = useGetKpisQuery();
 
   const revenue = useMemo(() => {

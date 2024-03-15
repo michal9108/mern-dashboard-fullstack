@@ -9,7 +9,6 @@ type Props = {
 };
 
 export default function ConversionStep({
-
   funnelStep,
   funnelStepAmount,
   icon,
@@ -17,14 +16,25 @@ export default function ConversionStep({
   const theme = useTheme();
 
   return (
-   
-
-    <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <div style={{fontWeight:"400", fontSize:"12px"}}>{icon} </div>
-      <div style={{fontWeight:"400", fontSize:"12px"}}> {funnelStep}</div>
-      <div style={{fontWeight:"400", fontSize:"12px"}}>{funnelStepAmount} </div>
+    <Box sx={{ display: "flex", flexDirection: "row", gap:'0.5rem', marginLeft:'0.5rem',marginRight:'0.5rem' }}>
+      <div
+        style={{
+          fontWeight: "400",
+          display: "flex",
+          fontSize: "12px",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {icon}{" "}
+      </div>
+      <span style={{ display: "flex", flexDirection: "column" }}>
+        {" "}
+        <div style={{ fontWeight: "500", fontSize: "12px" }}> {funnelStep}</div>
+        <div style={{ fontWeight: "500", fontSize: "12px" }}>
+          {funnelStepAmount}{" "}
+        </div>
+      </span>
     </Box>
-
-   
   );
 }

@@ -8,13 +8,9 @@ body,
   width: 100%;
   font-family: "Roboto", "Poppins";
 }
-
 ::-webkit-scrollbar {
   width: 0px;
 }
-
-
-
 
 /* 
 export const tokensDark = {

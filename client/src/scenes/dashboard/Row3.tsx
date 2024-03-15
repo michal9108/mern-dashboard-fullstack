@@ -3,7 +3,7 @@ import { BoxHeader } from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import { Grid, useTheme } from "@mui/material";
 
-import { CostField } from "@/components/CostField";
+import { CostsField } from "@/components/CostsField";
 import {
   useGetKpisQuery,
   useGetProductsQuery,
@@ -15,8 +15,10 @@ import React, { useMemo } from "react";
 import { ResponsiveContainer } from "recharts";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-
-
+import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
+import LoyaltyIcon from '@mui/icons-material/Loyalty';
+import CancelIcon from '@mui/icons-material/Cancel';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 const Row3 = () => {
 
   const theme=  useTheme();
@@ -27,24 +29,24 @@ const Row3 = () => {
     {
       field: "_id",
       headerName: "id",
-      flex: 1,
+      flex: 0.7,
     },
     {
       field: "expense",
       headerName: "Expense",
-      flex: 0.67,
+      flex: 0.3,
       renderCell: (params: GridCellParams) => `$${params.value}`,
     },
     {
       field: "price",
       headerName: "Price",
-      flex: 0.35,
+      flex: 0.3,
       renderCell: (params: GridCellParams) => `$${params.value}`,
     },
     {
       field: "transactions",
       headerName: "Count",
-      flex: 0.1,
+      flex: 0.3,
       renderCell: (params: GridCellParams) =>
         (params.value as Array<string>).length,
     },
@@ -171,25 +173,29 @@ const Row3 = () => {
           >
             {" "}
             {" "}
-            <CostField
+            <CostsField
+            iconCosts={<LocalPostOfficeIcon/>}
               costTitle="Shipping costs"
               costAmount={4500}
-              costDescription="Cost for delivery"
+              // costDescription="Cost for delivery"
             />{" "}
-            <CostField
+            <CostsField
+            iconCosts={<LoyaltyIcon/>}
               costTitle="Coupons"
               costAmount={342}
-              costDescription="Discounts, offers and promotions"
+              // costDescription="Discounts, offers and promotions"
             />{" "}
-            <CostField
+            <CostsField
+            iconCosts={<CancelIcon/>}
               costTitle="Refunds"
               costAmount={3002}
-              costDescription="Return request policy "
+              // costDescription="Return request policy "
             />
-            <CostField
+            <CostsField
+            iconCosts={<AccountBalanceIcon/>}
               costTitle="Taxes"
               costAmount={14150}
-              costDescription="Taxation"
+              // costDescription="Taxation"
             />
           </Box>
         </ResponsiveContainer>

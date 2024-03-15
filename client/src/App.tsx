@@ -43,12 +43,16 @@ export default function App() {
   let theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   theme = responsiveFontSizes(theme);
 
+
+
+
   return (
     <div className="app">
       <BrowserRouter>
         <ColorModeContext.Provider value={colorMode}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
+            
             <Box width="100%" height="100%">
               <Routes>
                 <Route
