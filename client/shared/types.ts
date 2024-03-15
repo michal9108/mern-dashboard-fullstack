@@ -56,30 +56,41 @@ export interface GetTransactionsResponse {
   updatedAt: string;
 }
 
+export  interface HeaderTypes  {
+  title: string;
+  icon?: React.ReactNode;
+  totalProfit?: number;
+  totalExpenses?: number;
+  totalRevenue?: number;
+  totalOrders?: number;
+  totalSessions?: number;
+  conversionRate?: number;
+}
 
+export interface CostsFieldType {
+  costTitle: string;
+  costAmount: number;
+  iconCosts: React.ReactNode;
+}
 
-export default interface ModeTypes {
-    mode: "dark" | "light"; 
-    primary: Record<string, string>;
-    secondary: Record<string, string>;
-    tertiary: Record<string, string>;
-    grey: Record<string, string>;
-    background: Record<string, string>;
-  }
+// export default interface ModeTypes {
+//     mode: "dark" | "light"; 
+//     primary: Record<string, string>;
+//     secondary: Record<string, string>;
+//     tertiary: Record<string, string>;
+//     grey: Record<string, string>;
+//     background: Record<string, string>;
+//   }
   
-  export default interface HeaderTypes  {
-    title: string;
-    icon?: React.ReactNode;
-    totalProfit?: number;
-    totalExpenses?: number;
-    totalRevenue?: number;
-    totalOrders?: number;
-    totalSessions?: number;
-    conversionRate?: number;
-  };
+export   interface Integration {
+  id: string;
+  title: string;
+  description: string;
+  logo: string;
+  installs: number;
+  
+}
 
-  export default interface CostsFieldType {
-    costTitle: string;
-    costAmount: number;
-    iconCosts: React.ReactNode;
-  };
+export   interface IntegrationCardProps {
+  integration: Integration;
+}

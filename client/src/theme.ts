@@ -1,4 +1,4 @@
-import ModeTypes from "../shared/types";
+
 import { PaletteMode } from "@mui/material";
 
 /*Custom Color Shades MUI */

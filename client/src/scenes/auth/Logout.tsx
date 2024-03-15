@@ -20,6 +20,8 @@ import Avatar from "@mui/material/Avatar";
 import { tokensDark } from "@/theme";
 import LogoutIcon from "@mui/icons-material/Logout";
 import IconButtonMui from "@/components/IconButtonMui";
+
+
 const Logout = () => {
   const theme = useTheme();
 

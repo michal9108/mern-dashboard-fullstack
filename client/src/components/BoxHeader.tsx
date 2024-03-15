@@ -2,7 +2,7 @@ import { Box, useTheme } from "@mui/material";
 import React from "react";
 import FlexBetween from "./FlexBetween";
 import { tokensDark } from "@/theme";
-import HeaderTypes from "@/../shared/types";
+import  { HeaderTypes }  from "../../shared/types";
 
 const BoxHeader = ({
   icon,

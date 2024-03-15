@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, useTheme } from "@mui/material";
-import CostsFieldType  from "../../shared/types";
+import {CostsFieldType } from "../../shared/types";
 import "../index.css";
 import BoxContainer from "./BoxContainer";
 
 
-const CostsField = ({ costTitle, costAmount, iconCosts }: CostsFieldType) => {
+const CostsField = ({ costTitle, iconCosts }: CostsFieldType) => {
   const theme = useTheme();
 
   return (
@@ -26,7 +26,7 @@ const CostsField = ({ costTitle, costAmount, iconCosts }: CostsFieldType) => {
       <BoxContainer>
       {iconCosts}
         <div style={{ fontWeight: "600", fontSize: "15px" }}>{costTitle}</div>
-        <div  style={{ fontWeight: "500", fontSize: "12px" }}>${costAmount}</div>
+  
        
         </BoxContainer>
 
