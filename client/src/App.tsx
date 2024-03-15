@@ -16,6 +16,7 @@ import Logout from "@/scenes/auth/Logout";
 import RedirectIfAuthenticated from "@/middleware/RedirectIfAuthenticated";
 import RequireAuth from "@/middleware/RequireAuth";
 import { ColorModeContext } from "./state/ColorModeContext";
+import { Sidebar } from "react-pro-sidebar";
 
 
 export default function App() {
@@ -43,8 +44,7 @@ export default function App() {
   let theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   theme = responsiveFontSizes(theme);
 
-
-
+ 
 
   return (
     <div className="app">
@@ -52,7 +52,8 @@ export default function App() {
         <ColorModeContext.Provider value={colorMode}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            
+         
+         
             <Box width="100%" height="100%">
               <Routes>
                 <Route
@@ -73,6 +74,7 @@ export default function App() {
                 />
               </Routes>
             </Box>
+
           </ThemeProvider>
         </ColorModeContext.Provider>
       </BrowserRouter>

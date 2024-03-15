@@ -3,9 +3,10 @@ import Row1 from "./Row1";
 import Row2 from "./Row2";
 import Row3 from "./Row3";
 import NavBar from "../../components/NavBar";
-// import Sidebar from "../../components/SideBar"
+
 import { useState } from "react";
-import { useSelector } from "react-redux";
+
+import SidebarPro from "@/components/SidebarPro";
 
 const gridTemplateLargeScreens = `
   "a b c"
@@ -60,65 +61,70 @@ const gridTemplateSmallScreens = `
 `;
 
 export default function Dashboard() {
+
+
   const theme = useTheme();
   const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
   const isAboveMobileScreens = useMediaQuery("(min-width: 425px)");
-  
+
   const isNonMobile = useMediaQuery("(min-width: 600px)");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  // const userId = useSelector((state) => state.global.userId);
-  // const { data } = useGetUserQuery(userId);
-  return (
-    <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
-    {/* <Sidebar
   
-        isNonMobile={isNonMobile}
-        drawerWidth="250px"
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      /> */}
-       <Box flexGrow={1}>
-      <NavBar  isSidebarOpen={isSidebarOpen}
-          setIsSidebarOpen={setIsSidebarOpen} />
-          <Divider/>
-      <Box
-        width="100%"
-        height="100%"
-        display="grid"
-        gap="1.5rem"
-        sx={
-          isAboveMediumScreens
-            ? {
-                textAlign: "center",
-                gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
-                gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
-                gridTemplateAreas: gridTemplateLargeScreens,
-                padding: "1rem 1.5rem 4rem 1.5rem",
-              }
-            : isAboveMobileScreens
-              ? {
-                  textAlign: "center",
-                  gridAutoColumns: "1fr",
-                  gridAutoRows: "80px",
-                  gridTemplateAreas: gridTemplateSmallScreens,
-                  padding: "1rem 1.5rem 4rem 1.5rem",
-                }
-              : {
-                  textAlign: "center",
-                  gridAutoColumns: "1fr",
-                  gridAutoRows: "80px",
-                  gridTemplateAreas: gridTemplateSmallScreens,
-                  padding: "1rem 1.5rem 4rem 1.5rem",
-                }
-        }
-      >
-        <Row1 />
-        <Row2 />
-        <Row3 />
-      </Box>
+
+
+  const [collapsed, setCollapsed] = useState(false);
+
+  const handleToggleSidebar = () => {
+    setCollapsed(!collapsed);
+  };
+
+  return (
+    <Box width="100%" height="100%">
+      <NavBar
+    
+        
+        handleToggleSidebar={handleToggleSidebar}
+      />
+      <Box display="flex"  width="100%" height="100%">
+      
+      <SidebarPro collapsed={collapsed}   isNonMobile={isNonMobile}/>
+        <Box flexGrow={1}>
+          <Box
+            width="100%"
+            height="100%"
+            display="grid"
+            gap="1.5rem"
+            sx={
+              isAboveMediumScreens
+                ? {
+                    textAlign: "center",
+                    gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
+                    gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
+                    gridTemplateAreas: gridTemplateLargeScreens,
+                    padding: "1rem 1.5rem 4rem 1.5rem",
+                  }
+                : isAboveMobileScreens
+                  ? {
+                      textAlign: "center",
+                      gridAutoColumns: "1fr",
+                      gridAutoRows: "80px",
+                      gridTemplateAreas: gridTemplateSmallScreens,
+                      padding: "1rem 1.5rem 4rem 1.5rem",
+                    }
+                  : {
+                      textAlign: "center",
+                      gridAutoColumns: "1fr",
+                      gridAutoRows: "80px",
+                      gridTemplateAreas: gridTemplateSmallScreens,
+                      padding: "1rem 1.5rem 4rem 1.5rem",
+                    }
+            }
+          >
+            <Row1 />
+            <Row2 />
+            <Row3 />
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
 }
-
-

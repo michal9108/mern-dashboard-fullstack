@@ -16,8 +16,6 @@ setupListeners(store.dispatch);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>
-
     <App />
-
   </Provider>,
 );

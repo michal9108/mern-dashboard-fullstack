@@ -14,7 +14,6 @@ const BoxHeader = ({
   conversionRate,
   totalSessions,
 }: HeaderTypes) => {
-  
   const theme = useTheme();
 
   return (
@@ -89,7 +88,7 @@ const BoxHeader = ({
         {totalSessions && (
           <div
             style={{
-              color:tokensDark.grey[0],
+              color: tokensDark.grey[0],
               fontWeight: "700",
               fontSize: "15px",
             }}
