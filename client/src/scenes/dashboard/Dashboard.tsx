@@ -15,12 +15,6 @@ export default function Dashboard() {
   const theme = useTheme();
   const { isAboveMediumScreens, isAboveMobileScreens } = useMediaQueries();
 
-  const [collapsed, setCollapsed] = useState(false);
-  const [isMobileSidebarShown, setIsMobileSidebarShown] = useState(true);
-
-  const handleToggleSidebar = () => {
-    setCollapsed(!collapsed);
-  };
 
   return (
     <Box
@@ -32,10 +26,10 @@ export default function Dashboard() {
         isAboveMediumScreens
           ? {
               textAlign: "center",
-              gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
-              gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
+              gridTemplateColumns: "repeat(3, minmax(360px, 1fr))",
+              gridTemplateRows: "repeat(14, minmax(40px, 1fr))",
               gridTemplateAreas: gridTemplateLargeScreens,
-              padding: "1rem 1.5rem 4rem 1.5rem",
+              padding: "1.5rem 1.5rem 4rem 1.5rem",
             }
           : isAboveMobileScreens
             ? {
@@ -43,14 +37,14 @@ export default function Dashboard() {
                 gridAutoColumns: "1fr",
                 gridAutoRows: "80px",
                 gridTemplateAreas: gridTemplateSmallScreens,
-                padding: "1rem 1.5rem 4rem 1.5rem",
+                padding: "1.5rem 1.5rem 4rem 1.5rem",
               }
             : {
                 textAlign: "center",
                 gridAutoColumns: "1fr",
                 gridAutoRows: "80px",
                 gridTemplateAreas: gridTemplateSmallScreens,
-                padding: "1rem 1.5rem 4rem 1.5rem",
+                padding: "1.5rem 1.5rem 4rem 1.5rem",
               }
       }
     >

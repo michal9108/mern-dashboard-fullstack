@@ -7,9 +7,10 @@ import { themeSettings, tokensDark } from "@/theme";
 import { useTheme } from "@mui/material";
 import { Suspense, lazy } from "react";
 import Loading from "./Loading";
-import BoxA from "./BoxA";
-import BoxB from "./BoxB";
-import BoxC from "./BoxC";
+
+const BoxA = lazy(() => import("./BoxA"));
+const BoxB = lazy(() => import("./BoxB"));
+const BoxC = lazy(() => import("./BoxC"));
 
 export default function Row1() {
   const { data } = useGetKpisQuery();
@@ -74,19 +75,23 @@ export default function Row1() {
 
   return (
     <>
+     <Suspense fallback={<Loading gridArea="a" />}>
       <BoxA
         totalExpenses={totalData.totalExpenses}
         totalRevenue={totalData.totalRevenue}
         revenueExpenses={revenueExpenses}
       />
-      <BoxB
-        totalProfit={totalData.totalProfit}
-        totalRevenue={totalData.totalRevenue}
-        revenueProfit={revenueProfit}
-      />
-      <BoxC revenue={revenue} />
+      </Suspense>
+      <Suspense fallback={<Loading gridArea="b" />}>
+        <BoxB
+          totalProfit={totalData.totalProfit}
+          totalRevenue={totalData.totalRevenue}
+          revenueProfit={revenueProfit}
+        />
+      </Suspense>
+      <Suspense fallback={<Loading gridArea="c" />}>
+        <BoxC revenue={revenue} />
+      </Suspense>
     </>
   );
 }
-
-Row1;

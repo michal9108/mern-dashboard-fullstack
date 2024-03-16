@@ -14,7 +14,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { tokensDark } from "@/theme";
 import {lazy, Suspense} from "react";
-import Loading from "../dashboard/Loading";
 
 function Copyright(props: any) {
   return (

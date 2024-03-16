@@ -17,6 +17,7 @@ export default function SidebarPro({
       {isAboveMobileScreens ? (
         <Sidebar
           collapsed={collapsed}
+        
           style={{
             color: theme.palette.text.primary,
             borderColor: tokensDark.grey[700],

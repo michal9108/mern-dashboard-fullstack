@@ -59,7 +59,7 @@ export default function App() {
           <ThemeProvider theme={theme}>
             <CssBaseline />
 
-            <Box width="100%" height="100%">
+         
               <Routes>
                 <Route
                   path="/"
@@ -82,7 +82,7 @@ export default function App() {
                   <Route path="/settings" element={<Profile />} /> *
                 </Route>
               </Routes>
-            </Box>
+         
           </ThemeProvider>
         </ColorModeContext.Provider>
       </BrowserRouter>

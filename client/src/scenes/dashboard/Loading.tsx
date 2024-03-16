@@ -1,17 +1,17 @@
-import React from "react";
-import "../../index.css"
+import "../../index.css";
 
-export default function Loading() {
-  return function Loading() {
-    return (
+import DashboardBox from "@/components/DashboardBox";
+
+export default function Loading({ gridArea }) {
+  return (
+    <DashboardBox gridArea={gridArea}>
       <section className="app-loader">
         <div className="bouncing-loader">
           <div></div>
           <div></div>
           <div></div>
-          <h2>🌀 Loading...</h2>
         </div>
       </section>
-    );
-  };
+    </DashboardBox>
+  );
 }

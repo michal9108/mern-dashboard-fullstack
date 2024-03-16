@@ -1,4 +1,4 @@
-import { useTheme } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 import {
   PublicOutlined,
   ReceiptLongOutlined,
@@ -8,9 +8,12 @@ import React from "react";
 import { Menu, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import SchoolIcon from "@mui/icons-material/School";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import PowerIcon from '@mui/icons-material/Power';
+import PowerIcon from "@mui/icons-material/Power";
 import { tokensDark } from "@/theme";
+import InventoryIcon from "@mui/icons-material/Inventory";
+
 function SidebarMenu() {
   const theme = useTheme();
 
@@ -36,52 +39,32 @@ function SidebarMenu() {
           },
         }}
       >
-        <MenuItem component={<Link to="/dashboard" />}>
-          <PublicOutlined
-            sx={{ minWidth: "20px", fontSize: "25px", marginRight: "1rem" }}
-          />
+        <MenuItem
+          component={<Link to="/dashboard" />}
+          icon={<PublicOutlined />}
+        >
           Dashboard
         </MenuItem>
-        <MenuItem component={<Link to="/dashboard" />}>
-          <ReceiptLongOutlined
-            sx={{ minWidth: "20px", fontSize: "25px", marginRight: "1rem" }}
-          />{" "}
-          Reporting
+        <MenuItem component={<Link to="/products" />} icon={<InventoryIcon />}>
+          {"Products"}
         </MenuItem>
-        <MenuItem component={<Link to="/dashboard" />}>
-          {" "}
-          <AttachMoneyIcon
-            sx={{ minWidth: "20px", fontSize: "25px", marginRight: "1rem" }}
-          />
-          Sales Data
+        <MenuItem
+          component={<Link to="/transactions" />}
+          icon={<AttachMoneyIcon />}
+        >
+          {"Transactions"}
         </MenuItem>
-        <MenuItem component={<Link to="/dashboard" />}>
-          {" "}
-          <TrendingUpIcon
-            sx={{ minWidth: "20px", fontSize: "25px", marginRight: "1rem" }}
-          />
-          Tracking
+        <MenuItem component={<Link to="/integrations" />} icon={<PowerIcon />}>
+          {"Integrations "}
         </MenuItem>
-        <MenuItem component={<Link to="/integrations" />}>
-          {" "}
-          <PowerIcon
-            sx={{ minWidth: "20px", fontSize: "25px", marginRight: "1rem" }}
-          />
-          Integrations
+        <MenuItem
+          component={<Link to="/settings" />}
+          icon={<SettingsOutlined />}
+        >
+          {"Settings"}
         </MenuItem>
-        <MenuItem component={<Link to="/settings"  />}>
-          {" "}
-          <SettingsOutlined
-            sx={{ minWidth: "20px", fontSize: "25px", marginRight: "1rem" }}
-          />
-          Settings
-        </MenuItem>
-        <MenuItem component={<Link to="/dashboard" />}>
-          {" "}
-          <PublicOutlined
-            sx={{ minWidth: "20px", fontSize: "25px", marginRight: "1rem" }}
-          />
-          Documentation
+        <MenuItem component={<Link to="/dashboard" />} icon={<SchoolIcon />}>
+          {"Documentation"}
         </MenuItem>
       </Menu>
     </div>

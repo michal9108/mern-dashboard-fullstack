@@ -20,7 +20,7 @@ const NavBar = ({
     <>
       <FlexBetween mb="0.25rem" p="0.5rem 1.5rem" color="#d1d3da">
         {/* LEFT SIDE */}
-        <FlexBetween gap="1.5rem">
+        <FlexBetween gap="1rem">
           <IconButtonMui
             icon={
               <BarChartIcon
@@ -50,7 +50,7 @@ const NavBar = ({
         </FlexBetween>
 
         {/* RIGHT SIDE */}
-        <FlexBetween gap="2rem">
+        <FlexBetween gap="1rem">
           <IconButtonMui icon={<NotificationsIcon />} />
           <ThemeToggler />
 

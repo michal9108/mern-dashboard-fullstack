@@ -1,5 +1,6 @@
 import React from "react";
 import { IntegrationCard } from "./IntegrationsCard";
+import { Grid } from "@mui/material";
 
 const integrations = [
   {
@@ -30,10 +31,14 @@ const integrations = [
 
 function Integrations() {
   return (
-<div>
-      {integrations.map((integration) => (
-        <IntegrationCard key={integration.id} integration={integration} />
-      ))}
+    <div>
+      <Grid container spacing={1}>
+        <Grid xs={1} md={3}>
+          {integrations.map((integration) => (
+            <IntegrationCard key={integration.id} integration={integration} />
+          ))}
+        </Grid>
+      </Grid>
     </div>
   );
 }

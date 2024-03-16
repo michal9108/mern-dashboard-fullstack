@@ -3,12 +3,14 @@
 import { useGetTransactionsQuery } from "@/state/api";
 import { useMemo } from "react";
 import { funnelStore } from "../../../../server/data/data";
-import BoxD from "./BoxD";
-import BoxE from "./BoxE";
-import BoxF from "./BoxF";
+import { Suspense, lazy } from "react";
+import Loading from "./Loading";
+const BoxD = lazy(() => import("./BoxD"));
+const BoxE = lazy(() => import("./BoxE"));
+const BoxF = lazy(() => import("./BoxF"));
+const BoxJ = lazy(() => import("./BoxJ"));
 
-const Row2 = () => {
-
+export default function Row2() {
   const { data: transactionalData } = useGetTransactionsQuery();
 
   const totalOrderData = useMemo(() => {
@@ -23,7 +25,6 @@ const Row2 = () => {
     };
   }, [transactionalData]);
 
-
   const averageOrderValue = useMemo(() => {
     if (transactionalData) {
       let sumOfOrders = transactionalData.reduce(
@@ -33,11 +34,10 @@ const Row2 = () => {
       return (sumOfOrders / totalOrderData.totalOrders).toFixed(2);
     }
   }, [transactionalData]);
-  
 
   const getTotal = (key: string) =>
     funnelStore[0]?.ordersData.reduce(
-      (acc: any, currentValue: { [x: string]: any; }) => acc + currentValue[key],
+      (acc: any, currentValue: { [x: string]: any }) => acc + currentValue[key],
       0,
     );
 
@@ -50,19 +50,26 @@ const Row2 = () => {
 
   return (
     <>
-      <BoxD
-        totalOrders={totalOrderData.totalOrders}
-        averageOrderValue={averageOrderValue}
-      />
-      <BoxE
-        totalPurchases={totalPurchases}
-        conversionRate={conversionRate}
-        totalCheckouts={totalCheckouts}
-        totalCarts={totalCarts}
-      />
-      <BoxF totalSessions={totalSessions} totalVisitors={totalVisitors} />
+      <Suspense fallback={<Loading gridArea="d" />}>
+        <BoxD
+          totalOrders={totalOrderData.totalOrders}
+          averageOrderValue={averageOrderValue}
+        />
+      </Suspense>
+      <Suspense fallback={<Loading gridArea="e" />}>
+        <BoxE
+          totalPurchases={totalPurchases}
+          conversionRate={conversionRate}
+          totalCheckouts={totalCheckouts}
+          totalCarts={totalCarts}
+        />
+      </Suspense>
+      <Suspense fallback={<Loading gridArea={"j"} />}>
+        <BoxJ />
+      </Suspense>
+      <Suspense fallback={<Loading gridArea="f" />}>
+        <BoxF totalSessions={totalSessions} totalVisitors={totalVisitors} />
+      </Suspense>
     </>
   );
-};
-
-export default Row2;
+}

@@ -1,14 +1,15 @@
 // @ts-nocheck
-import {  useTheme } from "@mui/material";
-import {
+import { useTheme } from "@mui/material";
+import { useGetProductsQuery, useGetTransactionsQuery } from "@/state/api";
 
-  useGetProductsQuery,
-  useGetTransactionsQuery,
-} from "@/state/api";
-import BoxG from "./BoxG";
-import BoxH from "./BoxH";
-import BoxI from "./BoxI";
 import { funnelStore } from "../../../../server/data/data";
+import { Suspense, lazy } from "react";
+import Loading from "./Loading";
+
+const BoxG = lazy(() => import("./BoxG"));
+const BoxH = lazy(() => import("./BoxH"));
+const BoxI = lazy(() => import("./BoxI"));
+
 const Row3 = () => {
   const theme = useTheme();
 
@@ -24,14 +25,20 @@ const Row3 = () => {
 
   return (
     <>
-      <BoxG productData={productData} />
-      <BoxH transactionData={transactionData} />
-      <BoxI
-        shippingCosts={shippingCosts}
-        coupons={coupons}
-        taxes={taxes}
-        refunds={refunds}
-      />
+      <Suspense fallback={<Loading gridArea="g" />}>
+        <BoxG productData={productData} />
+      </Suspense>
+      <Suspense fallback={<Loading gridArea="h" />}>
+        <BoxH transactionData={transactionData} />
+      </Suspense>
+      <Suspense fallback={<Loading gridArea="i" />}>
+        <BoxI
+          shippingCosts={shippingCosts}
+          coupons={coupons}
+          taxes={taxes}
+          refunds={refunds}
+        />
+      </Suspense>
     </>
   );
 };

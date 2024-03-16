@@ -19,12 +19,16 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import DownloadIcon from '@mui/icons-material/Download';
 import dayjs from 'dayjs';
 import {  IntegrationCardProps } from 'shared/types';
+import { useTheme } from '@mui/material';
 
 
 
 export function IntegrationCard({ integration }: IntegrationCardProps): React.JSX.Element {
+  const theme = useTheme();
   return (
-    <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' , margin: "1rem 1.5rem 1.5rem 1.5rem",
+    borderRadius: "0.4rem",
+    backgroundColor: theme.palette.secondary.dark}}>
       <CardContent sx={{ flex: '1 1 auto' }}>
         <Stack spacing={2}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>

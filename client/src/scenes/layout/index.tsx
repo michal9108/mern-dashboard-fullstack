@@ -11,7 +11,7 @@ function Layout() {
     const { isAboveMediumScreens, isAboveMobileScreens } = useMediaQueries();
   
     const [collapsed, setCollapsed] = useState(false);
-    const [isMobileSidebarShown, setIsMobileSidebarShown] = useState(true);
+    const [isMobileSidebarShown, setIsMobileSidebarShown] = useState(false);
   
     const handleToggleSidebar = () => {
       setCollapsed(!collapsed);
@@ -37,7 +37,7 @@ function Layout() {
           isAboveMobileScreens={isAboveMobileScreens}
           isMobileSidebarShown={isMobileSidebarShown}
         />
-          <Box flexGrow={1}>
+          <Box flexGrow={1} >
         <Outlet/>
         </Box>
       </Box>
