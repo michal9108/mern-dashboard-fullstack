@@ -1,4 +1,4 @@
-import { useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 import { Sidebar, Menu, MenuItem, sidebarClasses } from "react-pro-sidebar";
 import { tokensDark } from "@/theme";
 import SidebarMobile from './SidebarMobile'
@@ -6,15 +6,15 @@ import SidebarMenu from "./SidebarMenu";
 
 export default function SidebarPro({
   collapsed,
-  isAboveMobileScreens,
-  
+
   isMobileSidebarShown,
+  isAboveSmallScreens,
 }) {
   const theme = useTheme();
 
   return (
     <>
-      {isAboveMobileScreens ? (
+      {isAboveSmallScreens ? (
         <Sidebar
           collapsed={collapsed}
         

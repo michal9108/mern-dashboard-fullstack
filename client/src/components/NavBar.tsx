@@ -12,7 +12,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 const NavBar = ({
   handleToggleSidebar,
   handelMobileSidebarShown,
-  isAboveMobileScreens,
+  isAboveSmallScreens,
 }) => {
   const theme = useTheme();
 
@@ -28,7 +28,7 @@ const NavBar = ({
               />
             }
           />
-          {isAboveMobileScreens ? (
+          {isAboveSmallScreens ? (
             <IconButtonMui
               icon={
                 <MenuIcon

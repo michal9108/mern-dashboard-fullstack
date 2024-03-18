@@ -8,9 +8,10 @@ import LoyaltyIcon from "@mui/icons-material/Loyalty";
 import CancelIcon from "@mui/icons-material/Cancel";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import BoxContainer from "../../components/BoxContainer";
+import { useMediaQueries } from "../../../shared/screensResponsivness";
 
 function BoxI({ shippingCosts, coupons, refunds, taxes }) {
-
+  const { applyFontStyles } = useMediaQueries();
 
   const theme = useTheme();
   return (
@@ -22,6 +23,7 @@ function BoxI({ shippingCosts, coupons, refunds, taxes }) {
           width="100%"
           height="100%"
           sx={{
+            
             textAlign: "center",
             gridTemplateColumns: "repeat(2, minmax(100px, 1fr))",
             gridTemplateRows: "repeat(2, minmax(60px, 1fr))",
@@ -33,10 +35,9 @@ function BoxI({ shippingCosts, coupons, refunds, taxes }) {
               "0px 7px 8px -4px rgb(0 0 0 / 20%), 0px 12px 17px 2px rgb(0 0 0 / 14%), 0px 5px 22px 4px rgb(0 0 0 / 12%)",
           }}
         >
-
-
           <Box
             sx={{
+            
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -50,10 +51,8 @@ function BoxI({ shippingCosts, coupons, refunds, taxes }) {
           >
             <BoxContainer>
               <LocalPostOfficeIcon />
-              <div style={{ fontWeight: "600", fontSize: "15px" }}>
-                Shipping costs
-              </div>
-              <div style={{ fontWeight: "500", fontSize: "12px" }}>
+              <div style={{ ...applyFontStyles() }}>Shipping costs</div>
+              <div style={{ ...applyFontStyles() }}>
                 ${shippingCosts}
               </div>
             </BoxContainer>
@@ -74,10 +73,8 @@ function BoxI({ shippingCosts, coupons, refunds, taxes }) {
           >
             <BoxContainer>
               <LoyaltyIcon />
-              <div style={{ fontWeight: "600", fontSize: "15px" }}>
-               Coupons
-              </div>
-              <div style={{ fontWeight: "500", fontSize: "12px" }}>
+              <div style={{ ...applyFontStyles() }}>Coupons</div>
+              <div style={{ ...applyFontStyles()}}>
                 {coupons}
               </div>
             </BoxContainer>
@@ -97,10 +94,8 @@ function BoxI({ shippingCosts, coupons, refunds, taxes }) {
           >
             <BoxContainer>
               <CancelIcon />
-              <div style={{ fontWeight: "600", fontSize: "15px" }}>
-              Refunds
-              </div>
-              <div style={{ fontWeight: "500", fontSize: "12px" }}>
+              <div style={{ ...applyFontStyles() }}>Refunds</div>
+              <div style={{ ...applyFontStyles()}}>
                 ${refunds}
               </div>
             </BoxContainer>
@@ -120,19 +115,13 @@ function BoxI({ shippingCosts, coupons, refunds, taxes }) {
           >
             <BoxContainer>
               <AccountBalanceIcon />
-              <div style={{ fontWeight: "600", fontSize: "15px" }}>
-              Taxes
-              </div>
-              <div style={{ fontWeight: "500", fontSize: "12px" }}>
+              <div style={{ ...applyFontStyles() }}>Taxes</div>
+              <div style={{ ...applyFontStyles()}}>
                 ${taxes}
               </div>
             </BoxContainer>
           </Box>
-
-
-
         </Box>
-
       </ResponsiveContainer>
     </DashboardBox>
   );

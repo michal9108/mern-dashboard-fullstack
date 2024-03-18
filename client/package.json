@@ -19,6 +19,7 @@
     "@reduxjs/toolkit": "^1.9.6",
     "axios": "^1.5.1",
     "dayjs": "^1.11.10",
+    "markdown-to-jsx": "^7.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-pro-sidebar": "^1.1.0",

@@ -28,7 +28,7 @@ const user = {
 export default function Profile() {
   const theme = useTheme();
   return (
-    <>
+  
       <Stack spacing={2}>
         <Container
           maxWidth="xs"
@@ -54,14 +54,14 @@ export default function Profile() {
             <Typography
               component="h2"
               variant="h2"
-              style={{ color: tokensDark.grey[0] }}
+              style={{ color: theme.palette.text.primary }}
             >
               Account
             </Typography>
             <Typography
               component="h4"
               variant="h4"
-              style={{ color: tokensDark.grey[0] }}
+              style={{ color: theme.palette.text.primary }}
             >
               Manage your preferences here
             </Typography>
@@ -203,7 +203,7 @@ export default function Profile() {
                 </CardContent>
 
                 <CardContent>
-                  <Grid  lg={8} md={6} xs={12}>
+                  <Grid lg={8} md={6} xs={12}>
                     <Grid md={6} xs={12}>
                       <FormControl fullWidth>
                         <InputLabel>Country</InputLabel>
@@ -238,6 +238,6 @@ export default function Profile() {
           </Grid>
         </Grid>
       </Stack>
-    </>
+  
   );
 }

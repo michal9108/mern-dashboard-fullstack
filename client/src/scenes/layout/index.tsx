@@ -8,7 +8,7 @@ import { useMediaQueries } from '../../../shared/screensResponsivness';
 function Layout() {
 
     const theme = useTheme();
-    const { isAboveMediumScreens, isAboveMobileScreens } = useMediaQueries();
+    const { isAboveMobileScreens,isAboveSmallMobileScreens, isAboveSmallScreens   } = useMediaQueries();
   
     const [collapsed, setCollapsed] = useState(false);
     const [isMobileSidebarShown, setIsMobileSidebarShown] = useState(false);
@@ -25,7 +25,7 @@ function Layout() {
       <NavBar
         handleToggleSidebar={handleToggleSidebar}
         handelMobileSidebarShown={handelMobileSidebarShown}
-        isAboveMobileScreens={isAboveMobileScreens}
+        isAboveSmallScreens={isAboveSmallScreens}
       />
       <Box
         display={isAboveMobileScreens ? "flex" : "block"}
@@ -34,7 +34,7 @@ function Layout() {
       >
         <SidebarPro
           collapsed={collapsed}
-          isAboveMobileScreens={isAboveMobileScreens}
+          isAboveSmallScreens={isAboveSmallScreens}
           isMobileSidebarShown={isMobileSidebarShown}
         />
           <Box flexGrow={1} >

@@ -63,7 +63,7 @@ function SidebarMenu() {
         >
           {"Settings"}
         </MenuItem>
-        <MenuItem component={<Link to="/dashboard" />} icon={<SchoolIcon />}>
+        <MenuItem component={<Link to="/documentation" />} icon={<SchoolIcon />}>
           {"Documentation"}
         </MenuItem>
       </Menu>

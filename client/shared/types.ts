@@ -73,14 +73,6 @@ export interface CostsFieldType {
   iconCosts: React.ReactNode;
 }
 
-// export default interface ModeTypes {
-//     mode: "dark" | "light"; 
-//     primary: Record<string, string>;
-//     secondary: Record<string, string>;
-//     tertiary: Record<string, string>;
-//     grey: Record<string, string>;
-//     background: Record<string, string>;
-//   }
   
 export   interface Integration {
   id: string;
@@ -94,3 +86,12 @@ export   interface Integration {
 export   interface IntegrationCardProps {
   integration: Integration;
 }
+
+export interface ConversionTypes  {
+  funnelStep: string;
+  funnelStepAmount: number;
+  icon: React.ReactNode;
+};
+export interface SkeletonTypes  {
+  gridArea?: string;
+};

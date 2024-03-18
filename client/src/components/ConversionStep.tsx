@@ -1,39 +1,41 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import "../index.css";
-import React from "react";
 
-type Props = {
-  funnelStep: string;
-  funnelStepAmount: number;
-  icon: React.ReactNode;
-};
+import { useMediaQueries } from "../../shared/screensResponsivness";
+import { ConversionTypes } from "shared/types";
 
 export default function ConversionStep({
   funnelStep,
   funnelStepAmount,
   icon,
-}: Props) {
+}: ConversionTypes) {
+  const { isAboveMobileScreens, applyFontStyles } = useMediaQueries();
   const theme = useTheme();
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "row", gap:'0.5rem', marginLeft:'0.5rem',marginRight:'0.5rem' }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        gap: isAboveMobileScreens ? "0.5rem" : "1.5rem",
+        marginLeft: "0.5rem",
+        marginRight: "0.5rem",
+      }}
+    >
       <div
         style={{
-          fontWeight: "400",
           display: "flex",
-          fontSize: "12px",
           justifyContent: "center",
           alignItems: "center",
+          ...applyFontStyles(),
         }}
       >
         {icon}{" "}
       </div>
       <span style={{ display: "flex", flexDirection: "column" }}>
         {" "}
-        <div style={{ fontWeight: "500", fontSize: "12px" }}> {funnelStep}</div>
-        <div style={{ fontWeight: "500", fontSize: "12px" }}>
-          {funnelStepAmount}{" "}
-        </div>
+        <div style={{ ...applyFontStyles() }}> {funnelStep}</div>
+        <div style={{ ...applyFontStyles() }}>{funnelStepAmount} </div>
       </span>
     </Box>
   );
