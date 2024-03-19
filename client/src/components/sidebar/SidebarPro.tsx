@@ -1,7 +1,7 @@
 import { useMediaQuery, useTheme } from "@mui/material";
 import { Sidebar, Menu, MenuItem, sidebarClasses } from "react-pro-sidebar";
 import { tokensDark } from "@/theme";
-import SidebarMobile from './SidebarMobile'
+import SidebarMobile from "./SidebarMobile";
 import SidebarMenu from "./SidebarMenu";
 
 export default function SidebarPro({
@@ -17,7 +17,6 @@ export default function SidebarPro({
       {isAboveSmallScreens ? (
         <Sidebar
           collapsed={collapsed}
-        
           style={{
             color: theme.palette.text.primary,
             borderColor: tokensDark.grey[700],
@@ -28,13 +27,10 @@ export default function SidebarPro({
             },
           }}
         >
-       <SidebarMenu />
+          <SidebarMenu />
         </Sidebar>
       ) : (
-
         <SidebarMobile isMobileSidebarShown={isMobileSidebarShown} />
-        
-       
       )}
     </>
   );

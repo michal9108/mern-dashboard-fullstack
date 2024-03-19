@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Card,
@@ -24,10 +24,18 @@ import LoadingSkeleton from "@/components/LoadingSkeleton";
 const ProductCard = lazy(() => import("./ProductCard"));
 
 const Products = () => {
-
   const theme = useTheme();
 
   const { productData, totalTransactionsPerProduct } = ProductDataProcessor();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   const {
     isAboveLargeScreens,
@@ -77,8 +85,13 @@ const Products = () => {
         </Container>
         <Divider />
         <Box>
-  
-        {productData ? (
+          {loading ? (
+            <Stack spacing={1}>
+            <LoadingSkeleton />
+            <LoadingSkeleton />
+            <LoadingSkeleton />
+          </Stack>
+          ):( 
             <Box
               display="grid"
               gridTemplateColumns="repeat(4, minmax(200px, 1fr))"
@@ -120,22 +133,23 @@ const Products = () => {
               }
             >
               {productData.map(({ _id, expense, price }) => (
-                      <Suspense  key={_id} fallback={ <LoadingSkeleton gridArea={`product_${_id}`} />}>
-
-                <ProductCard
+                <Suspense
                   key={_id}
-                  _id={_id}
-                  price={price}
-                  expense={expense}
-                  totalTransactions={totalTransactionsPerProduct[_id]}
-                />
+                  fallback={<LoadingSkeleton gridArea={`product_${_id}`} />}
+                >
+                  <ProductCard
+                    key={_id}
+                    _id={_id}
+                    price={price}
+                    expense={expense}
+                    totalTransactions={totalTransactionsPerProduct[_id]}
+                  />
                 </Suspense>
               ))}
-              
             </Box>
-         ) : (
-       <>Loading</>
-        )}
+          
+           
+          )}
         </Box>
       </Stack>
     </>

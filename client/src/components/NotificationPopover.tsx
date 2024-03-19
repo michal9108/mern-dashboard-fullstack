@@ -1,7 +1,8 @@
-import { Popover, Typography } from "@mui/material";
+import { Popover, Typography, useTheme } from "@mui/material";
 import React, { useState } from "react";
 
 const NotificationPopover = ({ children, note }) => {
+  const theme = useTheme();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -30,6 +31,7 @@ const NotificationPopover = ({ children, note }) => {
         id="mouse-over-popover"
         sx={{
           pointerEvents: "none",
+       
         }}
         open={open}
         anchorEl={anchorEl}

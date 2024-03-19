@@ -12,7 +12,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { tokensDark } from "@/theme";
-
+import useLogin from "./useLogin";
 function Copyright(props: any) {
   return (
     <Typography
@@ -33,44 +33,20 @@ function Copyright(props: any) {
 
 export default function Login() {
   const theme = useTheme();
+  const { users, fetchUsers, handleLogin } = useLogin();
 
-  const [users, setUsers] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+const handleSubmit =(event) => {
+  event.preventDefault();
+  handleLogin(username, password, navigate);
+  setUsername("");
+  setPassword("");
+}
 
-  const fetchUsers = () => {
-    axios.get("https://server-dashboard-mern.fly.dev/register").then((res) => {
-      console.log(res.data);
-    });
-  };
 
-  const handleLogin = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://server-dashboard-mern.fly.dev/login",
-        {
-          username,
-          password,
-        },
-      );
-      const token = response.data.token;
-      alert("Login successful");
-      setUsername("");
-      setPassword("");
-      fetchUsers();
-      navigate("/");
-      window.location.reload();
-      localStorage.setItem("token", token);
-    } catch (error) {
-      console.log("Login Error", error);
-    }
-  };
 
   return (
     <Container
@@ -104,7 +80,7 @@ export default function Login() {
         >
           Log In
         </Typography>
-        <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -151,7 +127,7 @@ export default function Login() {
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="secondary" />}
-            sx={{ color:"secondary" }}
+            sx={{ color: "secondary" }}
             label="Remember me"
           />
           <Button
@@ -181,7 +157,11 @@ export default function Login() {
             </h4>
           </div>
           <div
-            style={{ fontSize: "14px", color: "secondary", textAlign: "center" }}
+            style={{
+              fontSize: "14px",
+              color: "secondary",
+              textAlign: "center",
+            }}
           >
             <Typography color={tokensDark.primary[500]}>
               Test login: <i>Username: user password: user</i>{" "}

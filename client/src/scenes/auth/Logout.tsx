@@ -21,8 +21,12 @@ import { tokensDark } from "@/theme";
 import LogoutIcon from "@mui/icons-material/Logout";
 import IconButtonMui from "@/components/IconButtonMui";
 import { Link } from "react-router-dom";
+import useLogout from "./useLogout";
 
 const Logout = () => {
+
+  const {handleLogout} = useLogout();
+  
   const theme = useTheme();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -30,19 +34,7 @@ const Logout = () => {
   const handleClose = () => setAnchorEl(null);
   const handleClick = (event: any) => setAnchorEl(event.currentTarget);
 
-  const handleLogout = async () => {
-    const token = localStorage.getItem("token");
 
-    // Call the server-side logout route
-    await axios.post("https://server-dashboard-mern.fly.dev/logout", { token });
-
-    // Clear the token from local storage
-    localStorage.removeItem("token");
-
-    // Redirect or perform other logout-related actions
-    // For example, you can redirect to the login page
-    window.location.href = "/";
-  };
 
   return (
     <>
@@ -73,15 +65,18 @@ const Logout = () => {
         onClose={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
-        <MenuItem> Email</MenuItem>
-        <Link to="/settings">
+
+ {/*  USER COPY EMAIL TO CLIPBOARD TO DO  */}
+        {/* <MenuItem> Email</MenuItem> */}
+
+        <Link to="/settings" style={{ color: "inherit", textDecoration:"none" }}>
           <MenuItem>
             <IconButtonMui icon={<SettingsOutlined />} />
             {"Profile Settings"}
           </MenuItem>
         </Link>
 
-        <Link to="/login">
+        <Link to="/login" style={{ color: "inherit", textDecoration:"none" }}>
           <MenuItem onClick={handleLogout}>
             <IconButtonMui icon={<LogoutIcon />} />
             {"Log Out"}
