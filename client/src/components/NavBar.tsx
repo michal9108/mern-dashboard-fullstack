@@ -1,5 +1,14 @@
 import "/src/index.css";
-import { Box, Divider, Switch, createTheme, useTheme } from "@mui/material";
+import {
+  Box,
+  Container,
+  Divider,
+  Popover,
+  Switch,
+  Typography,
+  createTheme,
+  useTheme,
+} from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
 import Logout from "../scenes/auth/Logout";
 import ThemeToggler from "./ThemeToggler";
@@ -8,6 +17,8 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Menu as MenuIcon } from "@mui/icons-material";
 
 import BarChartIcon from "@mui/icons-material/BarChart";
+import { useState } from "react";
+import NotificationPopover from "./NotificationPopover";
 
 const NavBar = ({
   handleToggleSidebar,
@@ -15,6 +26,8 @@ const NavBar = ({
   isAboveSmallScreens,
 }) => {
   const theme = useTheme();
+
+
 
   return (
     <>
@@ -51,9 +64,14 @@ const NavBar = ({
 
         {/* RIGHT SIDE */}
         <FlexBetween gap="1rem">
-          <IconButtonMui icon={<NotificationsIcon />} />
-          <ThemeToggler />
+        
 
+          <NotificationPopover note="There are no Notifications">
+            <IconButtonMui icon={<NotificationsIcon />} />
+          </NotificationPopover>
+          <NotificationPopover note="Switch theme">
+          <ThemeToggler />
+          </NotificationPopover>
           <Box sx={{ "&:hover": { color: "#d0fcf4" } }}>
             <Logout />
           </Box>

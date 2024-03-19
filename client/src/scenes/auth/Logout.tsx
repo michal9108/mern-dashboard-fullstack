@@ -20,7 +20,7 @@ import Avatar from "@mui/material/Avatar";
 import { tokensDark } from "@/theme";
 import LogoutIcon from "@mui/icons-material/Logout";
 import IconButtonMui from "@/components/IconButtonMui";
-
+import { Link } from "react-router-dom";
 
 const Logout = () => {
   const theme = useTheme();
@@ -74,15 +74,19 @@ const Logout = () => {
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
         <MenuItem> Email</MenuItem>
-        <MenuItem>
-          <IconButtonMui icon={<SettingsOutlined />} />
-          {"Profile Settings"}
-        </MenuItem>
+        <Link to="/settings">
+          <MenuItem>
+            <IconButtonMui icon={<SettingsOutlined />} />
+            {"Profile Settings"}
+          </MenuItem>
+        </Link>
 
-        <MenuItem onClick={handleLogout}>
-          <IconButtonMui icon={<LogoutIcon />} />
-          {"Log Out"}
-        </MenuItem>
+        <Link to="/login">
+          <MenuItem onClick={handleLogout}>
+            <IconButtonMui icon={<LogoutIcon />} />
+            {"Log Out"}
+          </MenuItem>
+        </Link>
       </Menu>
     </>
   );

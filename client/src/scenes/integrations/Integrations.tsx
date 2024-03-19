@@ -12,10 +12,11 @@ import AddIcon from "@mui/icons-material/Add";
 
 import dayjs from "dayjs";
 
-
 import { IntegrationCard } from "./IntegrationsCard";
-import  { IntegrationsFilter }  from "./IntegrationsFilter";
+import { IntegrationsFilter } from "./IntegrationsFilter";
 import { Container, Divider, useTheme } from "@mui/material";
+import { useState } from "react";
+import { tokensDark } from "@/theme";
 
 const integrations = [
   {
@@ -87,56 +88,85 @@ const integrations = [
 ];
 // satisfies Integration[];
 
+const pageSize = 3;
+
 export default function Integrations(): React.JSX.Element {
   const theme = useTheme();
 
+  const [pagination, setPagination] = useState({
+    page: 1,
+    pageCount: Math.ceil(integrations.length / pageSize),
+  });
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    page: number,
+  ) => {
+    setPagination({ ...pagination, page });
+  };
+
+  const getData = () => {
+    const from = (pagination.page - 1) * pageSize;
+    const to = from + pageSize;
+    const data = integrations.slice(from, to);
+    return { count: integrations.length, data: data };
+  };
+
+  const { count, data } = getData();
+
   return (
     <>
-      <Stack spacing={1}>
-       
-          <Container
-            // spacing={1} sx={{ flex: "1 1 auto" ,  alignItems:"flex-start"}}
-            maxWidth="xs"
-            sx={{
-              width: "100%",
-              height: "100%",
-  
-              paddingTop: "1rem",
-          paddingBottom: "1rem",
-          
-            }}
-          >
-             <Box
-          width="100%"
-          height="100%"
-          display="flex"
-          gap="1rem"
-          justifyContent="center"
-          alignItems="flex-start"
-          flexDirection="column"
+      <Stack spacing={0}>
+        <Container
+          // spacing={1} sx={{ flex: "1 1 auto" ,  alignItems:"flex-start"}}
+          maxWidth="xs"
+          sx={{
+            width: "100%",
+            height: "100%",
+            paddingLeft: "1rem",
+            paddingTop: "1rem",
+            paddingBottom: "1rem",
+            marginLeft: "0rem",
+          }}
         >
-            <Typography variant="h2">Integrations</Typography>
-          
-            </Box>
-            <Stack> 
-            
+          <Typography variant="h2" sx={{ marginBottom: "1rem" }}>
+            Integrations
+          </Typography>
 
-            <Stack sx={{ alignItems: "center" }} direction="row" spacing={1}>
-              <Button color="inherit" startIcon={<CloudUploadIcon />}>
+          <Stack>
+            <Stack
+              sx={{ alignItems: "center" }}
+              direction="row"
+              spacing={2}
+              justifyContent="space-between"
+            >
+              <Button
+                sx={{ bgcolor: theme.palette.secondary.dark }}
+                startIcon={<CloudUploadIcon />}
+                variant="contained"
+              >
                 Import
               </Button>
-              <Button color="inherit" startIcon={<DownloadIcon />}>
+              <Button
+                sx={{ bgcolor: theme.palette.secondary.dark }}
+              
+                variant="contained"
+
+                startIcon={<DownloadIcon />}
+              >
                 Export
               </Button>
-            </Stack>
-            </Stack>
-            
-          </Container>
-          <div>
-              <Button startIcon={<AddIcon />} variant="contained">
+              <Button
+                sx={{ bgcolor: theme.palette.secondary.dark }}
+                startIcon={<AddIcon />}
+                variant="contained"
+              >
                 Add
               </Button>
-            </div>
+            </Stack>
+          </Stack>
+        </Container>
+        <div></div>
 
         <IntegrationsFilter />
         <Divider />
@@ -146,18 +176,21 @@ export default function Integrations(): React.JSX.Element {
           sx={{ padding: "1.5rem 1.5rem 1.5rem 1.5rem" }}
           spacing={3}
         >
-          {integrations.map((integration) => (
+          {data.map((integration) => (
             <Grid key={integration.id} lg={4} md={6} xs={12}>
               <IntegrationCard integration={integration} />
             </Grid>
           ))}
         </Grid>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Pagination count={3} size="small" />
+          <Pagination
+            count={pagination.pageCount}
+            page={pagination.page}
+            size="small"
+            onChange={handlePageChange}
+          />
         </Box>
       </Stack>
     </>
   );
 }
-
-
