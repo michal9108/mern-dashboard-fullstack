@@ -39,8 +39,7 @@ function AreaH({ transactionData }) {
       <Box
         ml="1rem"
         mr="1rem"
-        mb='1rem'
-        
+        mb="1rem"
         height="75%"
         // sx={{
         //   "& .MuiDataGrid-root": {
