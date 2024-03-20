@@ -125,3 +125,30 @@ app.post("/logout", (req, res) => {
     res.status(500).json({ error: "Error logging out" });
   }
 });
+
+//CHANGE THE PASSWORD 
+
+// const newLocal = app.post("/change-password", async (req, res) => {
+//   try {
+//     const { username, oldPassword, newPassword } = req.body;
+//     // Find the user by username
+//     const user = await User.findOne({ username });
+//     // Check if the user exists
+//     if (!user) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
+//     // Check if the old password matches
+//     const isPasswordValid = await compare(oldPassword, user.password);
+//     if (!isPasswordValid) {
+//       return res.status(401).json({ error: "Invalid old password" });
+//     }
+//     // Hash the new password
+//     const hashedPassword = await hash(newPassword, 10);
+//     // Update the user's password
+//     user.password = hashedPassword;
+//     await user.save();
+//     res.json({ message: "Password changed successfully" });
+//   } catch (error) {
+//     res.status(500).json({ error: "Error changing password" });
+//   }
+// });

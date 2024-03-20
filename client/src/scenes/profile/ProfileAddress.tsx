@@ -22,7 +22,7 @@ const ProfileAddress= () => {
 
     const theme = useTheme();
   return (
-    <Grid lg={8} md={6} xs={12}>
+  
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -144,7 +144,7 @@ const ProfileAddress= () => {
           </CardActions>
         </Card>
       </form>
-    </Grid>
+   
   );
 };
 

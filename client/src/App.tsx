@@ -15,7 +15,7 @@ import RequireAuth from "@/middleware/RequireAuth";
 import { ColorModeContext } from "./state/ColorModeContext";
 import Profile from "./scenes/profile/Profile";
 import Layout from "./scenes/layout";
-import Integrations from "./scenes/integrations/integrations";
+import Integrations from "./scenes/integrations/Integrations";
 import { useCustomTheme } from "./hooks/useCustomTheme";
 import Products from "./scenes/products/Products";
 import Transactions from "./scenes/transactions/Transactions";
