@@ -13,7 +13,11 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { tokensDark } from "@/theme";
-import {lazy, Suspense} from "react";
+import { lazy, Suspense } from "react";
+import dotenv from "dotenv";
+
+
+const serverUrl = import.meta.env.VITE_FLYIO_SERVER_URL;
 
 function Copyright(props: any) {
   return (
@@ -34,9 +38,6 @@ function Copyright(props: any) {
 }
 
 export default function Signup() {
-
-
-
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -48,7 +49,7 @@ export default function Signup() {
   }, []);
 
   const fetchUsers = () => {
-    axios.get('https://server-dashboard-mern.fly.dev/register').then((res) => {
+    axios.get(`${serverUrl}/register`).then((res) => {
       console.log(res.data);
     });
   };
@@ -56,7 +57,11 @@ export default function Signup() {
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     axios
-      .post('https://server-dashboard-mern.fly.dev/register', { email, username, password })
+      .post(`${serverUrl}/register`, {
+        email,
+        username,
+        password,
+      })
       .then(() => {
         alert("Registration Successful");
         setEmail("");
@@ -73,7 +78,6 @@ export default function Signup() {
   };
 
   return (
-    
     <Container
       component="main"
       maxWidth="xs"
@@ -169,7 +173,10 @@ export default function Signup() {
           <Grid container justifyContent="flex-end">
             <Grid item xs={12}>
               <p style={{ color: "white", textAlign: "center" }}>
-                Already have an account? <Link to="/login" style={{color:tokensDark.primary[500]}}>Log In</Link>
+                Already have an account?{" "}
+                <Link to="/login" style={{ color: tokensDark.primary[500] }}>
+                  Log In
+                </Link>
               </p>
             </Grid>
           </Grid>
@@ -177,6 +184,5 @@ export default function Signup() {
       </Box>
       <Copyright sx={{ mt: 8, mb: 4, color: "white" }} />
     </Container>
-   
   );
 }

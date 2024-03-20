@@ -1,5 +1,9 @@
 import axios from 'axios';
-import React from 'react'
+
+
+const serverUrl = import.meta.env.VITE_FLYIO_SERVER_URL;
+
+
 
 const useLogout = () => {
 
@@ -7,7 +11,7 @@ const useLogout = () => {
         const token = localStorage.getItem("token");
     
         // Call the server-side logout route
-        await axios.post("https://server-dashboard-mern.fly.dev/logout", { token });
+        await axios.post(`${serverUrl}/logout`, { token });
     
         // Clear the token from local storage
         localStorage.removeItem("token");

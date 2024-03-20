@@ -1,21 +1,26 @@
 import { useState } from "react";
 import axios from "axios";
 
+
+
+
+const serverUrl = import.meta.env.VITE_FLYIO_SERVER_URL;
+
 const useLogin = () => {
   const [users, setUsers] = useState([]);
 
   const fetchUsers = () => {
-    axios.get("https://server-dashboard-mern.fly.dev/register").then((res) => {
+    axios.get(`${serverUrl}/register`).then((res) => {
       console.log(res.data);
     });
   };
 
   const handleLogin = async (username, password, navigate) => {
     try {
-      const response = await axios.post(
-        "https://server-dashboard-mern.fly.dev/login",
-        { username, password }
-      );
+      const response = await axios.post(`${serverUrl}/login`, {
+        username,
+        password,
+      });
       const token = response.data.token;
       alert("Login successful");
       fetchUsers();
