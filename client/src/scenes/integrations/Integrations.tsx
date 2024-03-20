@@ -24,7 +24,7 @@ import { integrations } from "./dataIntegrations";
 import useIntegrationsImport from "./useIntegrationsImport";
 import useIntegrationsExport from "./useIntegrationsExport";
 
-export default function Integrations(): React.JSX.Element {
+export default function Integrations() {
   const { handleImportClick, handleFileChange, fileInputRef } =
     useIntegrationsImport();
   const { handleExportClick, downloadAnchorRef } = useIntegrationsExport();
@@ -129,32 +129,28 @@ export default function Integrations(): React.JSX.Element {
               >
                 Export
               </Button>
-              
             </Stack>
             <Autocomplete
-          disablePortal
-          id="combo-box-demo"
-          options={list.map((item) => item.title)}
-          renderInput={(params) => (
-            <OutlinedInput
-              type="search"
-              {...params}
-              placeholder="Search avalaible integrations..."
-            
-              onSelect={handleInput}
-              sx={{
-                width: "full",
-                margin: "10px auto",
-                bgcolor: theme.palette.secondary.dark
-                
-              }}
+              disablePortal
+              id="combo-box-demo"
+              options={list.map((item) => item.title)}
+              renderInput={(params) => (
+                <OutlinedInput
+                  type="search"
+                  {...params}
+                  placeholder="Search avalaible integrations..."
+                  onSelect={handleInput}
+                  sx={{
+                    width: "full",
+                    margin: "10px auto",
+                    bgcolor: theme.palette.secondary.dark,
+                  }}
+                />
+              )}
             />
-          )}
-        />
           </Stack>
         </Container>
-      
-       
+
         <Divider />
 
         <Grid
