@@ -44,8 +44,9 @@ const blacklistedTokens = [];
 /* MONGOOSE SETUP */
 
 const PORT = 3000;
+
 mongoose
-  .connect('mongodb+srv://sedivka9108:SjCR2RnKE5il1592@cluster0.rkeb63t.mongodb.net/?retryWrites=true&w=majority', {
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -105,7 +106,7 @@ app.post("/login", async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Invalid password" });
     }
-    const token = jwt.sign({ userId: user._id }, 'somestrSDSingtoguesss', {expiresIn: "1hr" });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {expiresIn: "1hr" });
     res.json({ message: "Login successful", token });
   } catch (error) {
     res.status(500).json({ error: "Error logging in" });

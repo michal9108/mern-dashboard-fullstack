@@ -15,11 +15,12 @@ import RequireAuth from "@/middleware/RequireAuth";
 import { ColorModeContext } from "./state/ColorModeContext";
 import Profile from "./scenes/profile/Profile";
 import Layout from "./scenes/layout";
-import Integrations from "./scenes/integrations/Integrations";
+import Integrations from "./scenes/integrations/integrations";
 import { useCustomTheme } from "./hooks/useCustomTheme";
 import Products from "./scenes/products/Products";
 import Transactions from "./scenes/transactions/Transactions";
 import Documentation from "./scenes/documentation/Documentation";
+
 
 export default function App() {
   const { theme, toggleColorMode } = useCustomTheme();
@@ -30,6 +31,7 @@ export default function App() {
         <ColorModeContext.Provider value={{ toggleColorMode }}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
+
             <Routes>
               <Route
                 path="/"
@@ -50,7 +52,9 @@ export default function App() {
                 <Route path="/transactions" element={<Transactions />} />
                 <Route path="/integrations" element={<Integrations />} />
                 <Route path="/settings" element={<Profile />} />
-                <Route path="/documentation" element={<Documentation />} />
+                <Route path="/documentation" element={<Documentation />} /> 
+            
+
               </Route>
             </Routes>
           </ThemeProvider>

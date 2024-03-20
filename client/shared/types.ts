@@ -95,5 +95,3 @@ export interface ConversionTypes  {
 export interface SkeletonTypes  {
   gridArea?: string;
 };
-
-

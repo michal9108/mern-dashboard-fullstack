@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import { BoxHeader } from "@/components/BoxHeader";
 import { useGetKpisQuery } from "@/state/api";
 import { GetKpisResponse } from "../../../shared/types";

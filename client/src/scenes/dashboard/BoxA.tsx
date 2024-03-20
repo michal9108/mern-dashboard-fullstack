@@ -19,7 +19,7 @@ export default function BoxA({
   totalExpenses,
   totalRevenue,
   revenueExpenses,
-  
+  loading,
 }) {
   const theme = useTheme();
 
