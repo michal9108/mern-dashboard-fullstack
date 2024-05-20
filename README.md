@@ -5,6 +5,6 @@
 
 ## Link
 
-[Finance Dashboard App](https://mern-dashboard-fullstack.vercel.app/dashboard)
+[Finance Dashboard App](https://mern-dashboard-fullstack.vercel.app/)
 
 
