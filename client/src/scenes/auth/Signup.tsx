@@ -37,7 +37,7 @@ export default function Signup() {
 
 
 
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -68,7 +68,7 @@ export default function Signup() {
         }, 3000);
       })
       .catch((error) => {
-        console.log("Unable to register user");
+        console.log("Unable to register user", error);
       });
   };
 
