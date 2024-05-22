@@ -32,6 +32,8 @@ Before using this project, you will need to have installed [Node.js](https://nod
 - [bcrypt](https://www.npmjs.com/package/bcrypt)
 - [bodyparser](https://axios-http.com/docs/intro)
 - [cors](https://www.npmjs.com/package/cors)
+- [Stripe](https://github.com/stripe/stripe-node)
+
 
 ### Developer Dependencies
 
