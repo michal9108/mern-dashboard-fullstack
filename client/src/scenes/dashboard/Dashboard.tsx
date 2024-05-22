@@ -2,14 +2,12 @@ import { Box, Divider, Switch, useMediaQuery, useTheme } from "@mui/material";
 import Row1 from "./Row1";
 import Row2 from "./Row2";
 import Row3 from "./Row3";
-import NavBar from "../../components/NavBar";
 import {
   gridTemplateLargeScreens,
   gridTemplateSmallScreens,
   useMediaQueries,
 } from "../../../shared/screensResponsivness";
-import { useState } from "react";
-import SidebarPro from "@/components/sidebar/SidebarPro";
+
 
 export default function Dashboard() {
   const theme = useTheme();

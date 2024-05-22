@@ -53,36 +53,12 @@ export default function Integrations(): React.JSX.Element {
     }
   });
 
-  //PAGINATION
 
-  // const [pagination, setPagination] = useState({
-  //   page: 1,
-  //   pageSize: 2,
-  // });
-
-  // const handlePageChange = (
-  //   event: React.ChangeEvent<unknown>,
-  //   page: number,
-  // ) => {
-  //   setPagination({ ...pagination, page });
-  // };
-
-  // let pageCount = Math.ceil(filteredList.length / pagination.pageSize);
-
-  // const getData = () => {
-  //   const from = (pagination.page - 1) * pagination.pageSize;
-  //   const to = from + pagination.pageSize;
-  //   const data = filteredList.slice(from, to);
-  //   return { count: filteredList.length, data: data };
-  // };
-
-  // const { count, data } = getData();
 
   return (
     <>
       <Stack spacing={0}>
         <Container
-          // spacing={1} sx={{ flex: "1 1 auto" ,  alignItems:"flex-start"}}
           maxWidth="xs"
           sx={{
             width: "100%",
@@ -169,13 +145,7 @@ export default function Integrations(): React.JSX.Element {
           ))}
         </Grid>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          {/* <Pagination
-             count={pageCount}
-            page={pagination.page}
-            size="small"
-            onChange={handlePageChange}
-            
-          /> */}
+        
         </Box>
       </Stack>
     </>

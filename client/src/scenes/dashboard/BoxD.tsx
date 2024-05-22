@@ -5,11 +5,9 @@ import FlexBetween from "@/components/FlexBetween";
 import {
   Tooltip,
   CartesianGrid,
-  LineChart,
   ResponsiveContainer,
   XAxis,
   YAxis,
-
   AreaChart,
   Area,
 } from "recharts";

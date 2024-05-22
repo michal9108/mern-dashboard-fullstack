@@ -1,8 +1,5 @@
 // @ts-nocheck
 import { useTheme } from "@mui/material";
-import { useGetProductsQuery, useGetTransactionsQuery } from "@/state/api";
-
-import { funnelStore } from "../../../../server/data/data";
 import { Suspense, lazy } from "react";
 import LoadingSkeleton from "../../components/LoadingSkeleton";
 import ProductDataProcessor from "@/state/ProductDataProcessor";

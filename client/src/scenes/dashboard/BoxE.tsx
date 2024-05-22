@@ -2,14 +2,11 @@ import { BoxHeader } from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import { ResponsiveContainer } from "recharts";
 import DataThresholdingOutlinedIcon from "@mui/icons-material/DataThresholdingOutlined";
-import { tokensDark } from "@/theme";
-
 import { Box, Divider, useTheme } from "@mui/material";
 import ConversionStep from "@/components/ConversionStep";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import ShoppingCartCheckoutOutlinedIcon from "@mui/icons-material/ShoppingCartCheckoutOutlined";
 import WalletOutlinedIcon from "@mui/icons-material/WalletOutlined";
-import FlexBetween from "@/components/FlexBetween";
 import { useMediaQueries } from "../../../shared/screensResponsivness"
 
 export default function BoxE({

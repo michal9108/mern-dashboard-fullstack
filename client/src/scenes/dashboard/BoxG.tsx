@@ -40,27 +40,8 @@ function BoxG({productData }) {
     <Box
       ml="1rem"
       mr="1rem"
-      mb='1rem'
-     
+      mb='1rem'    
       height="75%"
-      // sx={{
-      //   "& .MuiDataGrid-root": {
-      //     color: theme.palette.text.primary,
-      //     border: "none",
-      //   },
-      //   "& .MuiDataGrid-cell": {
-      //     borderBottom: `1px solid ${theme.palette.text.primary} !important`,
-      //   },
-      //   "& .MuiDataGrid-columnHeaders": {
-      //     borderBottom: `1px solid ${theme.palette.text.primary} !important`,
-      //   },
-      //   "& .MuiDataGrid-columnSeparator": {
-      //     visibility: "hidden",
-      //   },
-      //   "& .MuiDataGrid-menuIconButton": {
-      //     color: theme.palette.text.primary,
-      //   },
-      // }}
     >
       <DataGrid
         columnHeaderHeight={25}

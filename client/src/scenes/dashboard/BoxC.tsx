@@ -1,7 +1,6 @@
 import DashboardBox from '@/components/DashboardBox'
-import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import { BoxHeader } from "@/components/BoxHeader";
-import { Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { tokensDark } from '@/theme';
 import { useTheme } from "@mui/material";
 import CurrencyExchangeOutlinedIcon from "@mui/icons-material/CurrencyExchangeOutlined";
