@@ -4,9 +4,9 @@ import { PaletteMode } from "@mui/material";
 /*Custom Color Shades MUI */
 export const tokensDark = {
   grey: {
-    0: "#ffffff", // manually adjusted
-    10: "#f6f6f6", // manually adjusted
-    50: "#f0f0f0", // manually adjusted
+    0: "#ffffff", 
+    10: "#f6f6f6", 
+    50: "#f0f0f0", 
     100: "#f0f0f3",
     200: "#e1e2e7",
     300: "#d1d3da",
@@ -24,14 +24,14 @@ export const tokensDark = {
     300: "#71f5de",
     400: "#41f2d3",
     500: "#51f5ac",
-    600: "#191F45", // manually adjusted
+    600: "#191F45",
     700: "#0b8f78",
     800: "#076050",
     900: "#043028",
   },
   secondary: {
     // yellow
-    50: "#f0f0f0", // manually adjusted
+    50: "#f0f0f0", 
     100: "#fcf0dd",
     200: "#fae1bb",
     300: "#f7d299",

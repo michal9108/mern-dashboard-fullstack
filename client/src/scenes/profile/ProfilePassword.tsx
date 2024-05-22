@@ -3,11 +3,6 @@ import {
   Grid,
   Card,
   CardContent,
-  Stack,
-  Avatar,
-  Typography,
-  Divider,
-  CardActions,
   Button,
   useTheme,
   CardHeader,
@@ -39,7 +34,7 @@ const ProfilePassword = () => {
     }
     axios
       .post(`${serverUrl}/change-password`, {
-        username: "user", // Assuming you have a way to identify the user
+        username: "user",
         oldPassword: currentPassword,
         newPassword: newPassword,
       })
@@ -48,7 +43,7 @@ const ProfilePassword = () => {
         setCurrentPassword("");
         setNewPassword("");
         setConfirmNewPassword("");
-        navigate("/"); // Redirect to the dashboard or another appropriate page
+        navigate("/");
       })
       .catch((error) => {
         console.log("Error changing password", error);

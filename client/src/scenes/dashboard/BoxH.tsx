@@ -41,24 +41,6 @@ function AreaH({ transactionData }) {
         mr="1rem"
         mb="1rem"
         height="75%"
-        // sx={{
-        //   "& .MuiDataGrid-root": {
-        //     color: theme.palette.secondary.light,
-        //     border: "none",
-        //   },
-        //   "& .MuiDataGrid-cell": {
-        //     borderBottom: `1px solid ${theme.palette.secondary.light} !important`,
-        //   },
-        //   "& .MuiDataGrid-columnHeaders": {
-        //     borderBottom: `1px solid ${theme.palette.secondary.light} !important`,
-        //   },
-        //   "& .MuiDataGrid-columnSeparator": {
-        //     visibility: "hidden",
-        //   },
-        //   "& .MuiDataGrid-menuIconButton": {
-        //     color: theme.palette.secondary.light,
-        //   },
-        // }}
       >
         <DataGrid
           columnHeaderHeight={25}

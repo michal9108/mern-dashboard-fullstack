@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
-  Card,
-  CardActions,
-  CardContent,
-  Collapse,
-  Button,
   Typography,
-  Rating,
   useTheme,
-  useMediaQuery,
   Container,
   Divider,
   Stack,

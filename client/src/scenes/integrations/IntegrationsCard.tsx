@@ -50,7 +50,6 @@ export function IntegrationCard({
         <Stack sx={{ alignItems: "center" }} direction="row" spacing={1}>
           <AccessTimeIcon />
           <Typography color="text.secondary" display="inline" variant="body2">
-            {/* Updated {dayjs(integration.updatedAt).format('MMM D, YYYY')} */}
           </Typography>
         </Stack>
         <Stack sx={{ alignItems: "center" }} direction="row" spacing={1}>
